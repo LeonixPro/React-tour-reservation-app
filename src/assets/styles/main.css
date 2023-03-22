@@ -1,0 +1,10 @@
+@import url(./reset.css);
+@import url(./styles.css);
+* {font-size: 16px;font-family: Arial, Helvetica, sans-serif;box-sizing: border-box;line-height: 1.5;}
+body {background: var(--bg-color);color: var(--main-color);}
+.clear {clear: both;}
+a {color: var(--links);}
+.active {
+    width: 1000px;height: 800px;top: 50%;left: 50px;position: fixed;z-index: 10;
+    margin-top: -400px;margin-left: -500px;
+}

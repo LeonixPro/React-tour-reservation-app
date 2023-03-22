@@ -1,0 +1,229 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+/* Header */
+section.header {
+    position: relative;
+}
+.headerImg {position: relative;height: 600px;}
+.headerImg img {
+    position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;
+}
+.headerTop {
+    position: absolute;top: 0;left: 0;width: 100%;height: 100%;display: flex;
+    justify-content: center;flex-direction: column;
+    align-items: center;color: var(--white);background: rgba(0 0 0 / .5);
+}
+.headerTop h1 {font-weight: bold;margin-bottom: 10px;font-size: 2rem;}
+.headerTop p {font-size: 1.2rem;margin-bottom: 20px;}
+button.headerButton {
+    padding: 8px 20px;border: none;background: var(--white);font-size: 1.1rem;
+    font-weight: bold;border-radius: 20px;transition: var(--transition);
+    cursor: pointer;
+}
+button.headerButton:hover {background: var(--hover);color: var(--white);}
+.weather {position: absolute;top: 50px;right: 100px;text-align: center;font-weight: bold;}
+.weatherDescription {font-size: 1.2rem;line-height: 10px;margin-bottom: 5px;}
+.weatherCurrent {font-size: 1rem;}
+.weatherImg span {font-size: 2.2rem;position: relative;top: -3px;}
+.weatherImg i {font-size: 2.5rem;}
+/* Header */
+
+/* Main */
+section.mainSection {
+    padding: 30px 0;background: var(--white);
+}
+.wrapper {
+    width: 1320px;margin: 0 auto;
+}
+.title {
+    margin-bottom: 20px;
+}
+.title h2 {
+    font-size: 1.5rem;margin-bottom: 10px;
+}
+.title span {
+    margin-right: 30px;display: inline-block;font-weight: 500;
+}
+span[data-type="destination"]::before {
+    content: '\F3E7';font-family: 'bootstrap-icons';margin-right: 5px;
+    position: relative;top: 2px;font-size: 1.2rem;
+}
+span[data-type="duration"]::before {
+    content: '\F1F3';font-family: 'bootstrap-icons';margin-right: 5px;
+    position: relative;top: 2px;font-size: 1.2rem;
+}
+span[data-type="category"]::before {
+    content: '\F7CC';font-family: 'bootstrap-icons';margin-right: 5px;
+    position: relative;top: 2px;font-size: 1.2rem;
+}
+.mainBox {
+    display: grid;grid-template-columns: 70% 1fr;gap: 2rem;
+}
+.gallery {
+    display: grid;
+    grid-template-areas: "main-photo main-photo photo-1 photo-2" 
+    "main-photo main-photo  photo-3 photo-4";
+    height: 350px;gap: 1rem;
+    margin-bottom: 40px;
+}
+.mainPhoto {
+    grid-area: main-photo;background: var(--main-color);position: relative;border-radius: 10px;
+    overflow: hidden;cursor: pointer;transition: var(--transition);
+    /* animation: placeholder 1s infinite; */
+}
+.photo1 {
+    grid-area: photo-1;background: var(--main-color);position: relative;border-radius: 10px;
+    overflow: hidden;cursor: pointer;transition: var(--transition);
+    /* animation: placeholder 1s infinite; */
+}
+.photo2 {
+    grid-area: photo-2;background: var(--main-color);position: relative;border-radius: 10px;
+    overflow: hidden;cursor: pointer;transition: var(--transition);
+    /* animation: placeholder 1s infinite; */
+}
+.photo3 {
+    grid-area: photo-3;background: var(--main-color);position: relative;border-radius: 10px;
+    overflow: hidden;cursor: pointer;transition: var(--transition);
+    /* animation: placeholder 1s infinite; */
+}
+.photo4 {
+    grid-area: photo-4;background: var(--main-color);position: relative;border-radius: 10px;
+    overflow: hidden;cursor: pointer;transition: var(--transition);
+    /* animation: placeholder 1s infinite; */
+}
+.mainPhoto img, .photo1 img, .photo2 img, .photo3 img, .photo4 img {
+    width: 100%;height: 100%;object-fit: cover;
+}
+.mainPhoto:hover, .photo1:hover, .photo2:hover, .photo3:hover, .photo4:hover {opacity: .8;}
+/* @keyframes placeholder {
+    0% {opacity: 1;}
+    50% {opacity: .9;}
+    100% {opacity: 1;}
+} */
+.right {
+    border: 1px solid var(--gray);border-radius: 20px;position: sticky;
+    overflow: hidden;padding: 30px 20px;height: 350px;top: 20px;
+}
+.sale {
+    position: absolute;top: 0;right: 0;background: var(--links);color: var(--white);
+    padding: 8px 16px;text-transform: uppercase;border-bottom-left-radius: 20px;
+}
+.duration {
+    font-weight: bold;font-size: 1.2rem;
+}
+.rate {
+    display: block;font-weight: normal;font-size: .8rem;margin-bottom: 30px;
+}
+.rate b {
+    display: inline-block;margin-left: 40px;
+}
+.rate b::before {
+    content: '\F586';font-family: 'bootstrap-icons';margin-right: 5px;
+    position: relative;top: 1px;color: #f4d62b;
+}
+.priceBox {
+    display: grid;grid-template-columns: 1fr 1fr;
+}
+span.price {
+    font-size: .8rem;
+}
+span.discount {
+    font-size: .8rem;position: relative;top: 14px;text-align: right;
+}
+span.price b {
+    display: block;font-size: 1.6rem;
+}
+.book {
+    margin: 30px 0;
+}
+.book button {
+    display: block;width: 100%;text-align: center;background: var(--links);
+    color: var(--white);padding: 12px 0;cursor: pointer;border-radius: 20px;
+    transition: var(--transition);font-weight: bold;
+}
+.book button:hover {
+    background: var(--hover);
+}
+.rightBottom {
+    font-size: .8rem;
+}
+.rightBottom b {
+    display: block;font-size: 1.1em;
+}
+.boxTitle {
+    font-size: 1.1rem;font-weight: bold;margin-bottom: 20px;
+}
+.services {
+    display: grid;grid-template-columns: 1fr 1fr 1fr;gap: 2rem 1rem;
+    margin-bottom: 40px;
+}
+.serviceDesc {
+    font-size: .9rem;
+}
+.serviceDesc b {
+    display: block;
+}
+.service {
+    display: grid;grid-template-columns: 36px 1fr;gap: 1rem;
+}
+.serviceImg[data-type="tickets"]::before {
+    content: '\F5AF';font-family: 'bootstrap-icons';
+    display: block;
+    text-align: center;
+    font-size: 1.52rem;
+    border: 1px solid var(--gray);color: var(--links);
+}
+.serviceImg[data-type="hotel"]::before {
+    content: '\F422';font-family: 'bootstrap-icons';
+    display: block;
+    text-align: center;
+    font-size: 1.52rem;
+    border: 1px solid var(--gray);color: var(--links);
+}
+.serviceImg[data-type="transfer"]::before {
+    content: '\F87E';font-family: 'bootstrap-icons';
+    display: block;
+    text-align: center;
+    font-size: 1.52rem;
+    border: 1px solid var(--gray);color: var(--links);
+}
+.serviceImg[data-type="insurance"]::before {
+    content: '\F38A';font-family: 'bootstrap-icons';
+    display: block;
+    text-align: center;
+    font-size: 1.52rem;
+    border: 1px solid var(--gray);color: var(--links);
+}
+.serviceImg[data-type="museum"]::before {
+    content: '\F1DD';font-family: 'bootstrap-icons';
+    display: block;
+    text-align: center;
+    font-size: 1.52rem;
+    border: 1px solid var(--gray);color: var(--links);
+}
+.serviceImg[data-type="photo"]::before {
+    content: '\F219';font-family: 'bootstrap-icons';
+    display: block;
+    text-align: center;
+    font-size: 1.52rem;
+    border: 1px solid var(--gray);color: var(--links);
+}
+.program, .onMap, .mapBox {
+    margin-bottom: 40px;
+}
+.reviews {
+    border-top: 1px solid var(--gray);padding-top: 30px;
+}
+.reviewBox {
+    display: grid;grid-template-columns: 1fr 1fr;gap: 2rem;
+}
+.reviewTop {display: flex;margin-bottom: 10px;}
+.reviewImg {
+    width: 50px;height: 50px;background: var(--white);border-radius: 50%;margin-right: 10px;
+    display: flex;justify-content: center;align-items: center;font-size: 1.2rem;
+    font-weight: bold;border: 1px solid var(--gray);
+}
+.reviewInfo {font-size: .9rem;margin-top: 4px;}
+.reviewInfo b {display: block;font-size: 1rem;}
+.reviewInfo span {display: block;line-height: 1.2;font-size: .8rem;}
+.reviewMain {font-size: .9rem;padding: 0 5px;line-height: 1.6;}
+/* Main */

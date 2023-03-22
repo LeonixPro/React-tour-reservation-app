@@ -1,0 +1,57 @@
+footer {
+    border-top: 1px solid var(--gray);background: var(--white);
+}
+.wrapper {
+    width: 1320px;margin: 0 auto;
+}
+.footerBoxes {
+    padding: 30px 0;display: grid;grid-template-columns: 30% 1fr 1fr 1fr;gap: 4rem;
+}
+.logo {margin-bottom: 10px;}
+.description {
+    font-size: .8rem;line-height: 1.8;margin-bottom: 15px;
+}
+.social b {
+    display: block;border-bottom: 1px solid var(--gray);padding-bottom: 15px;
+    margin-bottom: 10px;font-size: .9rem;
+}
+.social a {
+    display: inline-block;margin-right: 8px;
+}
+.social a:nth-child(2)::before {
+    content: "\F344";font-size: 1.2rem;
+    font-family: "bootstrap-icons";
+}
+.social a:nth-child(3)::before {
+    content: "\F5EF";font-size: 1.2rem;
+    font-family: "bootstrap-icons";
+}
+.social a:nth-child(4)::before {
+    content: "\F437";font-size: 1.2rem;
+    font-family: "bootstrap-icons";
+}
+.social a:nth-child(5)::before {
+    content: "\F472";font-size: 1.2rem;
+    font-family: "bootstrap-icons";
+}
+.footerBox span {
+    display: block;font-weight: bold;margin-bottom: 15px;
+}
+.footerBox nav ul li {
+    display: block;margin-bottom: 5px;
+}
+.footerBox nav ul li a {
+    color: var(--main);font-size: .9rem;font-weight: 500;transition: var(--transition);
+}
+.footerBox nav ul li a:hover {
+    color: var(--hover);border-bottom: 1px solid var(--hover);
+}
+.bottom {
+    border-top: 1px solid var(--gray);padding: 15px 0;
+}
+.bottom .wrapper {
+    display: grid;grid-template-columns: 1fr 1fr;
+}
+.right nav ul {display: flex;justify-content: end;}
+.right nav ul li a {color: var(--main);margin-left: 15px;transition: var(--transition);font-weight: bold;}
+.right nav ul li a:hover {color: var(--hover);}

@@ -1,0 +1,60 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+.wrapper {
+    width: 1320px;margin: 0 auto;
+}
+section.topOffers h2 {
+    font-size: 1.5em;text-align: center;padding: 10px 0;margin: 50px auto;
+    border-bottom: 1px solid #5f49f0;width: fit-content;
+}
+.offersWrap {
+    display: grid;grid-template-columns:25% 25% 25% 25%;gap: 2rem;
+}
+.offer {
+    border: 1px solid #ccc;overflow: hidden;font-family: Calibri, sans-serif;
+    transition: var(--transition);background: var(--white);
+}
+.offerImg {
+    height: 170px;overflow: hidden;position: relative;
+}
+.offerImg img {
+    width: 100%;object-fit: cover;transition: var(--transition);
+}
+.offer:hover {
+    border: 1px solid var(--links);box-shadow: var(--shadow);
+}
+.offer:hover .offerImg img {
+    transform: scale(1.1);
+}
+.title {
+    padding: 10px;font-weight: bold;
+}
+.info {
+    padding: 0 10px;
+}
+.info span {
+    margin-right: 20px;font-weight: 500;font-size: .9rem;
+}
+.info span:first-child::before {
+    content: "\F3E7";display: inline-block;margin-right: 5px;
+    font-family: "bootstrap-icons";
+}
+.info span:last-child::before {
+    content: "\F1F3";display: inline-block;margin-right: 5px;
+    font-family: "bootstrap-icons";
+}
+.description {
+    padding: 10px;line-height: 1.5;font-size: .9rem;
+}
+.details {
+    padding: 0 10px 10px;
+}
+.details span {
+    padding: 10px 0;font-weight: bold;float: left;
+}
+.details a {
+    padding: 10px 20px;background: #5f49f0;float: right;color: var(--white);
+    font-size: .9rem;transition: var(--transition);
+}
+.details a:hover {
+    background: var(--hover);color: var(--white);
+}

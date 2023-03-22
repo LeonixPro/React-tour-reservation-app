@@ -1,0 +1,28 @@
+.main {
+    display: flex;justify-content: center;align-items: center;
+    min-height: 600px;
+}
+.login {
+    width: 300px;background: var(--white);
+}
+.login form {
+    padding: 40px;
+    display: flex;justify-content: center;align-items: center;flex-direction: column;
+}
+.login form h3 {
+    font-size: 1.4rem;margin-bottom: 15px;
+}
+.login form input {
+    display: block;padding: 8px 0;text-align: center;margin-bottom: 15px;border: 1px solid var(--gray);
+    outline: none;transition: var(--transition);
+}
+.login form input:focus {
+    background: #f1fcff;border: 1px solid var(--links);
+}
+.login form button {
+    padding: 8px 0;text-align: center;display: block;width: 40%;transition: var(--transition);
+    background: var(--links);color: var(--white);cursor: pointer;
+}
+.login form button:hover {
+    background: var(--hover);border-radius: 20px;
+}

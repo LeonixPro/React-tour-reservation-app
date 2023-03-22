@@ -1,0 +1,45 @@
+section.header {
+    height: 500px;display: flex;align-items: center;justify-content: center;
+    background: rgb(235,228,255);
+    background: -moz-radial-gradient(circle, rgba(235,228,255,1) 0%, rgba(250,250,250,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(235,228,255,1) 0%, rgba(250,250,250,1) 100%);
+    background: radial-gradient(circle, rgba(235,228,255,1) 0%, rgba(250,250,250,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ebe4ff",endColorstr="#fafafa",GradientType=1);
+}
+.wrapper {
+   width: 1320px;height: 60%;
+   display: flex;flex-wrap: wrap;
+}
+.headerLeft, .headerRight {
+    flex: 50%;
+    display: flex;flex-direction: column;justify-content: center;
+}
+
+.headerLeft h1 {
+    font-family: "PT-Sans", sans-serif;font-size: 2rem;margin-bottom: 15px;font-weight: bold;
+}
+.headerLeft p {
+    font-size: 1rem;line-height: 25px;font-weight: 500;width: 90%;
+    margin-bottom: 25px;
+    color: #727272;
+    font-family: Arial;
+}
+.headerLeft a {
+    padding: 14px 16px;display: inline-block;background: #2c84ed;color: #f5f5f5;
+    font-weight: bold;transition: all .3s ease;width: fit-content;
+}
+.headerLeft a:hover {
+    background: #8268ff;color:#fff;border-radius: 20px;
+}
+.headerRight img {
+    width: 90%;position: relative;top: -30px;left: 30px;
+    animation: fly 4s linear infinite;
+}
+@keyframes fly {
+    25% {transform: rotate(2deg);}
+    50% {
+        transform: rotate(0);
+    } 75% {
+        transform: rotate(-2deg);
+    }
+} 

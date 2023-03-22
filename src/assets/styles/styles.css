@@ -1,0 +1,15 @@
+:root {
+    --white: #fff;
+    --gray: #ccc;
+    --light: #eaeaea;
+    --bg-color: #f5f5f5;
+    --main-color: #525252;
+    --black: #000;
+    --error: #cc0000;
+    --links: #5d65fc;
+    --details: #5f49f0;
+    --hover: #8268ff;
+    --transition: all .4s ease;
+    --shadow: 0 0 20px #eaeaea;
+    --lg-size: 1000px;
+}

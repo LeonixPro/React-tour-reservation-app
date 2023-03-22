@@ -1,0 +1,39 @@
+.main {
+    display: flex;align-items: center;justify-content: center;min-height: 800px;
+}
+.registration {
+    width: 600px;background: var(--white);padding: 40px;
+}
+.registration h3 {
+    text-align: center;margin-bottom: 15px;font-size: 1.4rem;
+}
+.inputs {
+    display: flex;flex-wrap: wrap;gap: 1rem;
+}
+.input {
+    margin-bottom: 20px;flex: 45%;
+}
+.input label {font-weight: bold;font-size: .9rem;}
+.input input {
+    padding: 10px;display: block;width: 100%;border: 1px solid var(--gray);
+    outline: none;transition: var(--transition);
+}
+.input input::placeholder {
+    font-size: .9rem;
+}
+.input input:focus {
+    background: #f1fcff;border: 1px solid var(--links);
+}
+.confirm {
+    font-size: .9rem;margin-bottom: 20px;
+}
+.confirm input {
+    margin-right: 10px;position: relative;top: 1px;
+}
+.registration button {
+    padding: 12px 20px;background: var(--links);color: var(--white);cursor: pointer;font-size: .9rem;
+    font-weight: bold;transition: var(--transition);
+}
+.registration button:hover {
+    background: var(--hover);border-radius: 20px;
+}

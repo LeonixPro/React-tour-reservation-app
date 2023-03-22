@@ -1,0 +1,37 @@
+.top {
+    background: #fff;
+}
+.Wrapper {
+    width: 1320px;margin: 0 auto;height: 60px;display: flex;justify-content: space-between;
+    align-items: center;
+}
+.navigation nav ul {
+    display: flex;
+}
+.navigation nav ul li a {
+    margin-left: 16px;font-weight: bold;color: #525252;
+    transition: all .4s ease;position: relative;
+}
+.navigation ul li a:hover {color:#4681f4;}
+.navigation ul li a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: -8px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #4681f4;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  .navigation ul li a:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+  .navigation nav ul li a.auth {
+    background: #4681f4;color: #fff;padding: 10px 14px;border-radius: 20px;
+    font-size: .9rem;
+  }
+  .navigation nav ul li a.auth:hover {background: var(--hover);}
+  .navigation nav ul li a.auth:hover::after {display: none;}
