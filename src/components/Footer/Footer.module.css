@@ -52,6 +52,6 @@ footer {
 .bottom .wrapper {
     display: grid;grid-template-columns: 1fr 1fr;
 }
-.right nav ul {display: flex;justify-content: end;}
+.right nav ul {display: flex;justify-content: flex-end;}
 .right nav ul li a {color: var(--main);margin-left: 15px;transition: var(--transition);font-weight: bold;}
 .right nav ul li a:hover {color: var(--hover);}

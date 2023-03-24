@@ -5,6 +5,19 @@
 .login {
     width: 300px;background: var(--white);
 }
+.error {
+    font-size: .8rem;
+    font-weight: bold;
+    color: #cc0000;
+}
+.errorMessage {
+    font-weight: bold;
+    font-size: .9rem;
+    color: #cc0000;
+    padding: 8px 12px;
+    background: #ffe0e0;
+    margin-top: 15px;
+}
 .login form {
     padding: 40px;
     display: flex;justify-content: center;align-items: center;flex-direction: column;
@@ -15,6 +28,9 @@
 .login form input {
     display: block;padding: 8px 0;text-align: center;margin-bottom: 15px;border: 1px solid var(--gray);
     outline: none;transition: var(--transition);
+}
+.login form input.errorInput, .login form input.errorInput:focus {
+    border: 1px solid #cc0000;
 }
 .login form input:focus {
     background: #f1fcff;border: 1px solid var(--links);

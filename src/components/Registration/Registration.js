@@ -1,5 +1,19 @@
+import { useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import styles from "./Registration.module.css";
 export const Registration = () => {
+  const navigate = useNavigate();
+  const { logged } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
+  const { error } = useContext(AuthContext);
+  useEffect(() => {
+    if (logged) {
+      navigate("/");
+    }
+  }, [logged]);
   return (
     <div className={styles.main}>
       <div className={styles.registration}>

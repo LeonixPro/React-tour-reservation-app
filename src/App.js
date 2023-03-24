@@ -1,4 +1,7 @@
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { AuthContext } from "./contexts/AuthContext";
+import { onLogin } from "./services/toursServices";
+import { useState, useEffect } from "react";
 import "./assets/styles/main.css";
 import { Footer } from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
@@ -15,8 +18,37 @@ import { Support } from "./components/Support/Support";
 import { Contacts } from "./components/Contacts/Contacts";
 
 function App() {
+  const [user, setUser] = useState({});
+  const [logged, setLogged] = useState(false);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setLogged(true);
+      setUser(foundUser);
+    }
+  }, []);
+  const login = (data) => {
+    onLogin(data).then((res) => {
+      if (!res) {
+        setError("Invalid credentials");
+        return;
+      }
+      setError("");
+      setUser(res);
+      localStorage.setItem("user", JSON.stringify(res));
+      setLogged(true);
+    });
+  };
+  const context = {
+    logged,
+    user,
+    login,
+    error,
+  };
   return (
-    <>
+    <AuthContext.Provider value={{ ...context }}>
       <Top />
       <Routes>
         <Route path="/" element={<Main />} />
@@ -34,7 +66,7 @@ function App() {
         <Route path="*" element={<h1>Page doesn't exist!</h1>} />
       </Routes>
       <Footer />
-    </>
+    </AuthContext.Provider>
   );
 }
 

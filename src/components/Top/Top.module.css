@@ -34,4 +34,15 @@
     font-size: .9rem;
   }
   .navigation nav ul li a.auth:hover {background: var(--hover);}
-  .navigation nav ul li a.auth:hover::after {display: none;}
+  .navigation nav ul li a.auth:hover::after, .navigation nav ul li a.userProfile:hover::after {display: none;}
+  .navigation nav ul li a.userProfile {
+    margin-left: 20px;
+    cursor: pointer;
+    background: var(--links);
+    padding: 12px 10px;
+    display: inline;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--white);
+  }

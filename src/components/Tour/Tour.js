@@ -1,30 +1,57 @@
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useEffect, useState } from "react";
+import { getOneTour } from "../../services/toursServices";
 import { Gallery } from "./Gallery";
 import styles from "./Tour.module.css";
+import { Booking } from "../Booking/Booking";
+import { Loader } from "../../UI/loader";
 export const Tour = () => {
+  const { id } = useParams();
+  const { user } = useContext(AuthContext);
+  const [tour, setTour] = useState({});
+  const [book, setBook] = useState(false);
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    getOneTour(id)
+      .then((res) => {
+        setTour(res);
+      })
+      .then(setLoad(false));
+  }, [id]);
+
+  const onBookClick = () => {
+    setBook(true);
+  };
+  const close = () => {
+    setBook(false);
+  };
   return (
     <>
+      {load && <Loader />}
+      {book && <Booking close={close} tour={tour} user={user} />}
       <header>
         <section className={styles.header}>
           <div className={styles.headerImg}>
-            <img
-              src="https://images.unsplash.com/photo-1600623471616-8c1966c91ff6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              alt="Tour Title"
-            />
+            <img src={tour.main_img} alt="Tour Title" />
           </div>
           <div className={styles.headerTop}>
-            <h1>5 Days in Paris</h1>
+            <h1>{tour.title}</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
               corporis?
             </p>
-            <button className={styles.headerButton}>Book now!</button>
+            <button className={styles.headerButton} onClick={onBookClick}>
+              Book now!
+            </button>
             <div className={styles.weather}>
               <div className={styles.weatherImg}>
                 <span>7°</span> <i className="bi bi-clouds-fill"></i>
               </div>
               <div className={styles.weatherDescription}>Clouds</div>
               <div className={styles.weatherCurrent}>
-                Current weather in Paris
+                Current weather in {tour.destination}
               </div>
             </div>
           </div>
@@ -34,10 +61,12 @@ export const Tour = () => {
         <section className={styles.mainSection}>
           <div className={styles.wrapper}>
             <div className={styles.title}>
-              <h2>5 Days in Paris</h2>
-              <span data-type="destination">Paris, France</span>
-              <span data-type="duration">4 Days / 5 Nights</span>
-              <span data-type="category">Outgoing</span>
+              <h2>{tour.title}</h2>
+              <span data-type="destination">
+                {`${tour.destination}, ${tour.country}`}
+              </span>
+              <span data-type="duration">{tour.duration}</span>
+              <span data-type="category">{tour.category}</span>
             </div>
             <div className={styles.mainBox}>
               <div className={styles.left}>
@@ -114,15 +143,7 @@ export const Tour = () => {
                 </div>
                 <div className={styles.program}>
                   <div className={styles.boxTitle}>Description</div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-                    blanditiis perferendis officia minus excepturi dignissimos
-                    ad pariatur amet, saepe, eligendi deserunt reprehenderit
-                    dolorum maxime sit veritatis dolorem in. Ad nulla commodi
-                    optio obcaecati assumenda, sequi rerum, doloremque doloribus
-                    nostrum aspernatur repellendus? Voluptatibus voluptas quia
-                    facilis totam? Pariatur, fugit quibusdam? Sint.
-                  </p>
+                  <p>{tour.description}</p>
                 </div>
                 <div className={styles.onMap}>
                   <div className={styles.boxTitle}>On Map</div>
@@ -221,14 +242,14 @@ export const Tour = () => {
               </div>
               <div className={styles.right}>
                 <div className={styles.sale}>On sale</div>
-                <div className={styles.duration}>4 nights / 5 days</div>
+                <div className={styles.duration}>{tour.duration}</div>
                 <div className={styles.rate}>
-                  Paris, France <b>4.9</b> Good
+                  {`${tour.destination}, ${tour.country}`} <b>4.9</b> Good
                 </div>
                 <div className={styles.priceBox}>
                   <span className={styles.price}>
                     Price
-                    <b>750 BGN</b>
+                    <b>{tour.price} BGN</b>
                   </span>
                   <span className={styles.discount}>
                     20% Discount <br />
@@ -236,7 +257,7 @@ export const Tour = () => {
                   </span>
                 </div>
                 <div className={styles.book}>
-                  <button>Book now</button>
+                  <button onClick={onBookClick}>Book now</button>
                 </div>
                 <div className={styles.rightBottom}>
                   <b>Special offers</b>

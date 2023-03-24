@@ -1,193 +1,27 @@
+import { Link } from "react-router-dom";
 import styles from "./TopOffers.module.css";
-export const TopOffers = () => {
+export const TopOffers = ({ tours }) => {
   return (
     <section className={styles.topOffers}>
       <div className={styles.wrapper}>
         <h2>Top Offers</h2>
-        <div className={styles.offersWrap}>
-          <div className={styles.offer}>
-            <div className={styles.offerImg}>
-              <img
-                src="/placeholder.jpg"
-                alt="Paris"
-              />
+        <div className={styles.tours}>
+          {tours.map((tour) => (
+            <div key={tour.u_id} className={styles.tour}>
+              <div className={styles.tourImg}>
+                <img src={tour.main_img} alt={tour.title} />
+              </div>
+              <div className={styles.title}>{tour.title}</div>
+              <div className={styles.details}>{tour.destination}</div>
+              <div className={styles.info}>
+                <span data-type="destination">{tour.destination}</span>
+                <span data-type="duration">{tour.duration}</span>
+              </div>
+              <div className={styles.more}>
+                <Link to={`/tour/${tour.u_id}`}>Details</Link>
+              </div>
             </div>
-            <div className={styles.title}>5 Days in Paris</div>
-            <div className={styles.info}>
-              <span>Paris</span>
-              <span>5 Days</span>
-            </div>
-            <div className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              eaque?
-            </div>
-            <div className={styles.details}>
-              <span>750 BGN</span>
-              <a href="">More</a>
-              <div className="clear"></div>
-            </div>
-          </div>
-
-          <div className={styles.offer}>
-            <div className={styles.offerImg}>
-              <img
-                src="/placeholder.jpg"
-                alt="Paris"
-              />
-            </div>
-            <div className={styles.title}>5 Days in Paris</div>
-            <div className={styles.info}>
-              <span>Paris</span>
-              <span>5 Days</span>
-            </div>
-            <div className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              eaque?
-            </div>
-            <div className={styles.details}>
-              <span>750 BGN</span>
-              <a href="">More</a>
-              <div className="clear"></div>
-            </div>
-          </div>
-
-          <div className={styles.offer}>
-            <div className={styles.offerImg}>
-              <img
-                src="/placeholder.jpg"
-                alt="Paris"
-              />
-            </div>
-            <div className={styles.title}>5 Days in Paris</div>
-            <div className={styles.info}>
-              <span>Paris</span>
-              <span>5 Days</span>
-            </div>
-            <div className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              eaque?
-            </div>
-            <div className={styles.details}>
-              <span>750 BGN</span>
-              <a href="">More</a>
-              <div className="clear"></div>
-            </div>
-          </div>
-
-          <div className={styles.offer}>
-            <div className={styles.offerImg}>
-              <img
-                src="/placeholder.jpg"
-                alt="Paris"
-              />
-            </div>
-            <div className={styles.title}>5 Days in Paris</div>
-            <div className={styles.info}>
-              <span>Paris</span>
-              <span>5 Days</span>
-            </div>
-            <div className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              eaque?
-            </div>
-            <div className={styles.details}>
-              <span>750 BGN</span>
-              <a href="">More</a>
-              <div className="clear"></div>
-            </div>
-          </div>
-
-          <div className={styles.offer}>
-            <div className={styles.offerImg}>
-              <img
-                src="/placeholder.jpg"
-                alt="Paris"
-              />
-            </div>
-            <div className={styles.title}>5 Days in Paris</div>
-            <div className={styles.info}>
-              <span>Paris</span>
-              <span>5 Days</span>
-            </div>
-            <div className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              eaque?
-            </div>
-            <div className={styles.details}>
-              <span>750 BGN</span>
-              <a href="">More</a>
-              <div className="clear"></div>
-            </div>
-          </div>
-
-          <div className={styles.offer}>
-            <div className={styles.offerImg}>
-              <img
-                src="/placeholder.jpg"
-                alt="Paris"
-              />
-            </div>
-            <div className={styles.title}>5 Days in Paris</div>
-            <div className={styles.info}>
-              <span>Paris</span>
-              <span>5 Days</span>
-            </div>
-            <div className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              eaque?
-            </div>
-            <div className={styles.details}>
-              <span>750 BGN</span>
-              <a href="">More</a>
-              <div className="clear"></div>
-            </div>
-          </div>
-
-          <div className={styles.offer}>
-            <div className={styles.offerImg}>
-              <img
-                src="/placeholder.jpg"
-                alt="Titile"
-              />
-            </div>
-            <div className={styles.title}>5 Days in Paris</div>
-            <div className={styles.info}>
-              <span>Paris</span>
-              <span>5 Days</span>
-            </div>
-            <div className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              eaque?
-            </div>
-            <div className={styles.details}>
-              <span>750 BGN</span>
-              <a href="">More</a>
-              <div className="clear"></div>
-            </div>
-          </div>
-
-          <div className={styles.offer}>
-            <div className={styles.offerImg}>
-              <img
-                src="/placeholder.jpg"
-                alt="Titile"
-              />
-            </div>
-            <div className={styles.title}>5 Days in Paris</div>
-            <div className={styles.info}>
-              <span>Paris</span>
-              <span>5 Days</span>
-            </div>
-            <div className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              eaque?
-            </div>
-            <div className={styles.details}>
-              <span>750 BGN</span>
-              <a href="">More</a>
-              <div className="clear"></div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
