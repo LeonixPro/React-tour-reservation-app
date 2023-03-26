@@ -41,12 +41,12 @@ export const Booking = ({ close, tour, user }) => {
     );
     const response = await request;
     const res = await response.json();
-    console.log(res);
+    close(1);
   };
   return (
     <div className={styles.hover}>
       <div className={styles.wrap}>
-        <div className={styles.close} onClick={close}>
+        <div className={styles.close} onClick={() => close(0)}>
           X
         </div>
         <h3>Booking details</h3>
@@ -100,8 +100,8 @@ export const Booking = ({ close, tour, user }) => {
             <span>Card: 1234</span>
           </div>
           <div>
-            <b>Paid by:</b>
-            <span>John Smith</span>
+            <b>Payer:</b>
+            <span>{`${user.name} ${user.lastname}`}</span>
           </div>
           <div>
             <b>Total price</b>

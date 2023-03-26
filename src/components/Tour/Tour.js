@@ -10,22 +10,39 @@ import { Loader } from "../../UI/loader";
 export const Tour = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
+  const { logged } = useContext(AuthContext);
   const [tour, setTour] = useState({});
+  const [weather, setWeather] = useState({});
   const [book, setBook] = useState(false);
   const [load, setLoad] = useState(true);
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
     getOneTour(id)
       .then((res) => {
         setTour(res);
+        fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${res.destination}&units=metric&appid=${process.env.REACT_APP_WEATHER_REQUEST}`
+        )
+          .then((result) => result.json())
+          .then((data) => setWeather(data));
       })
       .then(setLoad(false));
   }, [id]);
 
   const onBookClick = () => {
-    setBook(true);
+    if (logged) {
+      setBook(true);
+    } else {
+      alert("Please, log in to complete booking");
+    }
   };
-  const close = () => {
-    setBook(false);
+  const close = (param) => {
+    if (param === 1) {
+      setSuccess(true);
+      setBook(false);
+    } else {
+      setBook(false);
+    }
   };
   return (
     <>
@@ -47,9 +64,10 @@ export const Tour = () => {
             </button>
             <div className={styles.weather}>
               <div className={styles.weatherImg}>
-                <span>7°</span> <i className="bi bi-clouds-fill"></i>
+                <span>{weather.main?.temp?.toFixed()}°</span>{" "}
+                <i className="bi bi-clouds-fill"></i>
               </div>
-              <div className={styles.weatherDescription}>Clouds</div>
+              <div className={styles.weatherDescription}></div>
               <div className={styles.weatherCurrent}>
                 Current weather in {tour.destination}
               </div>
@@ -70,9 +88,7 @@ export const Tour = () => {
             </div>
             <div className={styles.mainBox}>
               <div className={styles.left}>
-                <Gallery />
-
-                {/*  */}
+                <Gallery tour={tour} />
                 <div className={styles.overview}>
                   <div className={styles.boxTitle}>In price</div>
                   <div className={styles.services}>
@@ -263,6 +279,14 @@ export const Tour = () => {
                   <b>Special offers</b>
                   Save 20% until 25.03.2023
                 </div>
+                {success && (
+                  <div className={styles.success}>
+                    Booking completed{" "}
+                    <div>
+                      <a href="">Go to my bookings</a>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

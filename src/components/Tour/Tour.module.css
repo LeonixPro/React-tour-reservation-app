@@ -34,6 +34,24 @@ section.mainSection {
 .wrapper {
     width: 1320px;margin: 0 auto;
 }
+.success {
+    padding: 10px 16px;
+    background: #ceffd8;
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    left: 0;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #128f16;
+}
+.success div {
+    position: absolute;bottom: -30px;left: 0;width: 100%;text-align: center;
+}
+.success div a {
+    font-size: .8rem;
+}
 .title {
     margin-bottom: 20px;
 }
@@ -101,7 +119,7 @@ span[data-type="category"]::before {
 } */
 .right {
     border: 1px solid var(--gray);border-radius: 20px;position: sticky;
-    overflow: hidden;padding: 30px 20px;height: 350px;top: 20px;
+    padding: 30px 20px;height: 350px;top: 20px;
 }
 .sale {
     position: absolute;top: 0;right: 0;background: var(--links);color: var(--white);
