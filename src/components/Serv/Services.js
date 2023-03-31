@@ -1,6 +1,10 @@
 import styles from "./Services.module.css";
 import Img from "./services.jpg";
+import { useEffect } from "react";
 export const Services = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className={styles.services}>

@@ -1,3 +1,9 @@
+export const getTop = async () => {
+  const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/main`);
+  const response = await request;
+  const data = await response.json();
+  return data;
+};
 export const getTours = async () => {
   const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/tours`);
   const response = await request;
@@ -6,10 +12,14 @@ export const getTours = async () => {
 };
 
 export const getOneTour = async (id) => {
-  const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/tour/${id}`);
-  const response = await request;
-  const data = await response.json();
-  return data;
+  try {
+    const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/tour/${id}`);
+    const response = await request;
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const onLogin = async (data) => {

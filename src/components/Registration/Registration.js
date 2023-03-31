@@ -165,7 +165,7 @@ export const Registration = () => {
               <input
                 type="password"
                 {...register("confirm_password", {
-                  required: "Password can not be empty!",
+                  validate: (value) => value === getValues("password"),
                 })}
               />
             </div>

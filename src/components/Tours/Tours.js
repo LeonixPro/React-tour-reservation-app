@@ -8,6 +8,7 @@ export const Tours = () => {
     getTours().then((data) => {
       setTours(data);
     });
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -26,8 +27,10 @@ export const Tours = () => {
                 <div className={styles.tourImg}>
                   <img src={tour.main_img} alt={tour.title} />
                 </div>
-                <div className={styles.title}>{tour.title}</div>
-                <div className={styles.details}>{tour.destination}</div>
+                <div className={styles.title} title={tour.title}>
+                  {tour.title.slice(0, 50)}...
+                </div>
+                <div className={styles.details}>{tour.country}</div>
                 <div className={styles.info}>
                   <span data-type="destination">{tour.destination}</span>
                   <span data-type="duration">{tour.duration}</span>

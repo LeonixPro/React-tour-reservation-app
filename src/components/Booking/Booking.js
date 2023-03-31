@@ -14,17 +14,22 @@ export const Booking = ({ close, tour, user }) => {
   const details = {
     user_id: user.u_id,
     user_email: user.email,
+    user_phone: user.phone,
+    user_address: `${user.country} ${user.city}`,
     tour_id: tour.u_id,
     title: tour.title,
     departure_date: tour.departure_date,
     return_date: tour.return_date,
+    duration: tour.duration,
+    destination: tour.destination,
     category: tour.category,
     type: tour.type,
     guests: guests,
     included: tour.included,
     not_included: tour.not_included,
-    payment_method: "card 1234",
+    payment_method: "Card",
     payer: `${user.name} ${user.lastname}`,
+    unit_price: tour.price,
     price: price,
   };
   const bookingSubmit = async () => {
@@ -105,7 +110,7 @@ export const Booking = ({ close, tour, user }) => {
           </div>
           <div>
             <b>Total price</b>
-            <span>{price} BGN</span>
+            <span>{Number(price).toFixed(2)} BGN</span>
           </div>
         </div>
         <div className={styles.book}>

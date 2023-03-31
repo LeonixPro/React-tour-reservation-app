@@ -55,27 +55,42 @@
     width: 1320px;margin: 0 auto;background: var(--white);min-height: 500px;
     padding: 0 16px;
 }
+.success {
+    position: fixed;right: 30px;bottom: 30px;
+    background: #e2fbe6;
+    color: #298d00;border: 1px solid #298d00;
+    font-weight: bold;
+    font-size: .9rem;
+    padding: 16px;
+    z-index: 10;
+    transition: var(--transition);
+}
 .title {
     padding: 20px 0;font-weight: bold;
 }
 .information {
     display: grid;grid-template-columns: 20% 20%;
 }
-.information ul li {
-    margin-bottom: 20px;
-}
-.information ul li b {
-    display: block;
-}
-.edit, .booking {
+
+.information, .edit, .booking {
     display: grid;grid-template-columns: 1fr 1fr;gap: 1rem;
 }
-.leftEdit, .leftBooking {
+.leftEdit, .leftBooking, .leftInformation, .rightInformation {
     min-height: 500px;border-right: 1px solid var(--gray);
     padding-right: 16px;
 }
+.leftInfo {
+    display: grid;grid-template-columns: 1fr 1fr;
+}
+.information ul li span {
+    padding: 6px 0;
+    display: block;
+    border-bottom: 1px solid var(--light);
+    margin-bottom: 40px;
+}
+
 .leftEdit h5, .leftBooking h5, .rightEdit h5, .rightBooking h5 {
-    font-size: 1.1rem;font-weight: bold;padding: 20px 0;
+    font-size: 1rem;font-weight: bold;padding: 20px 0;
 }
 .leftEdit form {
     display: grid;grid-template-columns: 1fr 1fr;
@@ -114,6 +129,15 @@
 .clear {
     clear: both;
 }
+span.completed {
+    color: #19971d;
+}
+span.canceled {
+    color: #d73838;
+}
+.bookingList table tr {
+    transition: var(--transition);
+}
 .bookingList table tr th, .bookingList table tr td {
     font-size: .9rem;vertical-align: middle;
 }
@@ -121,7 +145,8 @@
     background: var(--light);
 }
 .bookingList table tr.activeView {
-    background: #cfd0ff;
+    /* background: #cfd0ff; */
+    background: var(--links);color: var(--white);
 }
 button.view {
     padding: 5px 15px;font-weight: bold;font-size: .9rem;color: var(--main);
@@ -142,7 +167,7 @@ button.view::before {
 ul.bookingResTop li strong {display: block;}
 .bookingInfoTitle {padding: 6px 10px;background: #6462f1;color: var(--white); font-size: 1rem; font-weight: bold;}
 table.bookingDetailsT tr th, table.bookingDetailsT tr td {
-    text-align: right;font-weight: 1rem;
+    font-weight: 1rem;
 }
 .bookingTotal {display: flex;justify-content: end;}
 .bookingTotal ul li {font-size: 1.1rem;font-weight: bold;}

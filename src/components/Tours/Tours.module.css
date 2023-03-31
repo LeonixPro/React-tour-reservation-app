@@ -39,13 +39,15 @@ section.header {
     padding: 0 10px;margin-bottom: 10px;
 }
 .info span {
-    display: inline-block;margin-right: 25px;font-size: .9rem;font-weight: bold;
+    display: inline-block;margin-right: 25px;font-size: .75rem;font-weight: bold;
 }
 .info span[data-type="destination"]::before {
     content: '\F3E7';font-family: 'bootstrap-icons';margin-right: 5px;
+    font-size: .8rem;
 }
 .info span[data-type="duration"]::before {
     content: '\F1F3';font-family: 'bootstrap-icons';margin-right: 5px;
+    font-size: .8rem;
 }
 .more {
     width: 100%;bottom: -36px;border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;

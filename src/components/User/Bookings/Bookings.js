@@ -7,7 +7,7 @@ export const Bookings = ({ booking }) => {
   const chooseCurrent = (id) => {
     setCurrent(true);
     setDetails(booking[id]);
-    console.log(current);
+    console.log(details);
   };
   return (
     <>
@@ -30,18 +30,21 @@ export const Bookings = ({ booking }) => {
                   <tbody>
                     {booking.length > 0 &&
                       booking.map((tour, index) => (
-                        <tr className={styles.active} key={tour.id}>
+                        <tr
+                          className={details.id == tour.id ? styles.activeView : null}
+                          key={tour.id}
+                        >
                           <th scope="row">{tour.title}</th>
                           <td>{tour.description}</td>
                           <td>{tour.duration}</td>
-                          <td>{tour.price} BGN</td>
+                          <td>{Number(tour.total_price).toFixed(2)} BGN</td>
                           <td>
-                            <button className={styles.view}
+                            <button
+                              className={styles.view}
                               onClick={() => {
                                 chooseCurrent(index);
                               }}
-                            >
-                            </button>
+                            ></button>
                           </td>
                         </tr>
                       ))}

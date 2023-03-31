@@ -24,7 +24,9 @@ button.headerButton:hover {background: var(--hover);color: var(--white);}
 .weatherDescription {font-size: 1.2rem;line-height: 10px;margin-bottom: 5px;}
 .weatherCurrent {font-size: 1rem;}
 .weatherImg span {font-size: 2.2rem;position: relative;top: -3px;}
-.weatherImg i {font-size: 2.5rem;}
+.weatherImg img {
+    vertical-align: 0;position: relative;top: 10px;
+}
 /* Header */
 
 /* Main */
@@ -228,20 +230,94 @@ span.price b {
 .program, .onMap, .mapBox {
     margin-bottom: 40px;
 }
-.reviews {
-    border-top: 1px solid var(--gray);padding-top: 30px;
+.program p {
+    text-align: justify;line-height: 2;
 }
-.reviewBox {
-    display: grid;grid-template-columns: 1fr 1fr;gap: 2rem;
+.reviewSubmitted {
+    position: fixed;right: 30px;bottom: 30px;
+    background: #e2fbe6;
+    color: #298d00;border: 1px solid #298d00;
+    font-weight: bold;
+    font-size: .9rem;
+    padding: 16px;
+    z-index: 10;
 }
-.reviewTop {display: flex;margin-bottom: 10px;}
-.reviewImg {
-    width: 50px;height: 50px;background: var(--white);border-radius: 50%;margin-right: 10px;
-    display: flex;justify-content: center;align-items: center;font-size: 1.2rem;
-    font-weight: bold;border: 1px solid var(--gray);
+.loginRequired {
+    position: fixed;top: 0;left: 0;width: 100%;height: 100%;
+    background: rgba(0, 0, 0, .7);z-index: 50;
+    display: flex;align-items: center;justify-content: center;
 }
-.reviewInfo {font-size: .9rem;margin-top: 4px;}
-.reviewInfo b {display: block;font-size: 1rem;}
-.reviewInfo span {display: block;line-height: 1.2;font-size: .8rem;}
-.reviewMain {font-size: .9rem;padding: 0 5px;line-height: 1.6;}
+.loginBox {
+    width: 25%;background: var(--white);padding: 25px;position: relative;
+}
+.loginBox h5 {
+    font-weight: bold;font-size: 1.1rem;margin-bottom: 15px;
+}
+.loginBox p {
+    margin-bottom: 10px;font-size: .9rem;
+}
+.loginBox span {
+    display: inline-block;margin: 0 10px;
+}
+.loginBox a {
+    padding: 8px 16px;background: var(--links);color: var(--white);
+    display: inline-block;margin-top: 10px;font-size: .9rem;
+}
+.loginBox button {
+    position: absolute;top: -16px;right: -16px;font-weight: bold;background: #cc0000;color: var(--white);
+    padding: 4px 10px;border-radius: 50%;cursor: pointer;
+}
 /* Main */
+
+/* Media */
+@media only screen and (max-width: 1024px) {
+    .wrapper {
+        width: 890px;
+    }
+  }
+  @media only screen and (max-width: 425px) and (min-width: 320px)  {
+    .wrapper {
+        width: 100%;
+    }
+    .right, .services, .mainBox {
+        display: block;
+    }
+    .right {
+        height: 380px;
+    }
+    .gallery {
+        display: grid;
+        grid-template-areas: "main-photo main-photo main-photo main-photo" 
+        "photo-1 photo-1 photo-2 photo-2" "photo-3 photo-3 photo-4 photo-4";
+        height: 440px;gap: 1rem;
+        margin-bottom: 40px;
+    }
+    .mainPhoto {
+        min-height: 180px;
+    }
+    .photo1, .photo2, .photo3, .photo4 {
+        min-height: 120px;
+    }
+    .headerTop {
+        text-align: center;
+    }
+    section.mainSection {
+        padding: 30px 10px;
+    }
+    .weather {
+        position: static;text-align: center;margin-top: 20px;
+    }
+    .weatherImg span {
+        font-size: 1.7rem;
+    }
+    .weatherDescription {
+        font-size: 1.2rem;
+    }
+    .headerTop {
+        padding: 0 10px;
+    }
+    .headerTop h1 {
+        font-size: 1.7rem;
+    }
+  }
+/* Media */

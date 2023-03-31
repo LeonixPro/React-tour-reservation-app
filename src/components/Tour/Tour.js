@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useEffect, useState } from "react";
@@ -7,74 +7,182 @@ import { Gallery } from "./Gallery";
 import styles from "./Tour.module.css";
 import { Booking } from "../Booking/Booking";
 import { Loader } from "../../UI/loader";
+import { Reviews } from "./Reviews/Reviews";
+import { InPrice } from "./InPrice";
+import { NotInPrice } from "./NotInPrice";
+import { BookDetails } from "./BookDetails";
+import { Map } from "./Map";
+import { Description } from "./Description";
+import { Header } from "./Header";
 export const Tour = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
   const { logged } = useContext(AuthContext);
   const [tour, setTour] = useState({});
   const [weather, setWeather] = useState({});
+  const [reviewList, setReviewList] = useState([]);
   const [book, setBook] = useState(false);
+  const [login, setLogin] = useState(false);
   const [load, setLoad] = useState(true);
   const [success, setSuccess] = useState(false);
+  const [reviewForm, setReviewForm] = useState(false);
+  const [reviewScore, setReviewScore] = useState(null);
+  const [submitted, setSubmitted] = useState("");
+  const [edit, setEdit] = useState(false);
+  const [reviewId, setReviewId] = useState(null);
   useEffect(() => {
-    getOneTour(id)
-      .then((res) => {
-        setTour(res);
-        fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${res.destination}&units=metric&appid=${process.env.REACT_APP_WEATHER_REQUEST}`
-        )
-          .then((result) => result.json())
-          .then((data) => setWeather(data));
-      })
-      .then(setLoad(false));
+    getOneTour(id).then((res) => {
+      setTour(res);
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${res?.destination}&units=metric&appid=${process.env.REACT_APP_WEATHER_REQUEST}`
+      )
+        .then((result) => result.json())
+        .then((data) => setWeather(data));
+      fetch(`${process.env.REACT_APP_MAIN_REQUEST}/reviews/show/${id}`)
+        .then((reviews) => reviews.json())
+        .then((review) => {
+          if (review) {
+            if (review[0].message) {
+              return console.log(review[0].message);
+            }
+            setReviewList(review);
+            const scores = review?.map((x) => Number(x.score));
+            const rate = scores?.reduce((a, b) => a + b);
+            const finalScore = rate / scores.length;
+            setReviewScore(finalScore);
+          }
+        })
+        .then(setLoad(false))
+        .catch((error) =>
+          console.log(
+            "There are no available reviews yet. Nut you can be first one!"
+          )
+        );
+    });
+    window.scrollTo(0, 0);
   }, [id]);
 
   const onBookClick = () => {
     if (logged) {
       setBook(true);
     } else {
-      alert("Please, log in to complete booking");
+      setLogin(true);
     }
   };
   const close = (param) => {
     if (param === 1) {
       setSuccess(true);
       setBook(false);
+    } else if (param === 2) {
+      setLogin(!login);
     } else {
       setBook(false);
+    }
+  };
+  const addReview = () => {
+    setReviewForm(true);
+  };
+  const activeEdit = (id) => {
+    setEdit(!edit);
+    setReviewId(reviewList[id]);
+    console.log(reviewId);
+  };
+  const sendReview = async (data) => {
+    const request = fetch(
+      `${process.env.REACT_APP_MAIN_REQUEST}/review/submit`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: user.u_id,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const response = await request;
+    const res = await response.json();
+    if (res) {
+      // setReviewList(res);
+      setReviewForm(false);
+      setSubmitted(true);
+      setSubmitted("Thank you for the review!");
+      return setReviewList(res);
+    } else {
+      console.log("error");
+    }
+  };
+  const deleteReview = async (review_id) => {
+    const request = fetch(
+      `${process.env.REACT_APP_MAIN_REQUEST}/review/delete/${id}`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: user.u_id,
+        },
+        body: JSON.stringify({ review_id: review_id }),
+      }
+    );
+    const response = await request;
+    const res = await response.json();
+    if (res) {
+      if (res[0].message) {
+        setEdit(false);
+        setSubmitted("Your review has been deleted!");
+        return setReviewList([]);
+      }
+      setEdit(false);
+      setSubmitted("Your review has been deleted!");
+      return setReviewList(res);
+    }
+  };
+  const editReview = async (data) => {
+    const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/review/edit`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: user.u_id,
+      },
+      body: JSON.stringify(data),
+    });
+    const response = await request;
+    const res = await response.json();
+    if (res) {
+      setEdit(!edit);
+      setSubmitted("Your review has been updated!");
+      return setReviewList(res);
     }
   };
   return (
     <>
       {load && <Loader />}
-      {book && <Booking close={close} tour={tour} user={user} />}
-      <header>
-        <section className={styles.header}>
-          <div className={styles.headerImg}>
-            <img src={tour.main_img} alt="Tour Title" />
-          </div>
-          <div className={styles.headerTop}>
-            <h1>{tour.title}</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-              corporis?
-            </p>
-            <button className={styles.headerButton} onClick={onBookClick}>
-              Book now!
+      {login && (
+        <div className={styles.loginRequired}>
+          <div className={styles.loginBox}>
+            <button
+              onClick={() => {
+                close(2);
+              }}
+            >
+              X
             </button>
-            <div className={styles.weather}>
-              <div className={styles.weatherImg}>
-                <span>{weather.main?.temp?.toFixed()}°</span>{" "}
-                <i className="bi bi-clouds-fill"></i>
-              </div>
-              <div className={styles.weatherDescription}></div>
-              <div className={styles.weatherCurrent}>
-                Current weather in {tour.destination}
-              </div>
-            </div>
+            <h5>Login Required</h5>
+            <p>Please, log in to proceed!</p>
+            <p>
+              You should have an account to make a booking. After that, you will
+              be able to make a booking and manage your all booking from the
+              profile page.
+            </p>
+            <Link to="/login">Log in</Link> <span>or</span>{" "}
+            <Link to="/registration">Create an account</Link>
           </div>
-        </section>
-      </header>
+        </div>
+      )}
+      {book && <Booking close={close} tour={tour} user={user} />}
+      <Header tour={tour} weather={weather} onBookClick={onBookClick} />
       <main>
         <section className={styles.mainSection}>
           <div className={styles.wrapper}>
@@ -90,204 +198,41 @@ export const Tour = () => {
               <div className={styles.left}>
                 <Gallery tour={tour} />
                 <div className={styles.overview}>
-                  <div className={styles.boxTitle}>In price</div>
-                  <div className={styles.services}>
-                    <div className={styles.service}>
-                      <div
-                        className={styles.serviceImg}
-                        data-type="tickets"
-                      ></div>
-                      <div className={styles.serviceDesc}>
-                        <b>Tickets</b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit. Sequi, beatae.
-                      </div>
-                    </div>
-                    <div className={styles.service}>
-                      <div
-                        className={styles.serviceImg}
-                        data-type="hotel"
-                      ></div>
-                      <div className={styles.serviceDesc}>
-                        <b>Hotel</b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit. Sequi, beatae.
-                      </div>
-                    </div>
-                    <div className={styles.service}>
-                      <div
-                        className={styles.serviceImg}
-                        data-type="transfer"
-                      ></div>
-                      <div className={styles.serviceDesc}>
-                        <b>Transfer</b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit. Sequi, beatae.
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.boxTitle}>Not in price</div>
-                  <div className={styles.services}>
-                    <div className={styles.service}>
-                      <div
-                        className={styles.serviceImg}
-                        data-type="insurance"
-                      ></div>
-                      <div className={styles.serviceDesc}>
-                        <b>Insurance</b>Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit. Sequi, beatae.
-                      </div>
-                    </div>
-                    <div className={styles.service}>
-                      <div
-                        className={styles.serviceImg}
-                        data-type="museum"
-                      ></div>
-                      <div className={styles.serviceDesc}>
-                        <b>Museum tickets</b>Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit. Sequi, beatae.
-                      </div>
-                    </div>
-                    <div className={styles.service}>
-                      <div
-                        className={styles.serviceImg}
-                        data-type="photo"
-                      ></div>
-                      <div className={styles.serviceDesc}>
-                        <b>Photo shoot service</b>Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit. Sequi, beatae.
-                      </div>
-                    </div>
-                  </div>
+                  <InPrice />
+                  <NotInPrice />
                 </div>
-                <div className={styles.program}>
-                  <div className={styles.boxTitle}>Description</div>
-                  <p>{tour.description}</p>
-                </div>
+                <Description tour={tour} />
                 <div className={styles.onMap}>
-                  <div className={styles.boxTitle}>On Map</div>
-                  <div className={styles.mapBox}>
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1119445.0319402963!2d2.55700870971003!3d49.33129605657809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2z0J_QsNGA0LjQtiwg0KTRgNCw0L3RhtC40Y8!5e0!3m2!1sbg!2sbg!4v1678994590642!5m2!1sbg!2sbg"
-                      width="100%"
-                      height="350"
-                      style={{ border: 0 }}
-                      allowFullScreen=""
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                  </div>
+                  <Map tour={tour} />
                   <div className={styles.reviews}>
                     <div className={styles.boxTitle}>Reviews</div>
-                    <div className={styles.reviewBox}>
-                      <div className={styles.review}>
-                        <div className={styles.reviewTop}>
-                          <div className={styles.reviewImg}>IT</div>
-                          <div className={styles.reviewInfo}>
-                            <b>Ivan Tonev</b>
-                            <span>Date: 25.03.2023</span>
-                          </div>
-                        </div>
-                        <div className={styles.reviewMain}>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Veniam, eligendi sunt incidunt, voluptatum
-                          laboriosam iusto iure quod, ad voluptates
-                          exercitationem molestias asperiores natus commodi
-                          minus ab quae. Omnis numquam architecto vitae
-                          repudiandae doloribus expedita ratione nisi ipsa
-                          facilis? Reiciendis, perferendis!
-                        </div>
-                      </div>
-                      <div className={styles.review}>
-                        <div className={styles.reviewTop}>
-                          <div className={styles.reviewImg}>IT</div>
-                          <div className={styles.reviewInfo}>
-                            <b>Ivan Tonev</b>
-                            <span>Date: 25.03.2023</span>
-                          </div>
-                        </div>
-                        <div className={styles.reviewMain}>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Veniam, eligendi sunt incidunt, voluptatum
-                          laboriosam iusto iure quod, ad voluptates
-                          exercitationem molestias asperiores natus commodi
-                          minus ab quae. Omnis numquam architecto vitae
-                          repudiandae doloribus expedita ratione nisi ipsa
-                          facilis? Reiciendis, perferendis!
-                        </div>
-                      </div>
-
-                      <div className={styles.review}>
-                        <div className={styles.reviewTop}>
-                          <div className={styles.reviewImg}>IT</div>
-                          <div className={styles.reviewInfo}>
-                            <b>Ivan Tonev</b>
-                            <span>Date: 25.03.2023</span>
-                          </div>
-                        </div>
-                        <div className={styles.reviewMain}>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Veniam, eligendi sunt incidunt, voluptatum
-                          laboriosam iusto iure quod, ad voluptates
-                          exercitationem molestias asperiores natus commodi
-                          minus ab quae. Omnis numquam architecto vitae
-                          repudiandae doloribus expedita ratione nisi ipsa
-                          facilis? Reiciendis, perferendis!
-                        </div>
-                      </div>
-
-                      <div className={styles.review}>
-                        <div className={styles.reviewTop}>
-                          <div className={styles.reviewImg}>IT</div>
-                          <div className={styles.reviewInfo}>
-                            <b>Ivan Tonev</b>
-                            <span>Date: 25.03.2023</span>
-                          </div>
-                        </div>
-                        <div className={styles.reviewMain}>
-                          Lorem ipsum, dolor sit amet consectetur adipisicing
-                          elit. Veniam, eligendi sunt incidunt, voluptatum
-                          laboriosam iusto iure quod, ad voluptates
-                          exercitationem molestias asperiores natus commodi
-                          minus ab quae. Omnis numquam architecto vitae
-                          repudiandae doloribus expedita ratione nisi ipsa
-                          facilis? Reiciendis, perferendis!
-                        </div>
-                      </div>
-                    </div>
+                    {submitted && (
+                      <div className={styles.reviewSubmitted}>{submitted}</div>
+                    )}
+                    <Reviews
+                      user={user}
+                      logged={logged}
+                      tour={tour}
+                      addReview={addReview}
+                      reviewForm={reviewForm}
+                      submitted={submitted}
+                      sendReview={sendReview}
+                      reviewList={reviewList}
+                      deleteReview={deleteReview}
+                      editReview={editReview}
+                      activeEdit={activeEdit}
+                      reviewId={reviewId}
+                      edit={edit}
+                    />
                   </div>
                 </div>
-                {/*  */}
               </div>
-              <div className={styles.right}>
-                <div className={styles.sale}>On sale</div>
-                <div className={styles.duration}>{tour.duration}</div>
-                <div className={styles.rate}>
-                  {`${tour.destination}, ${tour.country}`} <b>4.9</b> Good
-                </div>
-                <div className={styles.priceBox}>
-                  <span className={styles.price}>
-                    Price
-                    <b>{tour.price} BGN</b>
-                  </span>
-                  <span className={styles.discount}>
-                    20% Discount <br />
-                    Valid until 25.03.2023
-                  </span>
-                </div>
-                <div className={styles.book}>
-                  <button onClick={onBookClick}>Book now</button>
-                </div>
-                <div className={styles.rightBottom}>
-                  <b>Special offers</b>
-                  Save 20% until 25.03.2023
-                </div>
-                {success && (
-                  <div className={styles.success}>
-                    Booking completed{" "}
-                    <div>
-                      <a href="">Go to my bookings</a>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <BookDetails
+                tour={tour}
+                onBookClick={onBookClick}
+                success={success}
+                reviewScore={reviewScore}
+              />
             </div>
           </div>
         </section>

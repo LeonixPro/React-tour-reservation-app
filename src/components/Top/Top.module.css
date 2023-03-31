@@ -46,3 +46,19 @@
     font-size: 1rem;
     color: var(--white);
   }
+
+  /* Media */
+@media only screen and (max-width: 1024px) {
+  .Wrapper {
+      width: 890px;
+  }
+}
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+  .Wrapper {
+      width: 100%;display: block;height: auto;
+  }
+  .navigation nav ul {
+  display: block;
+}
+}
+/* Media */

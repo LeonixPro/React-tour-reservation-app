@@ -1,5 +1,6 @@
 import styles from "./Header.module.css";
 import travel from "./travel.svg";
+import { Link } from "react-router-dom";
 export const Header = () => {
   return (
     <section className={styles.header}>
@@ -13,7 +14,7 @@ export const Header = () => {
             repellat pariatur nesciunt dolor laudantium et? Nulla molestias
             provident reiciendis.
           </p>
-          <a href="">Get started now!</a>
+          <Link to="/tours">Get started now!</Link>
         </div>
         <div className={styles.headerRight}>
           <img src={travel} alt="" />

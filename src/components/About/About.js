@@ -1,7 +1,11 @@
 import styles from "./About.module.css";
 import Discover from "./discover.jpg";
 import Mission from "./mission.jpg";
+import { useEffect } from "react";
 export const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className={styles.about}>

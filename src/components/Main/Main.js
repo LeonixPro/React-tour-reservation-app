@@ -1,5 +1,5 @@
 // import styles from "./Main.module.css";
-import { getTours } from "../../services/toursServices";
+import { getTop } from "../../services/toursServices";
 import { useState, useEffect } from "react";
 import { Header } from "../Header/Header";
 import { TopOffers } from "./TopOffers/TopOffers";
@@ -10,9 +10,10 @@ import { Promotion } from "./Promotion/Promotion";
 const Main = () => {
   const [tours, setTours] = useState([]);
   useEffect(() => {
-    getTours().then((data) => {
+    getTop().then((data) => {
       setTours(data);
     });
+    window.scrollTo(0, 0);
   }, []);
   return (
     <>

@@ -1,5 +1,25 @@
 import styles from "../Profile.module.css";
 export const BookingDetails = ({ current }) => {
+  const data = {
+    id: current.user_id,
+    tour_id: current.u_id,
+  };
+  const cancelBooking = async () => {
+    const request = fetch(
+      `${process.env.REACT_APP_MAIN_REQUEST}/booking/cancel`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          Authorization: data.id,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const response = await request;
+    const res = await response.json();
+  };
   return (
     <div className={styles.bookingWrap}>
       <div className={styles.bookingTop}>
@@ -13,7 +33,11 @@ export const BookingDetails = ({ current }) => {
           </li>
         </ul>
         <ul className={styles.bookingResTop}>
-          <span>RESERVATION COMPLETED</span>
+          {current.status == "Completed" ? (
+            <span className={styles.completed}>RESERVATION COMPLETED</span>
+          ) : (
+            <span className={styles.canceled}>RESERVATION CANCELLED</span>
+          )}
           <li>
             <strong>RESERVATION NUMBER:</strong> {current.u_id}
           </li>
@@ -71,7 +95,7 @@ export const BookingDetails = ({ current }) => {
       </div>
       <div className={styles.bookingDetailsTable}>
         <div className={styles.bookingInfoTitle}>Details</div>
-        <table className="table table-striped booking-details-t">
+        <table className={`table table-striped ${styles.bookingDetailsT}`}>
           <thead>
             <tr>
               <th scope="col">DESCRIPTION</th>
@@ -84,8 +108,8 @@ export const BookingDetails = ({ current }) => {
             <tr>
               <th scope="row">Five days in Paris</th>
               <td>{current.guests}</td>
-              <td>{current.price} BGN</td>
-              <td>{current.price} BGN</td>
+              <td>{Number(current.price).toFixed(2)} BGN</td>
+              <td>{Number(current.total_price).toFixed(2)} BGN</td>
             </tr>
           </tbody>
         </table>
@@ -96,7 +120,8 @@ export const BookingDetails = ({ current }) => {
               <strong>Discount:</strong> 0.00
             </li>
             <li>
-              <strong>Total Amount:</strong> {current.price} BGN
+              <strong>Total Amount:</strong>{" "}
+              {Number(current.total_price).toFixed(2)} BGN
             </li>
           </ul>
         </div>
@@ -114,10 +139,7 @@ export const BookingDetails = ({ current }) => {
             <strong>Paid by:</strong> {current.paid_by}
           </li>
           <li>
-            <strong>Cancelation:</strong> {current.cancelation}
-          </li>
-          <li>
-            <strong>Refund eligiblity:</strong> {current.refund}
+            <strong>Cancelation:</strong> {current.cancellation}
           </li>
         </ul>
         <ul>
@@ -128,7 +150,9 @@ export const BookingDetails = ({ current }) => {
             <strong>Not included:</strong> {current.not_included}
           </li>
         </ul>
-        <button className={styles.cancel}>Cancel Reservation</button>
+        <button className={styles.cancel} onClick={cancelBooking}>
+          Cancel Reservation
+        </button>
         <a href="">Cancelation policy</a>
         <a href="">Refund Policy</a>
       </div>

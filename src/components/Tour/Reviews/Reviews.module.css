@@ -1,0 +1,85 @@
+.reviews {
+    border-top: 1px solid var(--gray);padding-top: 30px;
+}
+.review {
+    position: relative;
+}
+.reviewBox {
+    display: grid;grid-template-columns: 1fr 1fr;gap: 2rem;margin-top: 20px;
+}
+.reviewTop {display: flex;margin-bottom: 10px;}
+.reviewImg {
+    width: 50px;height: 50px;background: var(--white);border-radius: 50%;margin-right: 10px;
+    display: flex;justify-content: center;align-items: center;font-size: 1.2rem;
+    font-weight: bold;border: 1px solid var(--gray);
+}
+.reviewInfo {font-size: .9rem;margin-top: 4px;}
+.reviewInfo b {display: block;font-size: 1rem;}
+.reviewInfo span {display: block;line-height: 1.2;font-size: .8rem;}
+.reviewMain {font-size: .9rem;padding: 0 5px;line-height: 1.6;}
+.reviewForm {
+    width: 90%;margin-bottom: 20px;margin-top: 20px;
+}
+.scoreBox {
+    justify-content: center;
+    background: #f1f3ff;
+    padding: 10px;
+}
+.scoreBox {
+    margin-top: 20px;
+}
+.scoreBox .scores {
+    display: inline-block;
+}
+.scoreBox .scores input {opacity: 0;}
+.scoreBox .scores label {
+    transition: var(--transition);
+}
+.scoreBox .scores label i {
+    font-size: 2rem;color: var(--main);cursor: pointer;
+    display: block;
+}
+.scoreBox .scores label:hover {
+    transform: scale(1.2);
+}
+.scoreBox .scores label.activeNegative {
+    color: brown;transform: scale(1.2);
+}
+.scoreBox .scores label.activePositive {
+    color: darkgreen;transform: scale(1.2);
+}
+.reviewForm textarea {
+    display: block;width: 100%;border: 1px solid var(--gray);height: 120px;
+    resize: vertical;padding: 10px;outline: none;
+}
+.reviewForm textarea:focus {
+    border: 1px solid var(--gray);
+}
+.reviewForm button, button.addReviews {
+    background: var(--links);color: var(--white);display: inline-block;
+    padding: 8px 14px;margin-top: 20px;font-size: .9rem;font-weight: bold;
+}
+span.error {
+    display: block;
+    text-align: center;
+    font-size: .9rem;
+    font-weight: bold;
+    color: #cc0000;
+    padding: 8px;
+    background: #ffe6e6;
+}
+.reviewScore {
+    position: absolute;right: 10px;top: 4px;background: var(--links);color: var(--white);
+    padding: 4px 8px;font-weight: bold;
+}
+.notLogged {
+    padding: 10px;
+    background: #e4f0ff;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-size: .9rem;
+}
+button.reviewAction {
+    background: transparent;margin-left: 5px;margin-right: 15px;
+    font-size: .9rem;font-weight: bold;color: var(--links);
+}

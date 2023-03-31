@@ -1,5 +1,9 @@
 import styles from "./Terms.module.css";
+import { useEffect } from "react";
 export const Terms = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <header>
@@ -18,50 +22,55 @@ export const Terms = () => {
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
             ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
             doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
-            ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
-            doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero!
+            dolore expedita quaerat libero! Lorem ipsum dolor sit amet
+            consectetur, adipisicing elit. Labore a ad delectus voluptatem
+            perspiciatis enim iusto quisquam reiciendis, doloremque numquam
+            magnam dolorem ea asperiores eveniet similique dolore expedita
+            quaerat libero!
           </p>
           <p>
             <b>Item 2</b>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
             ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
             doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
-            ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
-            doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero!
+            dolore expedita quaerat libero! Lorem ipsum dolor sit amet
+            consectetur, adipisicing elit. Labore a ad delectus voluptatem
+            perspiciatis enim iusto quisquam reiciendis, doloremque numquam
+            magnam dolorem ea asperiores eveniet similique dolore expedita
+            quaerat libero!
           </p>
           <p>
             <b>Item 3</b>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
             ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
             doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
-            ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
-            doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero!
+            dolore expedita quaerat libero! Lorem ipsum dolor sit amet
+            consectetur, adipisicing elit. Labore a ad delectus voluptatem
+            perspiciatis enim iusto quisquam reiciendis, doloremque numquam
+            magnam dolorem ea asperiores eveniet similique dolore expedita
+            quaerat libero!
           </p>
           <p>
             <b>Item 4</b>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
             ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
             doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
-            ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
-            doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero!
+            dolore expedita quaerat libero! Lorem ipsum dolor sit amet
+            consectetur, adipisicing elit. Labore a ad delectus voluptatem
+            perspiciatis enim iusto quisquam reiciendis, doloremque numquam
+            magnam dolorem ea asperiores eveniet similique dolore expedita
+            quaerat libero!
           </p>
           <p>
             <b>Item 5</b>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
             ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
             doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore a
-            ad delectus voluptatem perspiciatis enim iusto quisquam reiciendis,
-            doloremque numquam magnam dolorem ea asperiores eveniet similique
-            dolore expedita quaerat libero!
+            dolore expedita quaerat libero! Lorem ipsum dolor sit amet
+            consectetur, adipisicing elit. Labore a ad delectus voluptatem
+            perspiciatis enim iusto quisquam reiciendis, doloremque numquam
+            magnam dolorem ea asperiores eveniet similique dolore expedita
+            quaerat libero!
           </p>
         </div>
       </main>

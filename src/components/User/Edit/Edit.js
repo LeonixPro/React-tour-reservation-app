@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import styles from "../Profile.module.css";
 export const Edit = () => {
   const [success, setSuccess] = useState(false);
-  const { user, edit } = useContext(AuthContext);
+  const { user, edit, editMessage } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -126,6 +126,7 @@ export const Edit = () => {
           </div>
         </div>
       </div>
+      {editMessage && <div className={styles.success}>{editMessage}</div>}
     </>
   );
 };

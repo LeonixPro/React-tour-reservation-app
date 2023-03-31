@@ -24,6 +24,7 @@ function App() {
   const [user, setUser] = useState({});
   const [logged, setLogged] = useState(false);
   const [error, setError] = useState("");
+  const [editMessage, setEditMessage] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -67,6 +68,10 @@ function App() {
         ...data,
       };
       localStorage.setItem("user", JSON.stringify(profile));
+      setEditMessage("Information has been updated");
+      setTimeout(() => {
+        setEditMessage(null);
+      }, 4000);
       setUser(profile);
     });
   };
@@ -84,6 +89,7 @@ function App() {
     edit,
     logOut,
     error,
+    editMessage,
   };
   return (
     <AuthContext.Provider value={{ ...context }}>

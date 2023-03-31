@@ -6,7 +6,6 @@ import { bookingList } from "../../../services/authServices";
 import styles from "../Profile.module.css";
 import { Edit } from "../Edit/Edit";
 import { Bookings } from "../Bookings/Bookings";
-import { Settings } from "../Settings/Settings";
 import { General } from "../General/General";
 export const Profile = () => {
   const { user, logged, logOut } = useContext(AuthContext);
@@ -46,9 +45,6 @@ export const Profile = () => {
                   <Link to="my-bookings">My bookings</Link>
                 </li>
                 <li>
-                  <Link to="settings">Settings</Link>
-                </li>
-                <li>
                   <button onClick={logOut}>Log Out</button>
                 </li>
               </ul>
@@ -62,7 +58,6 @@ export const Profile = () => {
             path="/my-bookings"
             element={<Bookings user={user} booking={booking} />}
           />
-          <Route path="/settings" element={<Settings user={user} />} />
         </Routes>
       </main>
     </>

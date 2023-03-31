@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import styles from "./Contacts.module.css";
 export const Contacts = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className={styles.header}>

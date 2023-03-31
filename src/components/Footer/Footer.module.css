@@ -55,3 +55,19 @@ footer {
 .right nav ul {display: flex;justify-content: flex-end;}
 .right nav ul li a {color: var(--main);margin-left: 15px;transition: var(--transition);font-weight: bold;}
 .right nav ul li a:hover {color: var(--hover);}
+
+/* Media */
+  @media only screen and (max-width: 1024px) {
+    .wrapper {
+        width: 890px;
+    }
+  }
+  @media only screen and (max-width: 425px) and (min-width: 320px) {
+    .wrapper {
+        width: 100%;
+    }
+    .footerBoxes {
+        display: block;
+    }
+  }
+  /* Media */
