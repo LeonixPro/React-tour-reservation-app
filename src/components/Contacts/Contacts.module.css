@@ -59,3 +59,13 @@ section.header h1 {
 .details ul li b {
     display: block;
 }
+span.error {
+    display: block;color: #cc0000;font-weight: bold;font-size: .9rem;
+}
+input.errorInput, textarea.errorInput {
+    border: 1px solid #cc0000;
+}
+.success {
+    width: 1320px;margin: 0 auto 20px;border: 2px solid #259403;
+    color: #259403;background: #ddffd2;padding: 15px 20px;font-weight: bold;
+}

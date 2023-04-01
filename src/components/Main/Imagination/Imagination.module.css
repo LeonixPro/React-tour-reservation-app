@@ -17,20 +17,21 @@ section.imagination h2 {
     border-radius: 30px;
 }
 .hoverImg {
-    position: relative;overflow: hidden;
-}
-.hoverImg::before {
-    content: "";position: absolute;top: 0;left: 0;width: 100%;height: 100%;
-    background: rgba(0, 0, 0, .3);transition: var(--transition);
+    position: absolute;top: 0;left: 0;width: 100%;height: 100%;
+    background: rgba(0, 0, 0, .2);z-index: 10;transition: var(--transition);
 }
 .hoverImg::after {
     content: attr(data-title);
-    position: absolute;bottom: 0;left: 0;width: 94%;padding: 10px;text-align: center;
+    position: absolute;bottom: 0;left: 0;width: 100%;padding: 10px;text-align: center;
     color: var(--white);background: rgba(0, 0, 0, .5);
 }
-.hoverImg img {
-    width: 100%;height: 100%;object-fit: cover;transition: var(--transition);
+.offer img {
+    width: 100%;height: 100%;object-fit: cover;transition: var(--transition);z-index: 9;
 }
-.offer:hover .hoverImg img {
+.offer:hover img {
     transform: scale(1.1);
 }
+.offer:hover .hoverImg {
+    opacity: 0;
+}
+

@@ -67,7 +67,25 @@ footer {
         width: 100%;
     }
     .footerBoxes {
-        display: block;
+        display: block;padding: 0;
+    }
+    .footerBox {
+        padding: 0 20px;
+    }
+    .social {
+        margin-bottom: 10px;
+    }
+    .bottom .wrapper {
+        display: grid;grid-template-rows: 1fr 1fr;grid-template-columns: none;
+    }
+    .left {
+        grid-row: 2;text-align: center;
+    }
+    .right {
+        grid-row: 1;text-align: center;margin: 10px;
+    }
+    .right nav ul {
+        justify-content: center;
     }
   }
   /* Media */

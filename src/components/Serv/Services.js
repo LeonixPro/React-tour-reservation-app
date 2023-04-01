@@ -1,7 +1,9 @@
+import { setTitle } from "../../utils/utils";
 import styles from "./Services.module.css";
 import Img from "./services.jpg";
 import { useEffect } from "react";
 export const Services = () => {
+  setTitle("Services");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

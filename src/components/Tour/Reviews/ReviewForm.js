@@ -105,7 +105,15 @@ export const ReviewForm = ({ tour, user, sendReview }) => {
         )}
         <textarea
           {...register("review", {
-            required: "Please add text!",
+            required: "Please add review!",
+            maxLength: {
+              value: 500,
+              message: "Max length is 20",
+            },
+            minLength: {
+              value: 4,
+              message: "Min length is 4",
+            },
           })}
           id=""
           placeholder="Your review..."

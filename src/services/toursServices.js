@@ -4,6 +4,13 @@ export const getTop = async () => {
   const data = await response.json();
   return data;
 };
+
+export const getPromotions = async () => {
+  const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/promotions`);
+  const response = await request;
+  const data = await response.json();
+  return data;
+};
 export const getTours = async () => {
   const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/tours`);
   const response = await request;

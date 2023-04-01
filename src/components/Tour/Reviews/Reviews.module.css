@@ -83,3 +83,17 @@ button.reviewAction {
     background: transparent;margin-left: 5px;margin-right: 15px;
     font-size: .9rem;font-weight: bold;color: var(--links);
 }
+
+/* Media */
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .reviewBox {
+        display: block;
+    }
+    .review {
+        margin-bottom: 30px;
+    }
+    .reviewForm {
+        width: 100%;margin-bottom: 40px;
+    }
+  }
+/* Media */

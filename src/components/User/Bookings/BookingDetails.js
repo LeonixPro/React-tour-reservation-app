@@ -1,27 +1,11 @@
+import { useState } from "react";
 import styles from "../Profile.module.css";
-export const BookingDetails = ({ current }) => {
-  const data = {
-    id: current.user_id,
-    tour_id: current.u_id,
-  };
-  const cancelBooking = async () => {
-    const request = fetch(
-      `${process.env.REACT_APP_MAIN_REQUEST}/booking/cancel`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-          Authorization: data.id,
-        },
-        body: JSON.stringify(data),
-      }
-    );
-    const response = await request;
-    const res = await response.json();
-  };
+export const BookingDetails = ({ current, close, cancelBooking }) => {
   return (
     <div className={styles.bookingWrap}>
+      <button className={styles.closeBooking} onClick={close}>
+        X
+      </button>
       <div className={styles.bookingTop}>
         <ul>
           <span>Reservation Details</span>
@@ -106,7 +90,7 @@ export const BookingDetails = ({ current }) => {
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Five days in Paris</th>
+              <th scope="row">Tour</th>
               <td>{current.guests}</td>
               <td>{Number(current.price).toFixed(2)} BGN</td>
               <td>{Number(current.total_price).toFixed(2)} BGN</td>
@@ -150,11 +134,15 @@ export const BookingDetails = ({ current }) => {
             <strong>Not included:</strong> {current.not_included}
           </li>
         </ul>
-        <button className={styles.cancel} onClick={cancelBooking}>
-          Cancel Reservation
-        </button>
-        <a href="">Cancelation policy</a>
-        <a href="">Refund Policy</a>
+        {current.status == "Completed" ? (
+          <>
+            <button className={styles.cancel} onClick={cancelBooking}>
+              Cancel Reservation
+            </button>
+            <a href="">Cancelation policy</a>
+            <a href="">Refund Policy</a>
+          </>
+        ) : null}
       </div>
     </div>
   );

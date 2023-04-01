@@ -1,8 +1,10 @@
+import { setTitle } from "../../utils/utils";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getTours } from "../../services/toursServices";
 import styles from "./Tours.module.css";
 export const Tours = () => {
+  setTitle("Available Tours");
   const [tours, setTours] = useState([]);
   useEffect(() => {
     getTours().then((data) => {

@@ -19,11 +19,14 @@ import { Privacy } from "./components/Privacy/Privacy";
 import { Support } from "./components/Support/Support";
 import { Contacts } from "./components/Contacts/Contacts";
 import { Profile } from "./components/User/Profile/Profile";
+import { ProtectedRoutes, GuestsRoutes } from "./services/ProtectedRoutes";
+import { NotFound } from "./components/NotFound/NotFound";
 
 function App() {
   const [user, setUser] = useState({});
   const [logged, setLogged] = useState(false);
-  const [error, setError] = useState("");
+  const [loginError, setELoginError] = useState(null);
+  const [regError, setRegError] = useState(null);
   const [editMessage, setEditMessage] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
@@ -37,10 +40,13 @@ function App() {
   const login = (data) => {
     onLogin(data).then((res) => {
       if (!res) {
-        setError("Invalid credentials");
+        setELoginError("Invalid credentials");
+        setTimeout(() => {
+          setELoginError(null);
+        }, 3000);
         return;
       }
-      setError("");
+      setELoginError(null);
       setUser(res);
       localStorage.setItem("user", JSON.stringify(res));
       setLogged(true);
@@ -50,10 +56,10 @@ function App() {
     if (!logged) {
       onRegister(data).then((result) => {
         if (result.status === false) {
-          setError(result.message);
+          setRegError(result.message);
           return;
         }
-        setError("");
+        setRegError(null);
         setUser(result);
         localStorage.setItem("user", JSON.stringify(result));
         setLogged(true);
@@ -71,7 +77,7 @@ function App() {
       setEditMessage("Information has been updated");
       setTimeout(() => {
         setEditMessage(null);
-      }, 4000);
+      }, 3000);
       setUser(profile);
     });
   };
@@ -88,7 +94,8 @@ function App() {
     registration,
     edit,
     logOut,
-    error,
+    loginError,
+    regError,
     editMessage,
   };
   return (
@@ -96,19 +103,23 @@ function App() {
       <Top />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/registration" element={<Registration />} />
+        <Route element={<GuestsRoutes />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<Registration />} />
+        </Route>
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/services" element={<Services />} />
         <Route path="/tours" element={<Tours />} />
         <Route path="/tour/:id" element={<Tour />} />
-        <Route path="/user" element={<Registration />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/support" element={<Support />} />
-        <Route path="/profile/*" element={<Profile />} />
-        <Route path="*" element={<h1>Page doesn't exist!</h1>} />
+        <Route element={<ProtectedRoutes />}>
+          {/* <Route path="/profile" element={<Profile />} /> */}
+          <Route path="/profile/*" element={<Profile />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </AuthContext.Provider>

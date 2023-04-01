@@ -8,7 +8,7 @@ import { Edit } from "../Edit/Edit";
 import { Bookings } from "../Bookings/Bookings";
 import { General } from "../General/General";
 export const Profile = () => {
-  const { user, logged, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
   useEffect(() => {
     bookingList(user.u_id).then((res) => setBooking(res));
@@ -26,6 +26,7 @@ export const Profile = () => {
                 {user.name} {user.lastname}
               </h3>
               <span>{user.email}</span>
+              <button onClick={logOut}>Log out</button>
             </div>
           </div>
         </div>
@@ -44,18 +45,15 @@ export const Profile = () => {
                 <li>
                   <Link to="my-bookings">My bookings</Link>
                 </li>
-                <li>
-                  <button onClick={logOut}>Log Out</button>
-                </li>
               </ul>
             </nav>
           </div>
         </div>
         <Routes>
-          <Route path="/" element={<General user={user} />} />
-          <Route path="/edit" element={<Edit user={user} />} />
+          <Route index element={<General user={user} />} />
+          <Route path="edit" element={<Edit user={user} />} />
           <Route
-            path="/my-bookings"
+            path="my-bookings"
             element={<Bookings user={user} booking={booking} />}
           />
         </Routes>

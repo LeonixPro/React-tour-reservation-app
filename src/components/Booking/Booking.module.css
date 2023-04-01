@@ -18,7 +18,8 @@
     padding: 20px;border-bottom: 1px solid var(--gray);
 }
 .details, .services {
-    display: grid;grid-template-columns: 1fr 1fr;padding: 20px;border-bottom: 1px solid var(--gray);
+    display: grid;grid-template-columns: 1fr 1fr;padding: 20px;
+    border-bottom: 1px solid var(--gray);gap: 2rem;
 }
 .details ul li {
     font-weight: bold;display: block;margin-bottom: 10px;
@@ -45,3 +46,41 @@
 .book button {
     padding: 12px 20px;font-weight: bold;background: var(--links);color: var(--light);
 }
+button.actionButtons {
+    background: var(--light);font-size: 1.4rem;
+    padding: 0 8px;
+}
+span.guestsTotal {
+    margin: 0 10px;
+}
+
+/* Media */
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .wrap {
+        width: 100%;
+    }
+    .book button {
+        width: 100%;
+    }
+    .close {
+        top: 0;
+        right: 0;
+        border-radius: 0;
+        height: 64px;
+        width: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f53a3a;
+    }
+    .payment {
+        display: flex;justify-content: space-between;
+    }
+    button.actionButtons {
+        padding: 0 12px;
+    }
+    li.guestsTitle b {
+        margin-top: 22px;margin-bottom: 5px;
+    }
+}
+/* Media */

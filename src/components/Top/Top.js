@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { setName } from '../../utils/utils'
+import { setName } from "../../utils/utils";
 import { Link } from "react-router-dom";
 import { Logo } from "../../UI/Logo";
 import styles from "./Top.module.css";
@@ -32,6 +32,9 @@ export const Top = () => {
                   <Link className={styles.userProfile} to="/profile">
                     {setName(user?.name, user?.lastname)}
                   </Link>
+                  <span>
+                    {user?.name} {user?.lastname} <b>{user?.email}</b>
+                  </span>
                 </li>
               ) : (
                 <>

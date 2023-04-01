@@ -1,16 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+import { setTitle } from "../../../utils/utils";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useForm } from "react-hook-form";
 import styles from "../Profile.module.css";
-export const Edit = () => {
-  const [success, setSuccess] = useState(false);
-  const { user, edit, editMessage } = useContext(AuthContext);
+
+export const Edit = ({ user }) => {
+  setTitle("Edit information");
+  const { edit, editMessage } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    mode: "onSubmit",
+    mode: "onBlur",
   });
 
   return (
@@ -28,11 +30,6 @@ export const Edit = () => {
                   </li>
                   <li>
                     <label htmlFor="email">Email</label>
-                    {errors?.email?.message && (
-                      <span className={styles.error}>
-                        {errors.email.message}
-                      </span>
-                    )}
                     <input
                       type="email"
                       className={errors?.email?.message && styles.errorInput}
@@ -47,24 +44,41 @@ export const Edit = () => {
                       placeholder="Your Email"
                       id="email"
                     />
+                    {errors?.email?.message && (
+                      <span className={styles.error}>
+                        {errors.email.message}
+                      </span>
+                    )}
                   </li>
                   <li>
                     <label htmlFor="country">Country</label>
-                    {errors?.country?.message && (
-                      <span className={styles.error}>
-                        {errors.country.message}
-                      </span>
-                    )}
                     <input
                       type="text"
                       className={errors?.country?.message && styles.errorInput}
                       defaultValue={user.country}
                       {...register("country", {
                         required: "Country can not be empty!",
+                        pattern: {
+                          value: /^[A-Za-z]+$/i,
+                          message: "You can  not use symbols or numbers",
+                        },
+                        maxLength: {
+                          value: 20,
+                          message: "Max length is 20",
+                        },
+                        minLength: {
+                          value: 3,
+                          message: "Min length is 3",
+                        },
                       })}
                       placeholder="Your Country"
                       id="country"
                     />
+                    {errors?.country?.message && (
+                      <span className={styles.error}>
+                        {errors.country.message}
+                      </span>
+                    )}
                   </li>
                   <button>Submit changes</button>
                 </ul>
@@ -75,43 +89,58 @@ export const Edit = () => {
                   </li>
                   <li>
                     <label htmlFor="country">Phone number</label>
-                    {errors?.phone?.message && (
-                      <span className={styles.error}>
-                        {errors.phone.message}
-                      </span>
-                    )}
                     <input
                       type="text"
                       className={errors?.phone?.message && styles.errorInput}
                       defaultValue={user.phone}
                       {...register("phone", {
                         required: "Phone can not be empty!",
+                        pattern: {
+                          value: /^[0-9 ]+$/,
+                          message: "Please enter a number",
+                        },
                       })}
                       placeholder="Phone"
                       id="phone"
                     />
+                    {errors?.phone?.message && (
+                      <span className={styles.error}>
+                        {errors.phone.message}
+                      </span>
+                    )}
                   </li>
                   <li>
                     <label htmlFor="city">City</label>
-                    {errors?.city?.message && (
-                      <span className={styles.error}>
-                        {errors.city.message}
-                      </span>
-                    )}
                     <input
                       type="text"
                       className={errors?.city?.message && styles.errorInput}
                       defaultValue={user.city}
                       {...register("city", {
                         required: "City can not be empty!",
+                        pattern: {
+                          value: /^[A-Za-z]+$/i,
+                          message: "You can  not use symbols or numbers",
+                        },
+                        maxLength: {
+                          value: 20,
+                          message: "Max length is 20",
+                        },
+                        minLength: {
+                          value: 3,
+                          message: "Min length is 3",
+                        },
                       })}
                       placeholder="City"
                       id="city"
                     />
+                    {errors?.city?.message && (
+                      <span className={styles.error}>
+                        {errors.city.message}
+                      </span>
+                    )}
                   </li>
                 </ul>
               </form>
-              {success && <div>Data has been updated</div>}
             </div>
             <div className={styles.rightEdit}>
               <h5>Useful Info</h5>

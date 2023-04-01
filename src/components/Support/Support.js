@@ -1,6 +1,8 @@
+import { setTitle } from "../../utils/utils";
 import styles from "./Support.module.css";
 import { useEffect } from "react";
 export const Support = () => {
+  setTitle("Support");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

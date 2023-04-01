@@ -13,3 +13,9 @@ button.more {
     position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: var(--white);
     display: grid;align-items: center;justify-items: center;z-index: 999;
 }
+
+@media only screen and (max-width: 425px) and (min-width: 320px)  {
+    .logo {
+        text-align: center;padding: 15px 0;border-bottom: 1px solid var(--gray);
+    }
+}

@@ -1,6 +1,8 @@
+import { setTitle } from "../../utils/utils";
 import styles from "./Terms.module.css";
 import { useEffect } from "react";
 export const Terms = () => {
+  setTitle("Terms of use");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

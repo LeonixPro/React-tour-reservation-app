@@ -1,8 +1,10 @@
+import { setTitle } from "../../utils/utils";
 import styles from "./About.module.css";
 import Discover from "./discover.jpg";
 import Mission from "./mission.jpg";
 import { useEffect } from "react";
 export const About = () => {
+  setTitle("About Us");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

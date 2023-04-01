@@ -1,6 +1,8 @@
+import { setTitle } from "../../utils/utils";
 import styles from "./Privacy.module.css";
 import { useEffect } from "react";
 export const Privacy = () => {
+  setTitle("Privacy Policy");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

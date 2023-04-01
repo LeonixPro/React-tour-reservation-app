@@ -1,6 +1,8 @@
+import { setTitle } from "../../../utils/utils";
 import { useEffect } from "react";
 import styles from "../Profile.module.css";
 export const General = ({ user }) => {
+  setTitle(`${user.name} ${user.lastname}`);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

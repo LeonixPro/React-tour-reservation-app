@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { setTitle } from "../../utils/utils";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styles from "./Registration.module.css";
 export const Registration = () => {
+  setTitle("Registration");
   const navigate = useNavigate();
   const { logged } = useContext(AuthContext);
-  const { error } = useContext(AuthContext);
+  const { regError } = useContext(AuthContext);
   const { registration } = useContext(AuthContext);
   useEffect(() => {
     if (logged) {
@@ -31,43 +33,64 @@ export const Registration = () => {
           <div className={styles.inputs}>
             <div className={styles.input}>
               <label htmlFor="name">Your name</label>
-              {errors?.name?.message && (
-                <span className={styles.error}>Please, enter your name!</span>
-              )}
               <input
                 type="text"
                 className={errors?.name?.message && styles.errorInput}
                 {...register("name", {
                   required: "Name can not be empty!",
+                  pattern: {
+                    value: /^[A-Za-z]+$/i,
+                    message: "You can  not use symbols or numbers",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Max length is 20",
+                  },
+                  minLength: {
+                    value: 2,
+                    message: "Min length is 2",
+                  },
                 })}
                 placeholder="Your name"
                 id="name"
               />
+              {errors?.name?.message && (
+                <span className={styles.error}>{errors?.name?.message}</span>
+              )}
             </div>
             <div className={styles.input}>
               <label htmlFor="lastname">Your Last name</label>
-              {errors?.lastname?.message && (
-                <span className={styles.error}>
-                  Please, enter your last name!
-                </span>
-              )}
               <input
                 type="text"
                 className={errors?.lastname?.message && styles.errorInput}
                 {...register("lastname", {
                   required: "Last name can not be empty!",
+                  pattern: {
+                    value: /^[A-Za-z]+$/i,
+                    message: "You can  not use symbols or numbers",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Max length is 20",
+                  },
+                  minLength: {
+                    value: 2,
+                    message: "Min length is 2",
+                  },
                 })}
                 placeholder="Your Last name"
                 id="lastname"
               />
+              {errors?.lastname?.message && (
+                <span className={styles.error}>
+                  {errors?.lastname?.message}
+                </span>
+              )}
             </div>
           </div>
           <div className={styles.inputs}>
             <div className={styles.input}>
               <label htmlFor="email">Your Email</label>
-              {errors?.email?.message && (
-                <span className={styles.error}>{errors.email.message}</span>
-              )}
               <input
                 type="tel"
                 className={errors?.email?.message && styles.errorInput}
@@ -81,65 +104,92 @@ export const Registration = () => {
                 placeholder="Your Email"
                 id="email"
               />
+              {errors?.email?.message && (
+                <span className={styles.error}>{errors.email.message}</span>
+              )}
             </div>
             <div className={styles.input}>
               <label htmlFor="phone">Your Phone number</label>
-              {errors?.phone?.message && (
-                <span className={styles.error}>Please, enter your phone!</span>
-              )}
               <input
-                type="text"
+                type="tel"
                 className={errors?.phone?.message && styles.errorInput}
                 {...register("phone", {
                   required: "Phone can not be empty!",
+                  pattern: {
+                    value: /^[0-9 ]+$/,
+                    message: "Please enter a number",
+                  },
                 })}
                 placeholder="Your Phone number"
                 id="phone"
               />
+              {errors?.phone?.message && (
+                <span className={styles.error}>{errors?.phone?.message}</span>
+              )}
             </div>
           </div>
           <div className={styles.inputs}>
             <div className={styles.input}>
               <label htmlFor="country">Your country</label>
-              {errors?.country?.message && (
-                <span className={styles.error}>
-                  Please, enter your country!
-                </span>
-              )}
+
               <input
                 type="text"
                 className={errors?.country?.message && styles.errorInput}
                 {...register("country", {
                   required: "Country can not be empty!",
+                  pattern: {
+                    value: /^[A-Za-z]+$/i,
+                    message: "You can  not use symbols or numbers",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Max length is 20",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "Min length is 3",
+                  },
                 })}
                 placeholder="Your country"
                 id="country"
               />
+              {errors?.country?.message && (
+                <span className={styles.error}>{errors?.country?.message}</span>
+              )}
             </div>
             <div className={styles.input}>
               <label htmlFor="city">Your city</label>
-              {errors?.city?.message && (
-                <span className={styles.error}>Please, enter your city!</span>
-              )}
+
               <input
                 type="text"
                 className={errors?.city?.message && styles.errorInput}
                 {...register("city", {
                   required: "City can not be empty!",
+                  pattern: {
+                    value: /^[A-Za-z]+$/i,
+                    message: "You can not use symbols or numbers",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Max length is 20",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "Min length is 3",
+                  },
                 })}
                 placeholder="Your city"
                 id="city"
               />
+              {errors?.city?.message && (
+                <span className={styles.error}>{errors?.city?.message}</span>
+              )}
             </div>
           </div>
           <div className={styles.inputs}>
             <div className={styles.input}>
               <label htmlFor="password">Your password</label>
-              {errors?.password?.message && (
-                <span className={styles.error}>
-                  {errors?.password?.message}
-                </span>
-              )}
+
               <input
                 type="password"
                 {...register("password", {
@@ -149,10 +199,24 @@ export const Registration = () => {
                     message: "Password must have at least 8 characters",
                   },
                 })}
+                placeholder="Password"
               />
+              {errors?.password?.message && (
+                <span className={styles.error}>
+                  {errors?.password?.message}
+                </span>
+              )}
             </div>
             <div className={styles.input}>
               <label htmlFor="confirm_password">Confirm password</label>
+              <input
+                type="password"
+                {...register("confirm_password", {
+                  required: "Confirm password can not be empty!",
+                  validate: (value) => value === getValues("password"),
+                })}
+                placeholder="Confirm password"
+              />
               {errors?.confirm_password?.message && (
                 <span className={styles.error}>
                   {errors?.confirm_password?.message}
@@ -162,12 +226,6 @@ export const Registration = () => {
               getValues("confirm_password") ? (
                 <span className={styles.error}>Password not match</span>
               ) : null}
-              <input
-                type="password"
-                {...register("confirm_password", {
-                  validate: (value) => value === getValues("password"),
-                })}
-              />
             </div>
           </div>
           <div className={styles.confirm}>
@@ -188,7 +246,7 @@ export const Registration = () => {
             )}
           </div>
           <button>Register now!</button>
-          {error && <div className={styles.errorMessage}>{error}</div>}
+          {regError && <div className={styles.errorMessage}>{regError}</div>}
         </form>
       </div>
     </div>

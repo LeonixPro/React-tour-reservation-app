@@ -36,6 +36,9 @@
     padding: 10px;display: block;width: 100%;border: 1px solid var(--gray);
     outline: none;transition: var(--transition);
 }
+input.phone {
+    width: 100% !important;padding: 10px 10px 10px 48px !important;height: auto !important;
+}
 .input input.errorInput, .input input.errorInput:focus {
     border: 1px solid #cc0000;
 }

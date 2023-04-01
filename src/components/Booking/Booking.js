@@ -4,13 +4,6 @@ import styles from "./Booking.module.css";
 export const Booking = ({ close, tour, user }) => {
   const [guests, setGuests] = useState(1);
   const price = tour.price * guests;
-  const changeGuests = (e) => {
-    if (e.target.value > 0) {
-      setGuests((guests) => e.target.value);
-    } else {
-      return;
-    }
-  };
   const details = {
     user_id: user.u_id,
     user_email: user.email,
@@ -48,12 +41,22 @@ export const Booking = ({ close, tour, user }) => {
     const res = await response.json();
     close(1);
   };
+  const addGuest = () => {
+    setGuests((prev) => prev + 1);
+  };
+  const minusGuest = () => {
+    if (guests > 1) {
+      setGuests((prev) => prev - 1);
+    } else {
+      return;
+    }
+  };
   return (
     <div className={styles.hover}>
       <div className={styles.wrap}>
-        <div className={styles.close} onClick={() => close(0)}>
+        <button className={styles.close} onClick={() => close(0)}>
           X
-        </div>
+        </button>
         <h3>Booking details</h3>
         <div className={styles.description}>
           Please, read carefully booking details, before proceed. Also, you can
@@ -78,14 +81,17 @@ export const Booking = ({ close, tour, user }) => {
             <li>
               <b>Type:</b> {tour.type}
             </li>
-            <li>
+            <li className={styles.guestsTitle}>
               <b>Guests:</b>
-              <input
-                type="number"
-                name="guests"
-                onChange={changeGuests}
-                value={guests}
-              />
+              <button className={styles.actionButtons} onClick={minusGuest}>
+                -
+              </button>
+              <span className={styles.guestsTotal}>
+                <i className="bi bi-people-fill"></i> {guests}
+              </span>
+              <button className={styles.actionButtons} onClick={addGuest}>
+                +
+              </button>
             </li>
           </ul>
         </div>
@@ -102,7 +108,7 @@ export const Booking = ({ close, tour, user }) => {
         <div className={styles.payment}>
           <div>
             <b>Payment method</b>
-            <span>Card: 1234</span>
+            <span>Card</span>
           </div>
           <div>
             <b>Payer:</b>

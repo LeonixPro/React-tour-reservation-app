@@ -30,6 +30,10 @@
 .headerMiddle span {
     font-size: .9rem;
 }
+.headerMiddle button {
+    display: inline-block;width: fit-content;background: var(--light);
+    margin-top: 5px;font-weight: bold;font-size: .8rem;padding: 6px 12px;
+}
 .navWrapper {
     background: var(--white);border-bottom: 1px solid var(--gray);
 }
@@ -41,12 +45,6 @@
 }
 .navigation nav ul li a {
     display: inline-block;padding: 14px 16px;font-weight: bold;
-}
-.navigation nav ul li:last-child {
-    position: absolute;top: 12px;right: 0;
-}
-.navigation nav ul li:last-child button {
-    border: none;background: none;font-weight: bold;color: var(--main);
 }
 .main {
     min-height: 500px;
@@ -125,6 +123,10 @@
     padding: 10px 16px;background: #249b28;color: var(--white);font-size: .9rem;
     font-weight: bold;
 }
+form ul li span.error {
+    color: #cc0000;font-weight: bold;font-size: .9rem;
+    padding: 0;background: var(--white);
+}
 /* Booking */
 .clear {
     clear: both;
@@ -155,7 +157,7 @@ button.view {
 button.view::before {
     content: '\F38B';font-family: 'bootstrap-icons';
 }
-.bookingWrap {padding: 8px 0px;}
+.bookingWrap {padding: 8px 0px;position: relative;}
 .bookingTop, .tourDetailsWrap, .bookingInfoTitle, .bookingDetailsTable, .bookingOtherInfo {margin-bottom: 40px;}
 .bookingTop ul:nth-child(1), .tourDetailsWrap ul:nth-child(1) {float: left;}
 .bookingTop ul:nth-child(2), .tourDetailsWrap ul:nth-child(2) {float: right;}
@@ -177,4 +179,91 @@ table.bookingDetailsT tr th, table.bookingDetailsT tr td {
     margin: 20px 0;font-weight: bold;font-size: 1rem;
 }
 .bookingOtherInfo a {font-size: 1rem;font-weight: bold;display: inline-block;margin-right: 20px;}
+button.closeBooking {
+    position: absolute;top: -68px;right: -16px;background: #cc0000;color: var(--white);
+    height: 49px;width: 49px;
+}
+.success {
+    background: #e2fbe6;
+    color: #298d00;border: 1px solid #298d00;
+    font-weight: bold;
+    font-size: .9rem;
+    padding: 16px;
+}
 /* Booking */
+
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .wrapper, .headerWrapper, .navigation {
+        width: 100%;min-height: auto;height: auto;padding: 0 5px;
+    }
+    .information, .edit, .booking {
+        display: block;
+    }
+    .leftEdit {
+        border-right: none;padding-right: 0;
+    }
+    .headerMiddle button {
+        display: inline-block;width: fit-content;background: var(--light);
+        margin-top: 5px;font-weight: bold;font-size: .8rem;padding: 6px 12px;
+    }
+    .leftBooking {
+        padding: 0;
+    }
+    .main {
+        position: relative;
+    }
+    .bookingWrap {
+        position: fixed;top: 0;left: 0;background: var(--white);width: 100%;height: 100%;
+        z-index: 5;overflow: scroll;padding: 0;
+    }
+    .bookingTop ul, .tourDetailsWrap ul, ul.bookingResTop {
+        float: none !important;
+    }
+    .tourDetailsWrap ul:nth-child(3) {
+        margin-top: 20px;
+    }
+    .bookingTop ul li, .tourDetailsWrap ul li, .tourDetailsWrap ul span, .bookingOtherInfo ul li {
+        padding: 0 20px;
+    }
+    .tourDetailsWrap ul li, .bookingOtherInfo ul li {
+        margin-bottom: 10px;
+    }
+    ul.bookingResTop li {
+        margin-bottom: 10px;
+    }
+    .bookingTop ul span {
+        display: block;width: 100%;padding: 10px 20px;font-size: 1.2rem;font-weight: bold;
+        border-bottom: 1px solid var(--gray);
+    }
+    table.bookingDetailsT tr th, table.bookingDetailsT tr td {
+        font-size: .8rem;
+    }
+    .bookingTotal ul li strong {
+        display: block;
+    }
+    .bookingTotal ul li, .bookingTotal ul li strong {
+        font-size: 1rem;text-align: right;
+    }
+    .bookingTotal ul li {
+        margin-right: 20px;
+    }
+    button.cancel {
+        margin-left: 20px !important;
+    }
+    .bookingOtherInfo a {
+        margin: 0 0 0 20px !important;
+    }
+    button.closeBooking {
+        position: absolute;top: 0;right: 0;background: #cc0000;color: var(--white);
+        height: 49px;width: 49px;
+    }
+    .success {
+        background: #e2fbe6;
+        color: #298d00;border: 1px solid #298d00;
+        font-weight: bold;
+        font-size: .9rem;
+        padding: 16px 0;
+        position: fixed;bottom: 0;left: 0;width: 100%;text-align: center;
+        z-index: 5;
+    }
+}

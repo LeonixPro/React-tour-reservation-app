@@ -1,3 +1,4 @@
+import { setTitle } from "../../utils/utils";
 import { useParams, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -14,6 +15,7 @@ import { BookDetails } from "./BookDetails";
 import { Map } from "./Map";
 import { Description } from "./Description";
 import { Header } from "./Header";
+import { setScore } from "../../utils/utils";
 export const Tour = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
@@ -33,6 +35,7 @@ export const Tour = () => {
   useEffect(() => {
     getOneTour(id).then((res) => {
       setTour(res);
+      setTitle(res.title);
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${res?.destination}&units=metric&appid=${process.env.REACT_APP_WEATHER_REQUEST}`
       )
@@ -55,7 +58,7 @@ export const Tour = () => {
         .then(setLoad(false))
         .catch((error) =>
           console.log(
-            "There are no available reviews yet. Nut you can be first one!"
+            "There are no available reviews yet. But you can be first one!"
           )
         );
     });
@@ -103,10 +106,13 @@ export const Tour = () => {
     const response = await request;
     const res = await response.json();
     if (res) {
-      // setReviewList(res);
+      setReviewScore(setScore(res));
       setReviewForm(false);
       setSubmitted(true);
       setSubmitted("Thank you for the review!");
+      setTimeout(() => {
+        setSubmitted(null);
+      }, 2500);
       return setReviewList(res);
     } else {
       console.log("error");
@@ -129,12 +135,20 @@ export const Tour = () => {
     const res = await response.json();
     if (res) {
       if (res[0].message) {
+        setReviewScore(0);
         setEdit(false);
         setSubmitted("Your review has been deleted!");
+        setTimeout(() => {
+          setSubmitted(null);
+        }, 2500);
         return setReviewList([]);
       }
+      setReviewScore(setScore(res));
       setEdit(false);
       setSubmitted("Your review has been deleted!");
+      setTimeout(() => {
+        setSubmitted(null);
+      }, 2500);
       return setReviewList(res);
     }
   };
@@ -151,8 +165,12 @@ export const Tour = () => {
     const response = await request;
     const res = await response.json();
     if (res) {
+      setReviewScore(setScore(res));
       setEdit(!edit);
       setSubmitted("Your review has been updated!");
+      setTimeout(() => {
+        setSubmitted(null);
+      }, 2500);
       return setReviewList(res);
     }
   };
