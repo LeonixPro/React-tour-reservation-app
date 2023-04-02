@@ -45,6 +45,9 @@
     font-size: 1rem;
     color: var(--white);
   }
+  .navigation nav ul li:last-child {
+    display: flex;align-items: center;
+  }
   .navigation nav ul li:last-child span {
     margin-left: 10px;font-weight: bold;font-size: .85rem;
   }
@@ -85,6 +88,19 @@
   }
   .navigation nav ul li a.userProfile span b {
     display: block;
+  }
+  .navigation nav ul li:nth-child(5) {
+    border-top: 1px solid var(--gray);padding-top: 10px;
+  }
+  .navigation nav ul li:last-child {
+    display: flex;border: none;
+  }
+  .navigation nav ul li a.auth {
+    margin: 0 0 5px 0;background: var(--white);color: var(--main);font-weight: bold;
+    font-size: 1rem;padding: 0;
+  }
+  .navigation nav ul li a.auth:hover {
+    border-radius: 0;color: var(--white);padding: 10px 0;
   }
 }
 /* Media */

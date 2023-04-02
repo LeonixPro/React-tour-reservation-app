@@ -31,7 +31,7 @@
     font-size: .9rem;
 }
 .headerMiddle button {
-    display: inline-block;width: fit-content;background: var(--light);
+    display: inline-block;width: fit-content;background: var(--links);color: var(--white);
     margin-top: 5px;font-weight: bold;font-size: .8rem;padding: 6px 12px;
 }
 .navWrapper {
@@ -164,7 +164,7 @@ button.view::before {
 .bookingTop span, .tourDetailsWrap ul span {
     display: block;font-weight: bold;font-size: 1rem;margin-bottom: 10px;
 }
-.bookingTop ul li, .tourDetailsWrap ul li, .bookingOtherInfo ul li {font-size: 1.05rem;}
+.bookingTop ul li, .tourDetailsWrap ul li, .bookingOtherInfo ul li {font-size: 1.05rem; margin-bottom: 10px;}
 .bookingTop ul li strong, .tourDetailsWrap ul li strong, .bookingOtherInfo ul li strong {display: inline-block;min-width: 140px;font-size: 1rem;}
 ul.bookingResTop li strong {display: block;}
 .bookingInfoTitle {padding: 6px 10px;background: #6462f1;color: var(--white); font-size: 1rem; font-weight: bold;}
@@ -172,7 +172,7 @@ table.bookingDetailsT tr th, table.bookingDetailsT tr td {
     font-weight: 1rem;
 }
 .bookingTotal {display: flex;justify-content: end;}
-.bookingTotal ul li {font-size: 1.1rem;font-weight: bold;}
+.bookingTotal ul li {font-size: 1.1rem;font-weight: bold;text-align: right;}
 .bookingTotal ul li strong {display: inline-block;min-width: 130px;}
 .bookingOtherInfo button.cancel {
     display: block;padding: 10px 20px;border: none;color: var(--white);background: #cc0000;
@@ -193,8 +193,14 @@ button.closeBooking {
 /* Booking */
 
 @media only screen and (max-width: 425px) and (min-width: 320px) {
+    .header {
+        display: grid;padding: 0 10px;
+    }
     .wrapper, .headerWrapper, .navigation {
         width: 100%;min-height: auto;height: auto;padding: 0 5px;
+    }
+    .wrapper {
+        padding: 0 20px;
     }
     .information, .edit, .booking {
         display: block;
@@ -203,11 +209,11 @@ button.closeBooking {
         border-right: none;padding-right: 0;
     }
     .headerMiddle button {
-        display: inline-block;width: fit-content;background: var(--light);
+        display: inline-block;width: fit-content;background: var(--links);color: var(--white);
         margin-top: 5px;font-weight: bold;font-size: .8rem;padding: 6px 12px;
     }
     .leftBooking {
-        padding: 0;
+        padding: 0;border-right: none;
     }
     .main {
         position: relative;
@@ -218,6 +224,9 @@ button.closeBooking {
     }
     .bookingTop ul, .tourDetailsWrap ul, ul.bookingResTop {
         float: none !important;
+    }
+    .bookingInfoTitle {
+        padding: 10px;
     }
     .tourDetailsWrap ul:nth-child(3) {
         margin-top: 20px;
@@ -233,7 +242,7 @@ button.closeBooking {
     }
     .bookingTop ul span {
         display: block;width: 100%;padding: 10px 20px;font-size: 1.2rem;font-weight: bold;
-        border-bottom: 1px solid var(--gray);
+        border-bottom: 1px solid var(--gray);height: 50px;
     }
     table.bookingDetailsT tr th, table.bookingDetailsT tr td {
         font-size: .8rem;
@@ -255,7 +264,7 @@ button.closeBooking {
     }
     button.closeBooking {
         position: absolute;top: 0;right: 0;background: #cc0000;color: var(--white);
-        height: 49px;width: 49px;
+        height: 50px;width: 50px;
     }
     .success {
         background: #e2fbe6;

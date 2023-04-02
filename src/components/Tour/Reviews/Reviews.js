@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ReviewForm } from "./ReviewForm";
 import styles from "./Reviews.module.css";
 import { setName } from "../../../utils/utils";
@@ -9,6 +8,7 @@ export const Reviews = ({
   addReview,
   reviewForm,
   tour,
+  noReview,
   sendReview,
   reviewList,
   deleteReview,
@@ -26,6 +26,11 @@ export const Reviews = ({
     <>
       {edit && (
         <EditReview tour={tour} reviewId={reviewId} editReview={editReview} />
+      )}
+      {noReview && (
+        <div className={styles.noReviews}>
+          {noReview} 
+        </div>
       )}
       {logged && !findArrayElementByEdit(reviewList) ? (
         <button className={styles.addReviews} onClick={addReview}>

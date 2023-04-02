@@ -1,9 +1,11 @@
 // import { bookingSubmit } from "../../services/bookingServices";
 import { useState } from "react";
+import { bookingSubmit } from "../../services/bookingServices";
 import styles from "./Booking.module.css";
 export const Booking = ({ close, tour, user }) => {
   const [guests, setGuests] = useState(1);
-  const price = tour.price * guests;
+  const discount_price = tour.price - (tour.price * tour.discount) / 100;
+  const price = discount_price * guests;
   const details = {
     user_id: user.u_id,
     user_email: user.email,
@@ -24,22 +26,12 @@ export const Booking = ({ close, tour, user }) => {
     payer: `${user.name} ${user.lastname}`,
     unit_price: tour.price,
     price: price,
+    discount: tour.discount,
   };
-  const bookingSubmit = async () => {
-    const request = fetch(
-      `${process.env.REACT_APP_MAIN_REQUEST}/booking/confirm`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(details),
-      }
+  const submitBooking = () => {
+    bookingSubmit(details).then((res) =>
+      res.status === true ? close(1) : close(3, res.message)
     );
-    const response = await request;
-    const res = await response.json();
-    close(1);
   };
   const addGuest = () => {
     setGuests((prev) => prev + 1);
@@ -120,7 +112,7 @@ export const Booking = ({ close, tour, user }) => {
           </div>
         </div>
         <div className={styles.book}>
-          <button onClick={bookingSubmit}>Proceed and book</button>
+          <button onClick={submitBooking}>Proceed and book</button>
         </div>
       </div>
     </div>

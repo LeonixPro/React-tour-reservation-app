@@ -87,3 +87,33 @@ span[data-box="box-4"]::before {
       width: 90%;margin: 0 auto;
     }
   }
+  @media only screen and (max-width: 425px) and (min-width: 320px) {
+    .wrapper, .headerWrapper {
+        width: 100%;margin: 0 auto;
+      }
+      section.services {
+        border-top: 1px solid var(--gray);text-align: center;
+        padding: 20px;margin-top: 30px;
+      }
+      section.second {
+        padding: 100px 0 0 0;
+      }
+      .secondLeft h3 {
+        margin-bottom: 20px;
+      }
+      .third {
+        padding-top: 40px;
+      }
+      .left a {
+        margin-bottom: 40px;
+      }
+      .secondBox {
+        display: block;padding: 20px;
+      }
+      .thirdBoxes {
+        display: block;
+      }
+      .box {
+        padding: 40px 20px;
+      }
+  }

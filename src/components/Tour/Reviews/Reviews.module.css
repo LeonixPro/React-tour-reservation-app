@@ -18,7 +18,7 @@
 .reviewInfo span {display: block;line-height: 1.2;font-size: .8rem;}
 .reviewMain {font-size: .9rem;padding: 0 5px;line-height: 1.6;}
 .reviewForm {
-    width: 90%;margin-bottom: 20px;margin-top: 20px;
+    width: 100%;margin-bottom: 20px;margin-top: 20px;
 }
 .scoreBox {
     justify-content: center;
@@ -58,6 +58,7 @@
 .reviewForm button, button.addReviews {
     background: var(--links);color: var(--white);display: inline-block;
     padding: 8px 14px;margin-top: 20px;font-size: .9rem;font-weight: bold;
+    margin-bottom: 20px;
 }
 span.error {
     display: block;
@@ -72,11 +73,10 @@ span.error {
     position: absolute;right: 10px;top: 4px;background: var(--links);color: var(--white);
     padding: 4px 8px;font-weight: bold;
 }
-.notLogged {
+.notLogged, .noReviews {
     padding: 10px;
     background: #e4f0ff;
     font-weight: bold;
-    margin-bottom: 30px;
     font-size: .9rem;
 }
 button.reviewAction {

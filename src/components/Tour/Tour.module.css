@@ -37,22 +37,29 @@ section.mainSection {
     width: 1320px;margin: 0 auto;
 }
 .success {
-    padding: 10px 16px;
+    padding: 20px 0;
     background: #ceffd8;
-    position: absolute;
-    bottom: -60px;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     left: 0;
-    border-radius: 20px;
     text-align: center;
     font-weight: bold;
     color: #128f16;
 }
-.success div {
-    position: absolute;bottom: -30px;left: 0;width: 100%;text-align: center;
+.errorMessage {
+    padding: 20px 0;
+    background: #fbe3e3;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    font-weight: bold;
+    color: #b90202;
 }
-.success div a {
-    font-size: .8rem;
+.success a, .errorMessage a {
+    font-weight: bold;
 }
 .title {
     margin-bottom: 20px;
@@ -177,8 +184,8 @@ button.closeGallery i {
 .priceBox {
     display: grid;grid-template-columns: 1fr 1fr;
 }
-span.price {
-    font-size: .8rem;
+span.price strong {
+    font-size: .9rem;text-decoration: line-through;
 }
 span.discount {
     font-size: .8rem;position: relative;top: 14px;text-align: right;
@@ -334,18 +341,18 @@ span.price b {
         min-height: 120px;
     }
     .activeGalleryWrap {
-        display: block;
+        display: block;background: rgba(0, 0, 0, .9)
     }
     .activeGalleryImgBox {
         height: auto;width: 100%;
     }
     .prevImg, .nextImg {
         position: relative;display: inline-block;
-        background: transparent;
+        background: transparent;text-align: center;display: flex;align-items: center;
     }
     .actionButtons {
-        width: 100%;text-align: center;
-        background: rgba(0, 0, 0, .4);
+        position: fixed;bottom: 0;width: 100%;text-align: center;     
+        background: rgba(0, 0, 0, .4);padding: 5px 0;
     }
 /* Gallery */
 
@@ -353,7 +360,7 @@ span.price b {
         text-align: center;
     }
     section.mainSection {
-        padding: 30px 10px;
+        padding: 30px 15px;
     }
     .weather {
         position: static;text-align: center;margin-top: 20px;
@@ -388,6 +395,19 @@ span.price b {
         font-weight: bold;
         font-size: .9rem;
         z-index: 10;
+    }
+
+    .loginRequired {
+        position: fixed;top: 0;left: 0;width: 100%;height: 100%;
+        background: rgba(0, 0, 0, .7);z-index: 50;
+        display: flex;align-items: center;justify-content: center;
+    }
+    .loginBox {
+        width: 98%;background: var(--white);padding: 25px;position: relative;
+    }
+    .loginBox button {
+        position: absolute;top: 0;right: 0;font-weight: bold;background: #cc0000;color: var(--white);
+        padding: 4px 10px;border-radius: 0;cursor: pointer;
     }
   }
 /* Media */

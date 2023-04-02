@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "../Profile.module.css";
 export const BookingDetails = ({ current, close, cancelBooking }) => {
   return (
@@ -84,7 +83,8 @@ export const BookingDetails = ({ current, close, cancelBooking }) => {
             <tr>
               <th scope="col">DESCRIPTION</th>
               <th scope="col">QUANTITY</th>
-              <th scope="col">UNIT PRICE</th>
+              <th scope="col">PRICE</th>
+              <th scope="col">DISCOUNT</th>
               <th scope="col">TOTAL</th>
             </tr>
           </thead>
@@ -92,8 +92,9 @@ export const BookingDetails = ({ current, close, cancelBooking }) => {
             <tr>
               <th scope="row">Tour</th>
               <td>{current.guests}</td>
-              <td>{Number(current.price).toFixed(2)} BGN</td>
-              <td>{Number(current.total_price).toFixed(2)} BGN</td>
+              <td>{Number(current.price).toFixed(2)}</td>
+              <td>{Number(current.discount).toFixed(2)} %</td>
+              <td>{Number(current.total_price).toFixed(2)}</td>
             </tr>
           </tbody>
         </table>
@@ -101,7 +102,7 @@ export const BookingDetails = ({ current, close, cancelBooking }) => {
         <div className={styles.bookingTotal}>
           <ul>
             <li>
-              <strong>Discount:</strong> 0.00
+              <strong>Discount:</strong> {Number(current.discount).toFixed(2)} %
             </li>
             <li>
               <strong>Total Amount:</strong>{" "}
@@ -139,8 +140,12 @@ export const BookingDetails = ({ current, close, cancelBooking }) => {
             <button className={styles.cancel} onClick={cancelBooking}>
               Cancel Reservation
             </button>
-            <a href="">Cancelation policy</a>
-            <a href="">Refund Policy</a>
+            <a href="/terms" target="_blank">
+              Cancelation policy
+            </a>
+            <a href="/terms" target="_blank">
+              Refund Policy
+            </a>
           </>
         ) : null}
       </div>

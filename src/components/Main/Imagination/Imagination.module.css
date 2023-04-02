@@ -35,3 +35,22 @@ section.imagination h2 {
     opacity: 0;
 }
 
+/* Media */
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .wrapper {
+        width: 100%;padding: 0 20px 20px;
+    }
+    .offersWrap {
+        display: block;
+    }
+    section.imagination {
+        margin: 0;
+    }
+    .offer:nth-child(1) {
+        height: 200px;margin-bottom: 0;
+    }
+    .offer {
+        width: 90%;margin: 0 auto 30px auto;
+    }
+}
+/* Media */

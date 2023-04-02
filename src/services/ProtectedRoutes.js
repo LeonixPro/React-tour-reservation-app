@@ -4,21 +4,16 @@ import { Navigate, Outlet } from "react-router-dom";
 export const ProtectedRoutes = () => {
   const { logged } = useContext(AuthContext);
 
-  if (logged === false) {
-    return null; // or loading spinner, etc...
+  if (!logged) {
+    return <Navigate to="/login" />;
   }
-
-  return logged ? <Outlet /> : <Navigate to="/login" />;
-  // if (!logged) {
-  //   return <Navigate to="/login" />;
-  // }
-  // return <Outlet />;
+  return <Outlet />;
 };
 
 export const GuestsRoutes = () => {
   const { logged } = useContext(AuthContext);
   if (logged) {
-    return <Navigate to="/" />;
+    return <Navigate to="/profile" />;
   }
   return <Outlet />;
 };

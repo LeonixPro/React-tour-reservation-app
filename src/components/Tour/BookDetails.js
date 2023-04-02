@@ -1,6 +1,14 @@
 import styles from "./Tour.module.css";
 import { Link } from "react-router-dom";
-export const BookDetails = ({ tour, success, onBookClick, reviewScore }) => {
+export const BookDetails = ({
+  tour,
+  success,
+  onBookClick,
+  reviewScore,
+  errorMessage,
+}) => {
+  const discount_price = tour.price - (tour.price * tour.discount) / 100;
+  const save = (tour.price * tour.discount) / 100;
   return (
     <div className={styles.right}>
       <div className={styles.sale}>On sale</div>
@@ -11,12 +19,12 @@ export const BookDetails = ({ tour, success, onBookClick, reviewScore }) => {
       </div>
       <div className={styles.priceBox}>
         <span className={styles.price}>
-          Price
-          <b>{Number(tour?.price).toFixed(2)} BGN</b>
+          <strong>Price: {Number(tour.price).toFixed(2)} BGN</strong>
+          <b>{Number(discount_price).toFixed(2)} BGN</b>
         </span>
         <span className={styles.discount}>
-          20% Discount <br />
-          Valid until 25.03.2023
+          {tour.discount}% Discount <br />
+          Valid until {tour.discount_valid}
         </span>
       </div>
       <div className={styles.book}>
@@ -24,14 +32,16 @@ export const BookDetails = ({ tour, success, onBookClick, reviewScore }) => {
       </div>
       <div className={styles.rightBottom}>
         <b>Special offers</b>
-        Save 20% until 25.03.2023
+        Save {Number(save).toFixed(2)} BGN until {tour.discount_valid}
       </div>
       {success && (
         <div className={styles.success}>
-          Booking completed
-          <div>
-            <Link to="/profile">Go to my bookings</Link>
-          </div>
+          Booking completed! <Link to="/profile">Go to my bookings</Link>
+        </div>
+      )}
+      {errorMessage && (
+        <div className={styles.errorMessage}>
+          {errorMessage} <Link to="/support">Contact support now.</Link>
         </div>
       )}
     </div>

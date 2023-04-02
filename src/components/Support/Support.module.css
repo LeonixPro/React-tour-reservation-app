@@ -19,3 +19,17 @@ section.header h1 {
 .title {
     font-weight: bold;font-size: 1.2rem;margin-bottom: 20px;
 }
+
+/* Media */
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .wrapper, .mainWrapper {
+        width: 100%;display: block;
+    }
+    section.header {
+        padding: 0 20px;
+    }
+    .left, .right {
+        margin-bottom: 40px;padding: 0 20px;
+    }
+}
+/* Media */

@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { AuthContext } from "./contexts/AuthContext";
-import { onLogin } from "./services/toursServices";
+import { onLogin } from "./services/authServices";
 import { onRegister } from "./services/authServices";
 import { useState, useEffect } from "react";
 import "./assets/styles/main.css";
@@ -11,7 +11,7 @@ import { Login } from "./components/Login/Login";
 import { Registration } from "./components/Registration/Registration";
 import { editUser } from "./services/authServices";
 import { About } from "./components/About/About";
-import { Services } from "./components/Serv/Services";
+import { Services } from "./components/Service/Services";
 import { Tours } from "./components/Tours/Tours";
 import { Tour } from "./components/Tour/Tour";
 import { Terms } from "./components/Terms/Terms";

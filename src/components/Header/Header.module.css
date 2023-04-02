@@ -43,3 +43,28 @@ section.header {
         transform: rotate(-2deg);
     }
 } 
+/* Media */
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .wrapper {
+        width: 100%;flex-direction: column;flex-wrap: wrap;
+    }
+    section.header {
+        height: auto;padding: 50px 20px;
+    }
+    .headerLeft {
+        text-align: center;
+    }
+    .headerLeft p {
+        width: 100%;
+    }
+    .headerLeft a {
+        display: block;margin: 0 auto;
+    }
+    .headerRight {
+        order: -1;margin-bottom: 40px;
+    }
+    .headerRight img {
+        width: 100%;top: 0;left: 0;
+    }
+}
+/* Media */

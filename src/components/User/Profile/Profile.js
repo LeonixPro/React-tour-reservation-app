@@ -12,7 +12,7 @@ export const Profile = () => {
   const [booking, setBooking] = useState([]);
   useEffect(() => {
     bookingList(user.u_id).then((res) => setBooking(res));
-  }, [booking]);
+  }, []);
   return (
     <>
       <header>

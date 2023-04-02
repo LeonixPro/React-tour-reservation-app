@@ -10,7 +10,6 @@ export const Bookings = ({ booking }) => {
   const chooseCurrent = (id) => {
     setCurrent(true);
     setDetails(booking[id]);
-    console.log(details);
   };
   const close = () => {
     setCurrent(!current);

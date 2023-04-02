@@ -32,7 +32,7 @@ export const Support = () => {
                     aria-expanded="true"
                     aria-controls="panelsStayOpen-collapseOne"
                   >
-                    Accordion Item #1
+                    How to use the website?
                   </button>
                 </h2>
                 <div
@@ -41,15 +41,19 @@ export const Support = () => {
                   aria-labelledby="panelsStayOpen-headingOne"
                 >
                   <div className="accordion-body">
-                    <strong>This is the first item's accordion body.</strong> It
-                    is shown by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Architecto minima voluptatibus quaerat. Velit veniam
+                      laudantium deleniti illum similique! Repellat explicabo
+                      nulla dolorum, optio temporibus laudantium quidem mollitia
+                      accusamus impedit itaque?
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Ab aspernatur numquam labore quis fugit? Facere, unde
+                      repellat vel reprehenderit dolorem cumque earum temporibus
+                      ipsa hic provident optio, dolorum corporis? Consequuntur!
+                    </p>
                   </div>
                 </div>
               </div>
@@ -63,7 +67,7 @@ export const Support = () => {
                     aria-expanded="false"
                     aria-controls="panelsStayOpen-collapseTwo"
                   >
-                    Accordion Item #2
+                    About reservation
                   </button>
                 </h2>
                 <div
@@ -72,15 +76,19 @@ export const Support = () => {
                   aria-labelledby="panelsStayOpen-headingTwo"
                 >
                   <div className="accordion-body">
-                    <strong>This is the second item's accordion body.</strong>{" "}
-                    It is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Architecto minima voluptatibus quaerat. Velit veniam
+                      laudantium deleniti illum similique! Repellat explicabo
+                      nulla dolorum, optio temporibus laudantium quidem mollitia
+                      accusamus impedit itaque?
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Ab aspernatur numquam labore quis fugit? Facere, unde
+                      repellat vel reprehenderit dolorem cumque earum temporibus
+                      ipsa hic provident optio, dolorum corporis? Consequuntur!
+                    </p>
                   </div>
                 </div>
               </div>
@@ -97,7 +105,7 @@ export const Support = () => {
                     aria-expanded="false"
                     aria-controls="panelsStayOpen-collapseThree"
                   >
-                    Accordion Item #3
+                    How to make a reservation?
                   </button>
                 </h2>
                 <div
@@ -106,15 +114,19 @@ export const Support = () => {
                   aria-labelledby="panelsStayOpen-headingThree"
                 >
                   <div className="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It
-                    is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Architecto minima voluptatibus quaerat. Velit veniam
+                      laudantium deleniti illum similique! Repellat explicabo
+                      nulla dolorum, optio temporibus laudantium quidem mollitia
+                      accusamus impedit itaque?
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Ab aspernatur numquam labore quis fugit? Facere, unde
+                      repellat vel reprehenderit dolorem cumque earum temporibus
+                      ipsa hic provident optio, dolorum corporis? Consequuntur!
+                    </p>
                   </div>
                 </div>
               </div>
@@ -137,7 +149,7 @@ export const Support = () => {
                     aria-expanded="true"
                     aria-controls="panelsStayOpen-collapseFour"
                   >
-                    Accordion Item #1
+                    How to create a profile?
                   </button>
                 </h2>
                 <div
@@ -146,15 +158,19 @@ export const Support = () => {
                   aria-labelledby="panelsStayOpen-headingFour"
                 >
                   <div className="accordion-body">
-                    <strong>This is the first item's accordion body.</strong> It
-                    is shown by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Architecto minima voluptatibus quaerat. Velit veniam
+                      laudantium deleniti illum similique! Repellat explicabo
+                      nulla dolorum, optio temporibus laudantium quidem mollitia
+                      accusamus impedit itaque?
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Ab aspernatur numquam labore quis fugit? Facere, unde
+                      repellat vel reprehenderit dolorem cumque earum temporibus
+                      ipsa hic provident optio, dolorum corporis? Consequuntur!
+                    </p>
                   </div>
                 </div>
               </div>
@@ -171,7 +187,7 @@ export const Support = () => {
                     aria-expanded="false"
                     aria-controls="panelsStayOpen-collapseFive"
                   >
-                    Accordion Item #2
+                    How to manage reservations?
                   </button>
                 </h2>
                 <div
@@ -180,15 +196,19 @@ export const Support = () => {
                   aria-labelledby="panelsStayOpen-headingFive"
                 >
                   <div className="accordion-body">
-                    <strong>This is the second item's accordion body.</strong>{" "}
-                    It is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Architecto minima voluptatibus quaerat. Velit veniam
+                      laudantium deleniti illum similique! Repellat explicabo
+                      nulla dolorum, optio temporibus laudantium quidem mollitia
+                      accusamus impedit itaque?
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Ab aspernatur numquam labore quis fugit? Facere, unde
+                      repellat vel reprehenderit dolorem cumque earum temporibus
+                      ipsa hic provident optio, dolorum corporis? Consequuntur!
+                    </p>
                   </div>
                 </div>
               </div>
@@ -202,7 +222,7 @@ export const Support = () => {
                     aria-expanded="false"
                     aria-controls="panelsStayOpen-collapseSix"
                   >
-                    Accordion Item #3
+                    How to cancel the reservation?
                   </button>
                 </h2>
                 <div
@@ -211,15 +231,19 @@ export const Support = () => {
                   aria-labelledby="panelsStayOpen-headingSix"
                 >
                   <div className="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It
-                    is hidden by default, until the collapse plugin adds the
-                    appropriate classes that we use to style each element. These
-                    classes control the overall appearance, as well as the
-                    showing and hiding via CSS transitions. You can modify any
-                    of this with custom CSS or overriding our default variables.
-                    It's also worth noting that just about any HTML can go
-                    within the <code>.accordion-body</code>, though the
-                    transition does limit overflow.
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Architecto minima voluptatibus quaerat. Velit veniam
+                      laudantium deleniti illum similique! Repellat explicabo
+                      nulla dolorum, optio temporibus laudantium quidem mollitia
+                      accusamus impedit itaque?
+                    </p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Ab aspernatur numquam labore quis fugit? Facere, unde
+                      repellat vel reprehenderit dolorem cumque earum temporibus
+                      ipsa hic provident optio, dolorum corporis? Consequuntur!
+                    </p>
                   </div>
                 </div>
               </div>

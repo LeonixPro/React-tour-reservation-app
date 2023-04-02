@@ -72,6 +72,12 @@ footer {
     .footerBox {
         padding: 0 20px;
     }
+    .footerBox span {
+        margin: 5px 0;
+    }
+    .footerBox nav ul {
+        margin-bottom: 20px;
+    }
     .social {
         margin-bottom: 10px;
     }

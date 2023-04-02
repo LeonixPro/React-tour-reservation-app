@@ -69,3 +69,18 @@ input.errorInput, textarea.errorInput {
     width: 1320px;margin: 0 auto 20px;border: 2px solid #259403;
     color: #259403;background: #ddffd2;padding: 15px 20px;font-weight: bold;
 }
+
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .headerWrapper, .wrapper {
+        width: 100%;display: block;
+    }
+    section.header {
+        padding: 0 20px;
+    }
+    .contactWrap {
+        padding: 40px 0;
+    }
+    .left, .right {
+        padding: 0 20px;
+    }
+}

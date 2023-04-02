@@ -1,5 +1,5 @@
 import { setTitle } from "../../utils/utils";
-import styles from "./Services.module.css";
+import styles from './Services.module.css'
 import Img from "./services.jpg";
 import { useEffect } from "react";
 export const Services = () => {

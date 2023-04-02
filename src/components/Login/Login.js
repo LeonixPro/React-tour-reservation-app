@@ -14,7 +14,7 @@ export const Login = () => {
   const { loginError } = useContext(AuthContext);
   useEffect(() => {
     if (logged) {
-      navigate("/");
+      return navigate("/profile");
     }
   }, [logged]);
   const {

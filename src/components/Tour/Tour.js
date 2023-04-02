@@ -27,10 +27,12 @@ export const Tour = () => {
   const [login, setLogin] = useState(false);
   const [load, setLoad] = useState(true);
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [reviewForm, setReviewForm] = useState(false);
   const [reviewScore, setReviewScore] = useState(null);
   const [submitted, setSubmitted] = useState("");
   const [edit, setEdit] = useState(false);
+  const [noReview, setNowReview] = useState(null);
   const [reviewId, setReviewId] = useState(null);
   useEffect(() => {
     getOneTour(id).then((res) => {
@@ -46,7 +48,7 @@ export const Tour = () => {
         .then((review) => {
           if (review) {
             if (review[0].message) {
-              return console.log(review[0].message);
+              return setNowReview(review[0].message);
             }
             setReviewList(review);
             const scores = review?.map((x) => Number(x.score));
@@ -56,11 +58,9 @@ export const Tour = () => {
           }
         })
         .then(setLoad(false))
-        .catch((error) =>
-          console.log(
-            "There are no available reviews yet. But you can be first one!"
-          )
-        );
+        .catch((error) => {
+          return;
+        });
     });
     window.scrollTo(0, 0);
   }, [id]);
@@ -72,12 +72,15 @@ export const Tour = () => {
       setLogin(true);
     }
   };
-  const close = (param) => {
+  const close = (param, message = "") => {
     if (param === 1) {
       setSuccess(true);
       setBook(false);
     } else if (param === 2) {
       setLogin(!login);
+    } else if (param === 3) {
+      setErrorMessage(message);
+      setBook(false);
     } else {
       setBook(false);
     }
@@ -88,7 +91,6 @@ export const Tour = () => {
   const activeEdit = (id) => {
     setEdit(!edit);
     setReviewId(reviewList[id]);
-    console.log(reviewId);
   };
   const sendReview = async (data) => {
     const request = fetch(
@@ -109,13 +111,16 @@ export const Tour = () => {
       setReviewScore(setScore(res));
       setReviewForm(false);
       setSubmitted(true);
+      if (noReview) {
+        setNowReview(null);
+      }
       setSubmitted("Thank you for the review!");
       setTimeout(() => {
         setSubmitted(null);
       }, 2500);
       return setReviewList(res);
     } else {
-      console.log("error");
+      return;
     }
   };
   const deleteReview = async (review_id) => {
@@ -137,6 +142,7 @@ export const Tour = () => {
       if (res[0].message) {
         setReviewScore(0);
         setEdit(false);
+        setNowReview(res[0].message);
         setSubmitted("Your review has been deleted!");
         setTimeout(() => {
           setSubmitted(null);
@@ -234,6 +240,7 @@ export const Tour = () => {
                       addReview={addReview}
                       reviewForm={reviewForm}
                       submitted={submitted}
+                      noReview={noReview}
                       sendReview={sendReview}
                       reviewList={reviewList}
                       deleteReview={deleteReview}
@@ -249,6 +256,7 @@ export const Tour = () => {
                 tour={tour}
                 onBookClick={onBookClick}
                 success={success}
+                errorMessage={errorMessage}
                 reviewScore={reviewScore}
               />
             </div>

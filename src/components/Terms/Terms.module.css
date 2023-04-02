@@ -24,3 +24,11 @@ main.main {
 .wrapper p b {
     display: block;margin-bottom: 5px;
 }
+
+/* Media */
+@media only screen and (max-width: 425px) and (min-width: 320px) {
+    .wrapper {
+        width: 100%;padding: 20px;
+    }
+}
+/* Media */
