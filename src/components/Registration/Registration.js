@@ -39,7 +39,7 @@ export const Registration = () => {
                 {...register("name", {
                   required: "Name can not be empty!",
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z ]+$/i,
                     message: "You can  not use symbols or numbers",
                   },
                   maxLength: {
@@ -66,7 +66,7 @@ export const Registration = () => {
                 {...register("lastname", {
                   required: "Last name can not be empty!",
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z ]+$/i,
                     message: "You can  not use symbols or numbers",
                   },
                   maxLength: {
@@ -92,7 +92,7 @@ export const Registration = () => {
             <div className={styles.input}>
               <label htmlFor="email">Your Email</label>
               <input
-                type="tel"
+                type="email"
                 className={errors?.email?.message && styles.errorInput}
                 {...register("email", {
                   required: "Email can not be empty!",
@@ -138,7 +138,7 @@ export const Registration = () => {
                 {...register("country", {
                   required: "Country can not be empty!",
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z ]+$/i,
                     message: "You can  not use symbols or numbers",
                   },
                   maxLength: {
@@ -166,7 +166,7 @@ export const Registration = () => {
                 {...register("city", {
                   required: "City can not be empty!",
                   pattern: {
-                    value: /^[A-Za-z]+$/i,
+                    value: /^[A-Za-z ]+$/i,
                     message: "You can not use symbols or numbers",
                   },
                   maxLength: {
@@ -194,9 +194,19 @@ export const Registration = () => {
                 type="password"
                 {...register("password", {
                   required: "Password can not be empty!",
+                  pattern: {
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&+=]).{8,}$/,
+                    message:
+                      "Password should contain at least: 1 capital letter, 1 digit, 1 of symbols (!@#$%^&+=), and min length is 8",
+                  },
                   minLength: {
                     value: 8,
                     message: "Password must have at least 8 characters",
+                  },
+                  maxLength: {
+                    value: 30,
+                    message: "Max length is 30 characters",
                   },
                 })}
                 placeholder="Password"

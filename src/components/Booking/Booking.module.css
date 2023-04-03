@@ -55,9 +55,15 @@ span.guestsTotal {
 }
 
 /* Media */
+@media only screen and (max-width: 1140px) and (min-width: 1024px) {
+    .wrap {
+        width: 70%;
+    }
+}
 @media only screen and (max-width: 425px) and (min-width: 320px) {
     .wrap {
-        width: 100%;
+       position: fixed;top: 0;left: 0;width: 100%;height: 100%;
+       overflow-y: scroll;
     }
     .book button {
         width: 100%;

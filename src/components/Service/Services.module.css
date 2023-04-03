@@ -76,11 +76,13 @@ span[data-box="box-4"]::before {
 .box:hover {
     background: var(--hover);color: var(--white);
 }
-@media screen and (max-width: 992px) {
-    .wrapper {
-      width: 90%;margin: 0 auto;
-    }
+
+/* Media */
+@media only screen and (max-width: 1140px) and (min-width: 1024px) {
+  .wrapper, .headerWrapper {
+      width: 960px;
   }
+}
 
   @media screen and (max-width: 1024px) {
     .wrapper, .headerWrapper {

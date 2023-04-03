@@ -1,6 +1,7 @@
 import { setTitle } from "../../utils/utils";
-import styles from './Services.module.css'
+import styles from "./Services.module.css";
 import Img from "./services.jpg";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 export const Services = () => {
   setTitle("Services");
@@ -18,7 +19,7 @@ export const Services = () => {
               iure reprehenderit modi aperiam reiciendis, eum quibusdam debitis
               omnis nobis labore.
             </p>
-            <a href="">Start new journey!</a>
+            <Link to="/tours">Start new journey!</Link>
           </div>
           <div className={styles.right}>
             <div>

@@ -70,6 +70,12 @@ input.errorInput, textarea.errorInput {
     color: #259403;background: #ddffd2;padding: 15px 20px;font-weight: bold;
 }
 
+/* Media */
+@media only screen and (max-width: 1140px) and (min-width: 1024px) {
+    .wrapper, .headerWrapper {
+        width: 960px;
+    }
+  }
 @media only screen and (max-width: 425px) and (min-width: 320px) {
     .headerWrapper, .wrapper {
         width: 100%;display: block;
@@ -82,5 +88,14 @@ input.errorInput, textarea.errorInput {
     }
     .left, .right {
         padding: 0 20px;
+    }
+    .right {
+        margin-top: 20px;
+    }
+    .details {
+        display: block;
+    }
+    .details ul:first-child {
+        margin: 40px 0;
     }
 }

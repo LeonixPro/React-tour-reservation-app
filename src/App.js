@@ -29,6 +29,8 @@ function App() {
   const [regError, setRegError] = useState(null);
   const [editMessage, setEditMessage] = useState(null);
   const navigate = useNavigate();
+
+  // Check if user logged
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
@@ -37,6 +39,8 @@ function App() {
       setUser(foundUser);
     }
   }, []);
+
+  // Login function
   const login = (data) => {
     onLogin(data).then((res) => {
       if (!res) {
@@ -52,6 +56,8 @@ function App() {
       setLogged(true);
     });
   };
+
+  // Registration function
   const registration = (data) => {
     if (!logged) {
       onRegister(data).then((result) => {
@@ -66,6 +72,8 @@ function App() {
       });
     }
   };
+
+  // Edit user function
   const edit = (data) => {
     editUser(data, user.u_id).then((res) => {
       if (!res) return;
@@ -81,6 +89,8 @@ function App() {
       setUser(profile);
     });
   };
+
+  // Log out function
   const logOut = () => {
     localStorage.clear();
     setLogged(false);
@@ -116,7 +126,6 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/support" element={<Support />} />
         <Route element={<ProtectedRoutes />}>
-          {/* <Route path="/profile" element={<Profile />} /> */}
           <Route path="/profile/*" element={<Profile />} />
         </Route>
         <Route path="*" element={<NotFound />} />

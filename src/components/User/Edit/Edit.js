@@ -59,7 +59,7 @@ export const Edit = ({ user }) => {
                       {...register("country", {
                         required: "Country can not be empty!",
                         pattern: {
-                          value: /^[A-Za-z]+$/i,
+                          value: /^[A-Za-z ]+$/i,
                           message: "You can  not use symbols or numbers",
                         },
                         maxLength: {
@@ -118,7 +118,7 @@ export const Edit = ({ user }) => {
                       {...register("city", {
                         required: "City can not be empty!",
                         pattern: {
-                          value: /^[A-Za-z]+$/i,
+                          value: /^[A-Za-z ]+$/i,
                           message: "You can  not use symbols or numbers",
                         },
                         maxLength: {

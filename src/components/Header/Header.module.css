@@ -44,6 +44,11 @@ section.header {
     }
 } 
 /* Media */
+@media only screen and (max-width: 1140px) and (min-width: 1024px) {
+    .wrapper {
+        width: 960px;
+    }
+  }
 @media only screen and (max-width: 425px) and (min-width: 320px) {
     .wrapper {
         width: 100%;flex-direction: column;flex-wrap: wrap;

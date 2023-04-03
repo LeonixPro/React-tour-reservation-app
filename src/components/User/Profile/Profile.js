@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { bookingList } from "../../../services/authServices";
+import { bookingList } from "../../../services/bookingServices";
 import styles from "../Profile.module.css";
 import { Edit } from "../Edit/Edit";
 import { Bookings } from "../Bookings/Bookings";
@@ -10,6 +10,7 @@ import { General } from "../General/General";
 export const Profile = () => {
   const { user, logOut } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
+  const location = useLocation();
   useEffect(() => {
     bookingList(user.u_id).then((res) => setBooking(res));
   }, []);
@@ -37,13 +38,30 @@ export const Profile = () => {
             <nav>
               <ul>
                 <li>
-                  <Link to="">Profile</Link>
+                  <Link
+                    to=""
+                    className={location.pathname === "/profile" ? styles.activeLink : null}
+                  >
+                    Profile
+                  </Link>
                 </li>
                 <li>
-                  <Link to="edit">Edit Profile</Link>
+                  <Link
+                    to="edit"
+                    className={location.pathname === "/profile/edit" ? styles.activeLink : null}
+                  >
+                    Edit Profile
+                  </Link>
                 </li>
                 <li>
-                  <Link to="my-bookings">My bookings</Link>
+                  <Link
+                    to="my-bookings"
+                    className={
+                      location.pathname === "/profile/my-bookings" ? styles.activeLink : null
+                    }
+                  >
+                    My bookings
+                  </Link>
                 </li>
               </ul>
             </nav>

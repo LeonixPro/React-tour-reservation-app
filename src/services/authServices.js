@@ -1,3 +1,4 @@
+// Login function
 export const onLogin = async (data) => {
   try {
     const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/user/login`, {
@@ -20,6 +21,7 @@ export const onLogin = async (data) => {
   }
 };
 
+// Registration function
 export const onRegister = async (data) => {
   try {
     const request = fetch(
@@ -40,6 +42,8 @@ export const onRegister = async (data) => {
     return;
   }
 };
+
+// Edit function
 export const editUser = async (data, id) => {
   try {
     const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/user/edit`, {
@@ -51,26 +55,6 @@ export const editUser = async (data, id) => {
       },
       body: JSON.stringify(data),
     });
-    const response = await request;
-    const res = await response.json();
-    return res;
-  } catch (error) {
-    return;
-  }
-};
-export const bookingList = async (id) => {
-  try {
-    const request = fetch(
-      `${process.env.REACT_APP_MAIN_REQUEST}/user/bookings`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: id,
-        },
-      }
-    );
     const response = await request;
     const res = await response.json();
     return res;

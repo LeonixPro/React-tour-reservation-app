@@ -1,13 +1,13 @@
 import { setTitle } from "../../utils/utils";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useEffect, useState } from "react";
-import { getOneTour } from "../../services/toursServices";
+import { getOneTour, getWeather } from "../../services/toursServices";
 import { Gallery } from "./Gallery";
 import styles from "./Tour.module.css";
 import { Booking } from "../Booking/Booking";
-import { Loader } from "../../UI/loader";
+import { Loader } from "../../UI/Loader";
 import { Reviews } from "./Reviews/Reviews";
 import { InPrice } from "./InPrice";
 import { NotInPrice } from "./NotInPrice";
@@ -16,6 +16,12 @@ import { Map } from "./Map";
 import { Description } from "./Description";
 import { Header } from "./Header";
 import { setScore } from "../../utils/utils";
+import {
+  deleteRev,
+  editRev,
+  getReviews,
+  submitReview,
+} from "../../services/reviewsServices";
 export const Tour = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
@@ -34,33 +40,34 @@ export const Tour = () => {
   const [edit, setEdit] = useState(false);
   const [noReview, setNowReview] = useState(null);
   const [reviewId, setReviewId] = useState(null);
+  const navigate = useNavigate();
+  const user_id = user.u_id;
   useEffect(() => {
     getOneTour(id).then((res) => {
-      setTour(res);
-      setTitle(res.title);
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${res?.destination}&units=metric&appid=${process.env.REACT_APP_WEATHER_REQUEST}`
-      )
-        .then((result) => result.json())
-        .then((data) => setWeather(data));
-      fetch(`${process.env.REACT_APP_MAIN_REQUEST}/reviews/show/${id}`)
-        .then((reviews) => reviews.json())
-        .then((review) => {
-          if (review) {
-            if (review[0].message) {
-              return setNowReview(review[0].message);
+      if (res.status === false) {
+        return navigate("/404");
+      } else {
+        setTour(res);
+        setTitle(res.title);
+        getWeather(res.destination).then((res) => setWeather(res));
+        getReviews(id)
+          .then((review) => {
+            if (review) {
+              if (review[0].message) {
+                return setNowReview(review[0].message);
+              }
+              const scores = review?.map((x) => Number(x.score));
+              const rate = scores?.reduce((a, b) => a + b);
+              const finalScore = rate / scores.length;
+              setReviewScore(finalScore);
+              return setReviewList(review);
             }
-            setReviewList(review);
-            const scores = review?.map((x) => Number(x.score));
-            const rate = scores?.reduce((a, b) => a + b);
-            const finalScore = rate / scores.length;
-            setReviewScore(finalScore);
-          }
-        })
-        .then(setLoad(false))
-        .catch((error) => {
-          return;
-        });
+          })
+          .then(setLoad(false))
+          .catch((error) => {
+            return;
+          });
+      }
     });
     window.scrollTo(0, 0);
   }, [id]);
@@ -93,92 +100,64 @@ export const Tour = () => {
     setReviewId(reviewList[id]);
   };
   const sendReview = async (data) => {
-    const request = fetch(
-      `${process.env.REACT_APP_MAIN_REQUEST}/review/submit`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: user.u_id,
-        },
-        body: JSON.stringify(data),
+    const newData = data;
+    submitReview(newData, user.u_id).then((res) => {
+      if (res) {
+        setReviewScore(setScore(res));
+        setReviewForm(false);
+        setSubmitted(true);
+        if (noReview) {
+          setNowReview(null);
+        }
+        setSubmitted("Thank you for the review!");
+        setTimeout(() => {
+          setSubmitted(null);
+        }, 2500);
+        return setReviewList(res);
+      } else {
+        return;
       }
-    );
-    const response = await request;
-    const res = await response.json();
-    if (res) {
-      setReviewScore(setScore(res));
-      setReviewForm(false);
-      setSubmitted(true);
-      if (noReview) {
-        setNowReview(null);
-      }
-      setSubmitted("Thank you for the review!");
-      setTimeout(() => {
-        setSubmitted(null);
-      }, 2500);
-      return setReviewList(res);
-    } else {
-      return;
-    }
+    });
   };
   const deleteReview = async (review_id) => {
-    const request = fetch(
-      `${process.env.REACT_APP_MAIN_REQUEST}/review/delete/${id}`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: user.u_id,
-        },
-        body: JSON.stringify({ review_id: review_id }),
-      }
-    );
-    const response = await request;
-    const res = await response.json();
-    if (res) {
-      if (res[0].message) {
-        setReviewScore(0);
+    const r_id = review_id;
+    deleteRev(user.u_id, r_id).then((res) => {
+      if (res) {
+        if (res[0].message) {
+          setReviewScore(0);
+          setEdit(false);
+          setNowReview(res[0].message);
+          setSubmitted("Your review has been deleted!");
+          setTimeout(() => {
+            setSubmitted(null);
+          }, 2500);
+          return setReviewList([]);
+        }
+        setReviewScore(setScore(res));
         setEdit(false);
-        setNowReview(res[0].message);
         setSubmitted("Your review has been deleted!");
         setTimeout(() => {
           setSubmitted(null);
         }, 2500);
-        return setReviewList([]);
+        return setReviewList(res);
       }
-      setReviewScore(setScore(res));
-      setEdit(false);
-      setSubmitted("Your review has been deleted!");
-      setTimeout(() => {
-        setSubmitted(null);
-      }, 2500);
-      return setReviewList(res);
-    }
+    });
   };
   const editReview = async (data) => {
-    const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/review/edit`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: user.u_id,
-      },
-      body: JSON.stringify(data),
+    const newData = data;
+    editRev(newData, user.u_id).then((res) => {
+      if (res) {
+        if (res) {
+          setReviewScore(setScore(res));
+          setEdit(!edit);
+          setSubmitted("Your review has been updated!");
+          setTimeout(() => {
+            setSubmitted(null);
+          }, 2500);
+          return setReviewList(res);
+        }
+      }
     });
-    const response = await request;
-    const res = await response.json();
-    if (res) {
-      setReviewScore(setScore(res));
-      setEdit(!edit);
-      setSubmitted("Your review has been updated!");
-      setTimeout(() => {
-        setSubmitted(null);
-      }, 2500);
-      return setReviewList(res);
-    }
   };
   return (
     <>

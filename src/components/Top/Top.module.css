@@ -12,8 +12,8 @@
     margin-left: 16px;font-weight: bold;color: #525252;
     transition: all .4s ease;position: relative;
 }
-.navigation ul li a:hover {color:#4681f4;}
-.navigation ul li a:after {    
+.navigation ul li a:hover, .navigation nav ul li a.activeLink  {color:#4681f4;}
+.navigation ul li a:after  {    
     background: none repeat scroll 0 0 transparent;
     bottom: -8px;
     content: "";
@@ -24,6 +24,18 @@
     background: #4681f4;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
+  }
+  .navigation nav ul li a.activeLink::after  {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: -8px;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    background: #4681f4;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 100%; 
+    left: 0; 
   }
   .navigation ul li a:hover:after { 
     width: 100%; 
@@ -38,7 +50,7 @@
   .navigation nav ul li a.userProfile {
     margin-left: 20px;
     background: var(--links);
-    padding: 12px 10px;
+    padding: 14px 10px;
     display: inline;
     border-radius: 50%;
     font-weight: bold;
@@ -46,13 +58,14 @@
     color: var(--white);
   }
   .navigation nav ul li:last-child {
-    display: flex;align-items: center;
+    align-items: center;
   }
   .navigation nav ul li:last-child span {
     margin-left: 10px;font-weight: bold;font-size: .85rem;
+    position: relative;top: -8px;
   }
   .navigation nav ul li:last-child span b {
-    display: block;
+    display: block;position: absolute;left: 0;
     font-size: .8rem;
     line-height: 1;
   }
@@ -61,6 +74,17 @@
 @media only screen and (max-width: 1024px) {
   .Wrapper {
       width: 890px;
+  }
+}
+@media only screen and (max-width: 1140px) and (min-width: 1024px) {
+  .Wrapper {
+      width: 960px;
+  }
+  .navigation nav ul li:last-child span {
+    top: 0;
+  }
+  .navigation nav ul li:last-child  b {
+    display: none !important;
   }
 }
 @media only screen and (max-width: 425px) and (min-width: 320px) {
@@ -76,15 +100,8 @@
   .navigation nav ul li a {
     margin: 10px 0;display: block;
   }
-  .navigation nav ul li:last-child {
-    display: flex;align-items: center;justify-content: center;
-    text-align: left;border-top: 1px solid var(--gray);padding: 10px 0;
-  }
-  .navigation nav ul li:last-child span b {
-    display: block;font-size: .8rem;
-  }
   .navigation nav ul li a.userProfile {
-    display: inline-block;margin-right: 10px;margin-left: 0;
+    display: inline-block;margin-left: 0;
   }
   .navigation nav ul li a.userProfile span b {
     display: block;
@@ -92,15 +109,26 @@
   .navigation nav ul li:nth-child(5) {
     border-top: 1px solid var(--gray);padding-top: 10px;
   }
-  .navigation nav ul li:last-child {
-    display: flex;border: none;
-  }
+  
   .navigation nav ul li a.auth {
     margin: 0 0 5px 0;background: var(--white);color: var(--main);font-weight: bold;
     font-size: 1rem;padding: 0;
   }
+  .navigation nav ul li:last-child {
+    padding: 6px 0;display: block;align-items: center;justify-content: center;
+    width: 100%;
+  }
+  .navigation nav ul li:last-child span {
+    text-align: left;position: relative;
+  }
+  .navigation nav ul li:last-child span b {
+    position: absolute;left: 0;top: 17px;
+  }
   .navigation nav ul li a.auth:hover {
     border-radius: 0;color: var(--white);padding: 10px 0;
+  }
+  .navigation nav ul li a.userProfile {
+    padding: 12px 10px;
   }
 }
 /* Media */

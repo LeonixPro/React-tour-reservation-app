@@ -3,7 +3,7 @@
     width: 1320px;margin: 0 auto;
 }
 section.topOffers h2 {
-    font-size: 1.5em;text-align: center;padding: 10px 0;margin: 50px auto;
+    font-size: 1.5em;text-align: center;padding: 60px 0 10px 0;margin: 0 auto 50px auto;
     border-bottom: 1px solid #5f49f0;width: fit-content;
 }
 .tours {
@@ -32,13 +32,15 @@ section.topOffers h2 {
     padding: 0 10px;margin-bottom: 10px;
 }
 .info span {
-    display: inline-block;margin-right: 25px;font-size: .9rem;font-weight: bold;
+    display: inline-block;margin-right: 25px;font-weight: bold;font-size: .75rem;
 }
 .info span[data-type="destination"]::before {
     content: '\F3E7';font-family: 'bootstrap-icons';margin-right: 5px;
+    margin-bottom: 10px;font-size: .8rem;
 }
 .info span[data-type="duration"]::before {
     content: '\F1F3';font-family: 'bootstrap-icons';margin-right: 5px;
+    margin-bottom: 10px;font-size: .8rem;
 }
 .more {
     width: 100%;bottom: -36px;border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;
@@ -71,6 +73,17 @@ section.topOffers h2 {
 }
 
 /* Media */
+@media only screen and (max-width: 1140px) and (min-width: 1024px) {
+    .wrapper {
+        width: 960px;
+    }
+    .tours {
+        grid-template-columns: 1fr 1fr;
+    }
+    .tourImg {
+        height: 230px;
+    }
+  }
 @media only screen and (max-width: 425px) and (min-width: 320px) {
     .wrapper {
         width: 100%;padding: 20px 20px 0;

@@ -1,3 +1,4 @@
+// Display Top offers
 export const getTop = async () => {
   try {
     const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/main`);
@@ -9,6 +10,7 @@ export const getTop = async () => {
   }
 };
 
+// Display Promotions
 export const getPromotions = async () => {
   try {
     const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/promotions`);
@@ -20,6 +22,7 @@ export const getPromotions = async () => {
   }
 };
 
+// Display tours
 export const getTours = async () => {
   try {
     const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/tours`);
@@ -31,6 +34,7 @@ export const getTours = async () => {
   }
 };
 
+// Get specific tour information
 export const getOneTour = async (id) => {
   try {
     const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/tour/${id}`);
@@ -40,4 +44,14 @@ export const getOneTour = async (id) => {
   } catch (error) {
     return;
   }
+};
+
+// Get weather
+export const getWeather = async (location) => {
+  const request = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_WEATHER_REQUEST}`
+  );
+  const response = await request;
+  const data = await response.json();
+  return data;
 };

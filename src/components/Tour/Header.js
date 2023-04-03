@@ -8,10 +8,6 @@ export const Header = ({ tour, weather, onBookClick }) => {
         </div>
         <div className={styles.headerTop}>
           <h1>{tour.title}</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum,
-            corporis?
-          </p>
           <button className={styles.headerButton} onClick={onBookClick}>
             Book now!
           </button>

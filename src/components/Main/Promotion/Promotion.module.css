@@ -38,6 +38,11 @@ section.promotion h2 {
     transform: scale(1.1);
 }
 /* Media */
+@media only screen and (max-width: 1140px) and (min-width: 1024px) {
+    .wrapper {
+        width: 960px;
+    }
+  }
 @media only screen and (max-width: 425px) and (min-width: 320px) {
     .wrapper {
         width: 100%;padding: 20px;

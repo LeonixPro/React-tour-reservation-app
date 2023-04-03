@@ -2,14 +2,16 @@ import { setTitle } from "../../../utils/utils";
 import { useState } from "react";
 import styles from "../Profile.module.css";
 import { BookingDetails } from "./BookingDetails";
+import { cancel } from "../../../services/bookingServices";
 export const Bookings = ({ booking }) => {
   setTitle("My bookings");
   const [current, setCurrent] = useState(false);
   const [details, setDetails] = useState([]);
   const [message, setMessage] = useState(null);
+  const [bookingList, setBookingList] = useState(booking);
   const chooseCurrent = (id) => {
     setCurrent(true);
-    setDetails(booking[id]);
+    setDetails(bookingList[id]);
   };
   const close = () => {
     setCurrent(!current);
@@ -21,25 +23,19 @@ export const Bookings = ({ booking }) => {
       id: details.user_id,
       tour_id: details.u_id,
     };
-    const request = fetch(
-      `${process.env.REACT_APP_MAIN_REQUEST}/booking/cancel`,
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-          Authorization: data.id,
-        },
-        body: JSON.stringify(data),
+    cancel(data, data.id).then((res) => {
+      if (res) {
+        setMessage("Your booking has been canceled successfully!");
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+        close();
+        const canceled = bookingList.map((b) =>
+          b.u_id === data.tour_id ? { ...b, status: "Canceled" } : b
+        );
+        return setBookingList(canceled);
       }
-    );
-    const response = await request;
-    const res = await response.json();
-    setMessage("Your booking has been canceled successfully!");
-    setTimeout(() => {
-      setMessage(null);
-    }, 3000);
-    close();
+    });
   };
   return (
     <>
@@ -59,8 +55,8 @@ export const Bookings = ({ booking }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {booking.length > 0 &&
-                      booking.map((tour, index) => (
+                    {bookingList.length > 0 &&
+                      bookingList.map((tour, index) => (
                         <tr
                           className={
                             details.id == tour.id ? styles.activeView : null
