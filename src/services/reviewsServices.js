@@ -20,8 +20,7 @@ export const submitReview = async (data, user_id) => {
       {
         method: "POST",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: { "Content-Type": "application/json" },
           Authorization: user_id,
         },
         body: JSON.stringify(data),
@@ -43,8 +42,7 @@ export const deleteRev = async (user_id, review_id) => {
       {
         method: "POST",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: { "Content-Type": "application/json" },
           Authorization: user_id,
         },
         body: JSON.stringify({ review_id: review_id }),
@@ -62,8 +60,7 @@ export const editRev = async (data, user_id) => {
     const request = fetch(`${process.env.REACT_APP_MAIN_REQUEST}/review/edit`, {
       method: "POST",
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: { "Content-Type": "application/json" },
         Authorization: user_id,
       },
       body: JSON.stringify(data),

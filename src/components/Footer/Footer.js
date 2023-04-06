@@ -73,7 +73,8 @@ export const Footer = () => {
       <div className={styles.bottom}>
         <div className={styles.wrapper}>
           <div className={styles.left}>
-            <b>Copyright © Levon Aramyan</b> - Test project for SoftUni
+            <b>Copyright © Levon Aramyan</b> - Test project for Software
+            University
           </div>
           <div className={styles.right}>
             <nav>

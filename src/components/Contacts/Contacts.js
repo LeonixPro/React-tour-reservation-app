@@ -24,7 +24,6 @@ export const Contacts = () => {
   });
 
   const submit = (data) => {
-    console.log(data);
     setSuccess(true);
     reset();
   };
@@ -40,7 +39,7 @@ export const Contacts = () => {
         <div className={styles.contactWrap}>
           {success && (
             <div className={styles.success}>
-              Thank for the message! You message has been sent successfully!
+              Thanks for the message! Your message has been sent successfully!
             </div>
           )}
           <div className={styles.wrapper}>
@@ -56,7 +55,7 @@ export const Contacts = () => {
                   {...register("name", {
                     required: "Name can not be empty!",
                     pattern: {
-                      value: /^[A-Za-z]+$/i,
+                      value: /^[A-Za-z ]+$/i,
                       message: "You can  not use symbols or numbers",
                     },
                     maxLength: {
@@ -90,25 +89,45 @@ export const Contacts = () => {
                 />
                 <label htmlFor="subject">Subject</label>
                 {errors?.subject?.message && (
-                  <span className={styles.error}>Please, enter your name!</span>
+                  <span className={styles.error}>
+                    {errors?.subject?.message}
+                  </span>
                 )}
                 <input
                   type="text"
                   className={errors?.subject?.message && styles.errorInput}
                   {...register("subject", {
-                    required: "subject can not be empty!",
+                    required: "Subject can not be empty!",
+                    maxLength: {
+                      value: 30,
+                      message: "Max length is 80",
+                    },
+                    minLength: {
+                      value: 3,
+                      message: "Min length is 8",
+                    },
                   })}
                   placeholder="Your name"
                   id="subject"
                 />
                 <label htmlFor="message">Message</label>
                 {errors?.message?.message && (
-                  <span className={styles.error}>Please, enter your name!</span>
+                  <span className={styles.error}>
+                    {errors?.message?.message}
+                  </span>
                 )}
                 <textarea
                   className={errors?.message?.message && styles.errorInput}
                   {...register("message", {
-                    required: "message can not be empty!",
+                    required: "Message can not be empty!",
+                    maxLength: {
+                      value: 30,
+                      message: "Max length is 500",
+                    },
+                    minLength: {
+                      value: 8,
+                      message: "Min length is 10",
+                    },
                   })}
                   id="message"
                   placeholder="Message here..."

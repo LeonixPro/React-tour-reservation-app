@@ -1,10 +1,10 @@
 import { ShowGallery } from "./ShowGallery";
 import styles from "./Tour.module.css";
-import loading from "./loading.gif";
 import { useState } from "react";
 export const Gallery = ({ tour }) => {
-  const [imgSrc, setImgSrc] = useState(loading);
-  const [loaded, setLoaded] = useState(false);
+  const [imgSrc, setImgSrc] = useState(
+    `https://source.unsplash.com/random/?city,${tour.destination}`
+  );
   const [activeImg, setActiveImg] = useState(0);
   const [activeGallery, setActiveGallery] = useState(false);
 
@@ -24,7 +24,6 @@ export const Gallery = ({ tour }) => {
     setActiveImg(index);
     return index;
   };
-  const handleLoad = (e) => setLoaded(true);
   const closeGallery = () => {
     setActiveGallery(false);
   };

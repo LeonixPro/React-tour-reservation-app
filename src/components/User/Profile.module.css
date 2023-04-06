@@ -98,15 +98,15 @@
 .leftEdit h5, .leftBooking h5, .rightEdit h5, .rightBooking h5 {
     font-size: 1rem;font-weight: bold;padding: 20px 0;
 }
-.leftEdit form {
+.leftEdit form, .updatePassword ul {
     display: grid;grid-template-columns: 1fr 1fr;
 }
-.leftEdit form ul li {
+.leftEdit form ul li, .updatePassword form ul li {
     margin-bottom: 30px;
     border-bottom: 1px solid var(--gray);
 }
-.leftEdit form ul li label {
-    display: block;
+.leftEdit form ul li label, .updatePassword form ul li label {
+    display: block;width: 100%;
     font-weight: bold;
 }
 .leftEdit form ul li b {
@@ -120,16 +120,31 @@
     display: block;
     background: var(--light);
 }
-.leftEdit form ul li input {
+.leftEdit form ul li input, .updatePassword form ul li input {
     display: block;
     padding: 6px 0;
     width: 100%;
     border: none;
     outline: none;
 }
-.leftEdit form button {
+.updatePassword form ul li input {
+    padding: 12px 0;
+}
+.updatePassword form ul li input::placeholder {
+    font-size: .8rem;
+}
+.leftEdit form ul li input:focus, .updatePassword form ul li input:focus {
+    background: #eef9ff;
+}
+.leftEdit form button, .updatePassword form button {
     padding: 10px 16px;background: #249b28;color: var(--white);font-size: .9rem;
-    font-weight: bold;
+    font-weight: bold;transition: var(--transition);
+}
+.passwordInfo {
+    margin-top: 30px;
+}
+.leftEdit form button:hover, .updatePassword form button:hover {
+    background: #1d8921;
 }
 form ul li span.error {
     color: #cc0000;font-weight: bold;font-size: .9rem;
@@ -154,7 +169,14 @@ span.canceled {
 .bookingList table tr:hover {
     background: var(--light);
 }
-.bookingList table tr.activeView {
+.bookingList table tr td.activeTour {
+    color: #19971d;font-weight: bold;
+}
+.bookingList table tr td.inActiveTour {
+    color: #c93012;font-weight: bold;
+}
+.bookingList table tr.activeView, .bookingList table tr.activeView td.activeTour, 
+.bookingList table tr.activeView td.inActiveTour {
     background: var(--links);color: var(--white);
 }
 button.view {
@@ -167,7 +189,7 @@ button.view::before {
 .bookingWrap {padding: 8px 0px;position: relative;}
 .bookingTop, .tourDetailsWrap, .bookingInfoTitle, .bookingDetailsTable, .bookingOtherInfo {margin-bottom: 40px;}
 .bookingTop ul:nth-child(1), .tourDetailsWrap ul:nth-child(1) {float: left;}
-.bookingTop ul:nth-child(2), .tourDetailsWrap ul:nth-child(2) {float: right;}
+.bookingTop ul:nth-child(2), .tourDetailsWrap ul:nth-child(2) {float: right;margin-left: 15px;}
 .bookingTop span, .tourDetailsWrap ul span {
     display: block;font-weight: bold;font-size: 1rem;margin-bottom: 10px;
 }
@@ -193,12 +215,15 @@ button.closeBooking {
     position: absolute;top: -68px;right: -16px;background: #cc0000;color: var(--white);
     height: 49px;width: 49px;
 }
-.success {
-    background: #e2fbe6;
-    color: #298d00;border: 1px solid #298d00;
+.errorMessage {
+    position: fixed;right: 30px;bottom: 30px;
+    background: #fbe8e2;
+    color: #cc0000;border: 1px solid #cc0000;
     font-weight: bold;
     font-size: .9rem;
     padding: 16px;
+    z-index: 10;
+    transition: var(--transition);
 }
 /* Booking */
 @media only screen and (max-width: 1140px) and (min-width: 1024px) {
@@ -223,7 +248,14 @@ button.closeBooking {
         display: block;
     }
     .leftEdit {
-        border-right: none;padding-right: 0;
+        border-right: none;padding-right: 0;min-height: auto;
+        margin-bottom: 30px;
+    }
+    .rightEdit {
+        padding-bottom: 50px;
+    }
+    .updatePassword form ul li label {
+        font-size: .9rem;
     }
     .headerMiddle button {
         display: inline-block;width: fit-content;background: var(--links);color: var(--white);

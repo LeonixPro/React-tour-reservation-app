@@ -6,8 +6,7 @@ export const bookingSubmit = async (data) => {
       {
         method: "POST",
         headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
+          Accept: { "Content-Type": "application/json" },
         },
         body: JSON.stringify(data),
       }
@@ -31,8 +30,7 @@ export const bookingList = async (id) => {
       {
         method: "POST",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: { "Content-Type": "application/json" },
           Authorization: id,
         },
       }
@@ -53,8 +51,7 @@ export const cancel = async (data, id) => {
       {
         method: "POST",
         headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
+          Accept: { "Content-Type": "application/json" },
           Authorization: id,
         },
         body: JSON.stringify(data),

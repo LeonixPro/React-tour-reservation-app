@@ -49,9 +49,9 @@ export const Bookings = ({ booking }) => {
                   <thead>
                     <tr>
                       <th scope="col">Title</th>
-                      <th scope="col">Duration</th>
-                      <th scope="col">Price</th>
                       <th scope="col">Status</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Open</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -64,7 +64,15 @@ export const Bookings = ({ booking }) => {
                           key={tour.id}
                         >
                           <th scope="row">{tour.title}</th>
-                          <td>{tour.duration}</td>
+                          <td
+                            className={
+                              tour.status === "Completed"
+                                ? styles.activeTour
+                                : styles.inActiveTour
+                            }
+                          >
+                            {tour.status} 
+                          </td>
                           <td>{Number(tour.total_price).toFixed(2)} BGN</td>
                           <td>
                             <button

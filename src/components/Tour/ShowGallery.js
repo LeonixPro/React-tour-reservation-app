@@ -8,7 +8,6 @@ export const ShowGallery = ({ images, activeImg, closeGallery }) => {
       setActive((prev) => prev + 1);
     } else {
       setActive(0);
-      console.log(active);
     }
   };
   const prevImg = () => {
@@ -16,7 +15,6 @@ export const ShowGallery = ({ images, activeImg, closeGallery }) => {
       setActive((prev) => prev - 1);
     } else {
       setActive(5);
-      console.log(active);
     }
   };
   return (

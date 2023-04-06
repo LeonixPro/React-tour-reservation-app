@@ -209,10 +209,13 @@ Following data will be gotten through useParams and useContext
 
 #### Profile Page
 
-User can edit some information: email, phone, country, city.
+User can edit some information: email, password, phone number, country, city.
 
 Function to edit user information is `editUser(data, id)` from `services > authServices.js`.  
 API is: `${process.env.REACT_APP_MAIN_REQUEST}/user/edit`
+
+Function to update user password is `updatePassword(data)` from `services > authServices.js`.  
+API is: ``${process.env.REACT_APP_MAIN_REQUEST}/user/update-password`
 
 Function to display user reservations is `bookingList(id)` from `services > bookingServices`.  
 API is: `${process.env.REACT_APP_MAIN_REQUEST}/user/bookings`

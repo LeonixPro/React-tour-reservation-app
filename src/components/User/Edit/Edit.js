@@ -1,8 +1,9 @@
 import { setTitle } from "../../../utils/utils";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useForm } from "react-hook-form";
 import styles from "../Profile.module.css";
+import { UpdatePassword } from "./UpdatePassword";
 
 export const Edit = ({ user }) => {
   setTitle("Edit information");
@@ -143,14 +144,8 @@ export const Edit = ({ user }) => {
               </form>
             </div>
             <div className={styles.rightEdit}>
-              <h5>Useful Info</h5>
-              <b>Some text</b>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam
-                explicabo quae accusantium ipsum similique doloremque, odit,
-                omnis esse veritatis repudiandae praesentium minus tempore illo
-                eos maiores reiciendis et corrupti sapiente.
-              </p>
+              <h5>Update Password</h5>
+              <UpdatePassword user={user} />
             </div>
           </div>
         </div>

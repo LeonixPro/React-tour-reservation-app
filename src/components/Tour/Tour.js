@@ -41,7 +41,6 @@ export const Tour = () => {
   const [noReview, setNowReview] = useState(null);
   const [reviewId, setReviewId] = useState(null);
   const navigate = useNavigate();
-  const user_id = user.u_id;
   useEffect(() => {
     getOneTour(id).then((res) => {
       if (res.status === false) {
