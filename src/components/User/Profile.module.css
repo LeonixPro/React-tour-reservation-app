@@ -94,7 +94,9 @@
     border-bottom: 1px solid var(--light);
     margin-bottom: 40px;
 }
-
+.rightBooking {
+    padding-right: 16px;
+}
 .leftEdit h5, .leftBooking h5, .rightEdit h5, .rightBooking h5 {
     font-size: 1rem;font-weight: bold;padding: 20px 0;
 }
@@ -180,7 +182,7 @@ span.canceled {
     background: var(--links);color: var(--white);
 }
 button.view {
-    padding: 5px 15px;font-weight: bold;font-size: .9rem;color: var(--main);
+    padding: 10px 15px;font-weight: bold;font-size: .9rem;color: var(--main);
     background: var(--links);color: var(--white);
 }
 button.view::before {
@@ -274,6 +276,9 @@ button.closeBooking {
     }
     .bookingInfoTitle {
         padding: 10px;
+    }
+    ul.bookingResTop:nth-child(2), .tourDetailsWrap ul:nth-child(2) {
+        margin: 0;
     }
     .tourDetailsWrap ul:nth-child(3) {
         margin-top: 20px;

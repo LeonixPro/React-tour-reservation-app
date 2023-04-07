@@ -136,11 +136,11 @@ export const Contacts = () => {
               </form>
               <div>
                 By sending an email, you confirm that you have read and agree
-                widt.hasOwnProperty(propertyKey)
+                with{" "}
                 <a target="_blank" href="/terms">
                   Terms of use
-                </a>
-                and
+                </a>{" "}
+                and{" "}
                 <a target="_blank" href="/privacy">
                   Privacy Policy
                 </a>

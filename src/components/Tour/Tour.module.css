@@ -316,7 +316,7 @@ span.price b {
 /* Media */
   @media only screen and (max-width: 480px) and (min-width: 320px)  {
     .wrapper {
-        width: 100%;
+        width: 100%;padding: 0;
     }
     .right, .services, .mainBox {
         display: block;

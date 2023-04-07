@@ -50,11 +50,30 @@ section.about::after {
  }
 
  /* Media */
- @media only screen and (max-width: 1140px) and (min-width: 1024px) {
-   .wrapper, .headerWrapper {
-       width: 960px;
+ @media only screen and (max-width: 425px) and (min-width: 320px)  {
+   .headerWrapper, .wrapper {
+      width: 100%;
    }
-}
+   section.about {
+      background-attachment: unset;
+   }
+   section.discover, section.mission  {
+      margin-bottom: 40px;
+   }
+   .left, .right, .leftMission, .rightMission {
+      height: auto;padding: 0 20px;
+   }
+   .rightImg, .missionImg {
+      width: 100%;height: auto;
+   }
+   .boxes {
+      grid-template-columns: unset;
+      grid-template-rows: 1fr 1fr;
+   }
+   section.mission .wrapper .boxes .rightMission {
+      grid-row: 1;
+   }
+ }
 @media only screen and (max-width: 768px) and (min-width: 481px) {
    .headerWrapper, .wrapper {
       width: 100%;
