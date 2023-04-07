@@ -60,11 +60,11 @@ export const Contacts = () => {
                     },
                     maxLength: {
                       value: 30,
-                      message: "Max length is 80",
+                      message: "Max length is 30",
                     },
                     minLength: {
-                      value: 8,
-                      message: "Min length is 8",
+                      value: 6,
+                      message: "Min length is 6",
                     },
                   })}
                   placeholder="Your name"
@@ -100,10 +100,10 @@ export const Contacts = () => {
                     required: "Subject can not be empty!",
                     maxLength: {
                       value: 30,
-                      message: "Max length is 80",
+                      message: "Max length is 30",
                     },
                     minLength: {
-                      value: 3,
+                      value: 8,
                       message: "Min length is 8",
                     },
                   })}
@@ -121,11 +121,11 @@ export const Contacts = () => {
                   {...register("message", {
                     required: "Message can not be empty!",
                     maxLength: {
-                      value: 30,
+                      value: 500,
                       message: "Max length is 500",
                     },
                     minLength: {
-                      value: 8,
+                      value: 10,
                       message: "Min length is 10",
                     },
                   })}
@@ -136,8 +136,14 @@ export const Contacts = () => {
               </form>
               <div>
                 By sending an email, you confirm that you have read and agree
-                width <a href="">Terms of use</a> and{" "}
-                <a href="">Privacy Policy</a>
+                widt.hasOwnProperty(propertyKey)
+                <a target="_blank" href="/terms">
+                  Terms of use
+                </a>
+                and
+                <a target="_blank" href="/privacy">
+                  Privacy Policy
+                </a>
               </div>
             </div>
             <div className={styles.right}>

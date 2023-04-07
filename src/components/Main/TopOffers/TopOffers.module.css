@@ -1,6 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 .wrapper {
-    width: 1320px;margin: 0 auto;
+    width: 100%;margin: 0 auto;padding: 0 20px;
 }
 section.topOffers h2 {
     font-size: 1.5em;text-align: center;padding: 60px 0 10px 0;margin: 0 auto 50px auto;
@@ -73,18 +73,7 @@ section.topOffers h2 {
 }
 
 /* Media */
-@media only screen and (max-width: 1140px) and (min-width: 1024px) {
-    .wrapper {
-        width: 960px;
-    }
-    .tours {
-        grid-template-columns: 1fr 1fr;
-    }
-    .tourImg {
-        height: 230px;
-    }
-  }
-@media only screen and (max-width: 425px) and (min-width: 320px) {
+  @media only screen and (max-width: 480px) and (min-width: 320px) {
     .wrapper {
         width: 100%;padding: 20px 20px 0;
     }
@@ -94,6 +83,9 @@ section.topOffers h2 {
     .tour {
         margin-bottom: 60px;
     }
+    .info {
+        padding-bottom: 10px;
+    }
     .tour:hover {
         transform: scale(1);
     }
@@ -101,4 +93,36 @@ section.topOffers h2 {
         height: 200px;
     }
 }
+@media only screen and (max-width: 768px) and (min-width: 481px) {
+    .wrapper {
+        width: 100%;padding: 0 20px;
+    }
+    .wrapper h2, .wrapper p {
+        text-align: center;
+    }
+    .tours {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media only screen and (max-width: 1024px) and (min-width: 769px)  {
+    .wrapper {
+        width: 100%;padding: 0 20px;
+    }
+    .tours {
+        grid-template-columns: 1fr 1fr;
+    }
+    .tourImg {
+        height: 240px;
+    }
+  }
+  @media only screen and (max-width: 1200px) and (min-width: 1025px) {
+    .wrapper {
+        width: 100%;padding: 0 20px;
+    }
+  }
+  @media only screen and (min-width: 1400px) {
+    .wrapper {
+      width: 1320px;padding: 0;
+    }
+  }
 /* Media */

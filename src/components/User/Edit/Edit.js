@@ -100,6 +100,14 @@ export const Edit = ({ user }) => {
                           value: /^[0-9 ]+$/,
                           message: "Please enter a number",
                         },
+                        maxLength: {
+                          value: 40,
+                          message: "Max length is 40",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Min length is 6",
+                        },
                       })}
                       placeholder="Phone"
                       id="phone"

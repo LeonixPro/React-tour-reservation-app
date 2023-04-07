@@ -78,9 +78,11 @@ The backend used for the application is PHP / MYSQL.
 
 App.js should be wrapped in `Router`
 
-    <Router>
-      <App />
-    </Router>
+```jsx
+<Router>
+  <App />
+</Router>
+```
 
 ### App.js
 
@@ -88,10 +90,12 @@ App.js handles main functions.
 
 1.  Following functions, hooks, and routes should be imported:
 
-        import { Route, Routes, useNavigate } from "react-router-dom";
-        import { AuthContext } from "./contexts/AuthContext";
-        import { onLogin, onRegister, editUser } from "./services/authServices";
-        import { useState, useEffect } from "react";
+```jsx
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { AuthContext } from "./contexts/AuthContext";
+import { onLogin, onRegister, editUser } from "./services/authServices";
+import { useState, useEffect } from "react";
+```
 
 2.  App.js will check if user logged through useEffect and will assign relevant value to `logged` state (false or true).
 
@@ -160,39 +164,54 @@ Functionalities available:
 
 The component includes following hooks:
 
-        import { useParams, Link, useNavigate } from "react-router-dom";
-        import { useContext } from "react";
-        import { AuthContext } from "../../contexts/AuthContext";
-        import { useEffect, useState } from "react";
+```jsx
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useEffect, useState } from "react";
+```
 
 Following functions should be imported:
 
-        import { getOneTour, getWeather } from "../../services/toursServices";
-        import { setScore } from "../../utils/utils";
-        import {deleteRev,editRev,getReviews,submitReview,} from "../../services/reviewsServices";
+```jsx
+import { getOneTour, getWeather } from "../../services/toursServices";
+import { setScore } from "../../utils/utils";
+import {
+  deleteRev,
+  editRev,
+  getReviews,
+  submitReview,
+} from "../../services/reviewsServices";
+```
 
 **Main Request**
 
 Following data will be gotten through useParams and useContext
 
-        const { id } = useParams();
-        const { user } = useContext(AuthContext);
-        const { logged } = useContext(AuthContext);
+```jsx
+const { id } = useParams();
+const { user } = useContext(AuthContext);
+const { logged } = useContext(AuthContext);
+```
 
 1.  useEffect should be called with `id` as a dependency.
 2.  Through `getOneTour(id)` request from `services > toursServices` get data regarding the tour.  
     The API is: `${process.env.REACT_APP_MAIN_REQUEST}/tour/${id}`.
 3.  Handle error (if occurs). If the error occurs, user will be redirected to `404 page`.
 
-        if (res.status === false) {
-        return navigate("/404");
-        }
+```jsx
+if (res.status === false) {
+  return navigate("/404");
+}
+```
 
 4.  After that, set the title, get weather and get reviews:
 
-        setTitle(res.title);
-        getWeather(res.destination).then((res) => setWeather(res));
-        getReviews(id)
+```jsx
+setTitle(res.title);
+getWeather(res.destination).then((res) => setWeather(res));
+getReviews(id);
+```
 
 5.  Check if there are reviews available. If yes, total score will be calculated.
 

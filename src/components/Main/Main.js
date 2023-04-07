@@ -1,7 +1,6 @@
-import { setTitle } from "../../utils/utils";
 import { getPromotions, getTop } from "../../services/toursServices";
 import { useState, useEffect } from "react";
-import { Header } from "../Header/Header";
+import { Header } from "./Header/Header";
 import { TopOffers } from "./TopOffers/TopOffers";
 import { Imagination } from "./Imagination/Imagination";
 import { Explore } from "./Explore/Explore";

@@ -2,11 +2,10 @@ import { ShowGallery } from "./ShowGallery";
 import styles from "./Tour.module.css";
 import { useState } from "react";
 export const Gallery = ({ tour }) => {
-  const [imgSrc, setImgSrc] = useState(
-    `https://source.unsplash.com/random/?city,${tour.destination}`
-  );
   const [activeImg, setActiveImg] = useState(0);
   const [activeGallery, setActiveGallery] = useState(false);
+
+  const imgSrc = `https://source.unsplash.com/random/?city,${tour.destination}`;
 
   const images = [
     tour.main_img,
@@ -19,7 +18,7 @@ export const Gallery = ({ tour }) => {
 
   const showImg = (e) => {
     const img = e.target.src;
-    const index = images.findIndex((i) => i == img);
+    const index = images.findIndex((i) => i === img);
     setActiveGallery(true);
     setActiveImg(index);
     return index;
@@ -43,7 +42,7 @@ export const Gallery = ({ tour }) => {
           <img
             src={tour?.img_2}
             onError={handleError}
-            alt="Main Photo"
+            alt={tour.title}
             onClick={showImg}
           />
         </div>
@@ -51,7 +50,7 @@ export const Gallery = ({ tour }) => {
           <img
             src={tour?.img_3}
             onError={handleError}
-            alt="Main Photo"
+            alt={tour.title}
             onClick={showImg}
           />
         </div>
@@ -59,7 +58,7 @@ export const Gallery = ({ tour }) => {
           <img
             src={tour?.img_4}
             onError={handleError}
-            alt="Main Photo"
+            alt={tour.title}
             onClick={showImg}
           />
         </div>
@@ -67,7 +66,7 @@ export const Gallery = ({ tour }) => {
           <img
             src={tour?.img_5}
             onError={handleError}
-            alt="Main Photo"
+            alt={tour.title}
             onClick={showImg}
           />
         </div>
@@ -75,7 +74,7 @@ export const Gallery = ({ tour }) => {
           <img
             src={tour?.img_6}
             onError={handleError}
-            alt="Main Photo"
+            alt={tour.title}
             onClick={showImg}
           />
         </div>

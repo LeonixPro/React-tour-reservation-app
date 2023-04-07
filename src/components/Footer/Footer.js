@@ -17,10 +17,10 @@ export const Footer = () => {
             </div>
             <div className={styles.social}>
               <b>Follow us</b>
-              <a href="/" title="Facebook"></a>
-              <a href="/" title="Twitter"></a>
-              <a href="/" title="Instagram"></a>
-              <a href="/" title="LinkedIn"></a>
+              <button title="Facebook"></button>
+              <button title="Twitter"></button>
+              <button title="Instagram"></button>
+              <button title="LinkedIn"></button>
             </div>
           </div>
           <div className={styles.footerBox}>

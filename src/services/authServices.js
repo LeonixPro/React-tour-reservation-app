@@ -16,7 +16,7 @@ export const onLogin = async (data) => {
       return res;
     }
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -37,7 +37,7 @@ export const onRegister = async (data) => {
     const res = await response.json();
     return res;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -56,7 +56,7 @@ export const editUser = async (data, id) => {
     const res = await response.json();
     return res;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -78,6 +78,6 @@ export const updatePassword = async (data) => {
     const res = await response.json();
     return res;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };

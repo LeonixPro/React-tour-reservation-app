@@ -16,7 +16,7 @@ export const BookingDetails = ({ current, close, cancelBooking }) => {
           </li>
         </ul>
         <ul className={styles.bookingResTop}>
-          {current.status == "Completed" ? (
+          {current.status === "Completed" ? (
             <span className={styles.completed}>RESERVATION COMPLETED</span>
           ) : (
             <span className={styles.canceled}>RESERVATION CANCELLED</span>
@@ -135,7 +135,7 @@ export const BookingDetails = ({ current, close, cancelBooking }) => {
             <strong>Not included:</strong> {current.not_included}
           </li>
         </ul>
-        {current.status == "Completed" ? (
+        {current.status === "Completed" ? (
           <>
             <button className={styles.cancel} onClick={cancelBooking}>
               Cancel Reservation

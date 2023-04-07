@@ -59,7 +59,7 @@ export const Bookings = ({ booking }) => {
                       bookingList.map((tour, index) => (
                         <tr
                           className={
-                            details.id == tour.id ? styles.activeView : null
+                            details.id === tour.id ? styles.activeView : null
                           }
                           key={tour.id}
                         >
@@ -71,7 +71,7 @@ export const Bookings = ({ booking }) => {
                                 : styles.inActiveTour
                             }
                           >
-                            {tour.status} 
+                            {tour.status}
                           </td>
                           <td>{Number(tour.total_price).toFixed(2)} BGN</td>
                           <td>

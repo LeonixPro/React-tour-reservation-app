@@ -14,7 +14,7 @@ export const BookDetails = ({
       <div className={styles.sale}>On sale</div>
       <div className={styles.duration}>{tour.duration}</div>
       <div className={styles.rate}>
-        {`${tour.destination}, ${tour.country}`}{" "}
+        {`${tour.destination}, ${tour.country}`}
         <b>{reviewScore ? reviewScore.toFixed(1) : 0}</b>
       </div>
       <div className={styles.priceBox}>

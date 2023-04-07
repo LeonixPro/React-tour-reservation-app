@@ -36,7 +36,7 @@ section.mainSection {
     padding: 30px 0;background: var(--white);
 }
 .wrapper {
-    width: 1320px;margin: 0 auto;
+    width: 100%;margin: 0 auto;padding: 0 20px;
 }
 .success {
     padding: 20px 0;
@@ -165,7 +165,7 @@ button.closeGallery i {
 /* Gallery */
 .right {
     border: 1px solid var(--gray);border-radius: 20px;position: sticky;
-    padding: 30px 20px;height: 350px;top: 20px;
+    padding: 30px 20px;height: 350px;top: 20px;overflow: hidden;
 }
 .sale {
     position: absolute;top: 0;right: 0;background: var(--links);color: var(--white);
@@ -314,26 +314,7 @@ span.price b {
 /* Main */
 
 /* Media */
-@media only screen and (max-width: 1024px) {
-    .wrapper {
-        width: 890px;
-    }
-  }
-  @media only screen and (max-width: 1140px) and (min-width: 1024px) {
-    .wrapper {
-        width: 960px;
-    }
-    .right, .gallery {
-        height: 405px;overflow: hidden;
-    }
-    .book {
-        margin-bottom: 15px;
-    }
-    .duration {
-        margin-top: 15px;
-    }
-  }
-  @media only screen and (max-width: 425px) and (min-width: 320px)  {
+  @media only screen and (max-width: 480px) and (min-width: 320px)  {
     .wrapper {
         width: 100%;
     }
@@ -341,9 +322,8 @@ span.price b {
         display: block;
     }
     .right {
-        height: 380px;
+        height: 380px;overflow: hidden;
     }
-
 /* Gallery */
     .gallery {
         display: grid;
@@ -383,6 +363,9 @@ span.price b {
 
     .headerTop {
         text-align: center;
+    }
+    .headerTop h1 {
+        width: 100%;
     }
     section.mainSection {
         padding: 30px 15px;
@@ -435,6 +418,122 @@ span.price b {
     }
     .program p {
         font-size: .85rem;
+    }
+  }
+  @media only screen and (max-width: 768px) and (min-width: 481px) {
+    .wrapper {
+        width: 100%;padding: 0 20px;
+    }
+    .right, .services, .mainBox {
+        display: block;
+    }
+    .service {
+        margin-bottom: 30px;
+    }
+    .loginBox {
+        width: 80%;
+    }
+    /* Gallery */
+    .gallery {
+        display: grid;
+        grid-template-areas: "main-photo main-photo main-photo main-photo" 
+        "photo-1 photo-1 photo-2 photo-2" "photo-3 photo-3 photo-4 photo-4";
+        gap: 1rem;height: 780px;
+    }
+    .mainPhoto {
+        min-height: 360px;
+    }
+    .photo1, .photo2, .photo3, .photo4 {
+        height: 200px;
+    }
+    .activeGalleryWrap {
+        display: block;background: rgba(0, 0, 0, .9)
+    }
+    .activeGalleryImgBox {
+        height: auto;width: 100%;
+    }
+    .prevImg {
+        position: relative;display: inline-block;margin-right: 20px;
+        background: transparent;text-align: center;
+    }
+    .nextImg {
+        position: relative;display: inline-block;margin-left: 20px;
+        background: transparent;text-align: center;
+    }
+    .actionButtons {
+        position: fixed;bottom: 0;width: 100%;text-align: center;     
+        background: rgba(0, 0, 0, .4);padding: 5px 0;
+    }
+    button.closeGallery {
+        position: fixed;bottom: 0;top: auto;left: 50%;right: auto;bottom: 5px;
+        margin-left: -16px;
+    }
+/* Gallery */
+  }
+  @media only screen and (max-width: 1024px) and (min-width: 769px) {
+    .wrapper {
+        width: 100%;padding: 0 20px;
+    }
+    .right, .mainBox {
+        display: block;
+    }
+    .service {
+        margin-bottom: 30px;
+    }
+    .loginBox {
+        width: 50%;
+    }
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-areas: "main-photo main-photo main-photo main-photo" 
+            "photo-1 photo-1 photo-2 photo-2" "photo-3 photo-3 photo-4 photo-4";
+            gap: 1rem;height: 780px;
+        }
+        .mainPhoto {
+            min-height: 360px;
+        }
+        .photo1, .photo2, .photo3, .photo4 {
+            height: 200px;
+        }
+        .activeGalleryWrap {
+            display: block;background: rgba(0, 0, 0, .9)
+        }
+        .activeGalleryImgBox {
+            height: auto;width: 100%;
+        }
+        .prevImg {
+            position: relative;display: inline-block;margin-right: 20px;
+            background: transparent;text-align: center;
+        }
+        .nextImg {
+            position: relative;display: inline-block;margin-left: 20px;
+            background: transparent;text-align: center;
+        }
+        .actionButtons {
+            position: fixed;bottom: 0;width: 100%;text-align: center;     
+            background: rgba(0, 0, 0, .4);padding: 5px 0;
+        }
+        button.closeGallery {
+            position: fixed;bottom: 0;top: auto;left: 50%;right: auto;bottom: 5px;
+            margin-left: -16px;
+        }
+    /* Gallery */
+  }
+  @media only screen and (max-width: 1200px) and (min-width: 1025px) {
+    .wrapper {
+        width: 100%;padding: 0 20px;
+    }
+    .gallery, .right {
+        height: 385px;overflow: hidden;
+    }
+    .loginBox {
+        width: 50%;
+    }
+  }
+  @media only screen and (min-width: 1400px) {
+    .wrapper {
+      width: 1320px;padding: 0;
     }
   }
 /* Media */

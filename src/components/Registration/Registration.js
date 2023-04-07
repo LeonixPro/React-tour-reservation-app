@@ -1,21 +1,12 @@
 import { setTitle } from "../../utils/utils";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import styles from "./Registration.module.css";
 export const Registration = () => {
   setTitle("Registration");
-  const navigate = useNavigate();
-  const { logged } = useContext(AuthContext);
-  const { regError } = useContext(AuthContext);
-  const { registration } = useContext(AuthContext);
-  useEffect(() => {
-    if (logged) {
-      navigate("/");
-    }
-  }, [logged]);
+  const { regError, registration } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -119,6 +110,14 @@ export const Registration = () => {
                     value: /^[0-9 ]+$/,
                     message: "Please enter a number",
                   },
+                  maxLength: {
+                    value: 40,
+                    message: "Max length is 40",
+                  },
+                  minLength: {
+                    value: 6,
+                    message: "Min length is 6",
+                  },
                 })}
                 placeholder="Your Phone number"
                 id="phone"
@@ -159,7 +158,6 @@ export const Registration = () => {
             </div>
             <div className={styles.input}>
               <label htmlFor="city">Your city</label>
-
               <input
                 type="text"
                 className={errors?.city?.message && styles.errorInput}

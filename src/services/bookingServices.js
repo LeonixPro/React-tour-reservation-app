@@ -16,9 +16,8 @@ export const bookingSubmit = async (data) => {
     if (res) {
       return res;
     }
-    return;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -39,7 +38,7 @@ export const bookingList = async (id) => {
     const res = await response.json();
     return res;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -61,6 +60,6 @@ export const cancel = async (data, id) => {
     const res = await response.json();
     return res;
   } catch (error) {
-    console.log(error);
+    console.log("There was an error!");
   }
 };

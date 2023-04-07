@@ -9,20 +9,14 @@ export const Promotion = ({ promotions }) => {
           {promotions &&
             promotions.map((tour) => (
               <div className={styles.offer} key={tour.u_id}>
-                <img
-                  src={tour.main_img}
-                  alt={tour.title}
-                />
+                <img src={tour.main_img} alt={tour.title} />
                 <div className={styles.hover}>
                   <div className={styles.title}>{tour.title}</div>
-                  <div className={styles.description}>
-                    
-                  </div>
+                  <div className={styles.description}></div>
                   <Link to={`/tour/${tour.u_id}`}>More</Link>
                 </div>
               </div>
             ))}
-
         </div>
       </div>
     </section>

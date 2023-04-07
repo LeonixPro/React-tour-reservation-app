@@ -1,9 +1,12 @@
 .top {
-    background: #fff;
+    background: #fff;position: relative;z-index: 1;
 }
 .Wrapper {
-    width: 1320px;margin: 0 auto;height: 60px;display: flex;justify-content: space-between;
-    align-items: center;
+    width: 100%;margin: 0 auto;height: 60px;display: flex;justify-content: space-between;
+    align-items: center;padding: 0 20px;
+}
+.Wrapper button {
+  display: none;
 }
 .navigation nav ul {
     display: flex;align-items: center;
@@ -62,37 +65,29 @@
   }
   .navigation nav ul li:last-child span {
     margin-left: 10px;font-weight: bold;font-size: .85rem;
-    position: relative;top: -8px;
-  }
-  .navigation nav ul li:last-child span b {
-    display: block;position: absolute;left: 0;
-    font-size: .8rem;
-    line-height: 1;
   }
 
   /* Media */
-@media only screen and (max-width: 1024px) {
+
+@media only screen and (max-width: 768px) and (min-width: 320px) {
   .Wrapper {
-      width: 890px;
+      width: 100%;display: block;height: auto;position: relative;padding: 0;
   }
-}
-@media only screen and (max-width: 1140px) and (min-width: 1024px) {
-  .Wrapper {
-      width: 960px;
+  .Wrapper button {
+    display: block;position: absolute;width: 50px;height: 50px;top: 7px;right: 0;
+    background: transparent;z-index: 50;
   }
-  .navigation nav ul li:last-child span {
-    top: 0;
+  .Wrapper button i {
+    font-size: 2rem;
   }
-  .navigation nav ul li:last-child  b {
-    display: none !important;
-  }
-}
-@media only screen and (max-width: 425px) and (min-width: 320px) {
-  .Wrapper {
-      width: 100%;display: block;height: auto;
+  .Wrapper a.topLogoLink {
+    border-bottom: 1px solid var(--gray);display: block;
   }
   .navigation nav ul {
-  display: block;
+  display: none;
+  }
+  .navigation nav ul.activeUl {
+    display: block;
   }
   .navigation nav ul li {
     text-align: center;
@@ -121,14 +116,33 @@
   .navigation nav ul li:last-child span {
     text-align: left;position: relative;
   }
-  .navigation nav ul li:last-child span b {
-    position: absolute;left: 0;top: 17px;
-  }
   .navigation nav ul li a.auth:hover {
     border-radius: 0;color: var(--white);padding: 10px 0;
   }
   .navigation nav ul li a.userProfile {
     padding: 12px 10px;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+  .Wrapper {
+    width: 100%;display: block;height: auto;position: relative;
+    display: flex;height: 60px;padding: 0 20px;
+  }
+  .navigation nav ul li:last-child span {
+    position: static;top: 0;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 1025px)  {
+  .Wrapper {
+    width: 100%;display: block;height: auto;position: relative;
+    display: flex;height: 60px;padding: 0 20px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .Wrapper {
+    width: 1320px;padding: 0;
   }
 }
 /* Media */

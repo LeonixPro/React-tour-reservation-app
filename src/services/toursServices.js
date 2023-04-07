@@ -6,7 +6,7 @@ export const getTop = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -18,7 +18,7 @@ export const getPromotions = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -30,7 +30,7 @@ export const getTours = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -42,16 +42,20 @@ export const getOneTour = async (id) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
 // Get weather
 export const getWeather = async (location) => {
-  const request = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_WEATHER_REQUEST}`
-  );
-  const response = await request;
-  const data = await response.json();
-  return data;
+  try {
+    const request = fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.REACT_APP_WEATHER_REQUEST}`
+    );
+    const response = await request;
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("There was an error!");
+  }
 };

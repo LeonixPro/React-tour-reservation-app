@@ -25,7 +25,7 @@ export const EditReview = ({ reviewId, editReview, tour }) => {
           <div className={styles.scores}>
             <label
               htmlFor="1"
-              className={active.rate == 1 ? styles.activeNegative : null}
+              className={active.rate === "1" ? styles.activeNegative : null}
             >
               <i className="bi bi-emoji-angry"></i>
             </label>
@@ -40,7 +40,7 @@ export const EditReview = ({ reviewId, editReview, tour }) => {
           <div className={styles.scores}>
             <label
               htmlFor="2"
-              className={active.rate == 2 ? styles.activeNegative : null}
+              className={active.rate === "2" ? styles.activeNegative : null}
             >
               <i className="bi bi-emoji-frown"></i>
             </label>
@@ -55,7 +55,7 @@ export const EditReview = ({ reviewId, editReview, tour }) => {
           <div className={styles.scores}>
             <label
               htmlFor="3"
-              className={active.rate == 3 ? styles.activePositive : null}
+              className={active.rate === "3" ? styles.activePositive : null}
             >
               <i className="bi bi-emoji-smile"></i>
             </label>
@@ -70,7 +70,7 @@ export const EditReview = ({ reviewId, editReview, tour }) => {
           <div className={styles.scores}>
             <label
               htmlFor="4"
-              className={active.rate == 4 ? styles.activePositive : null}
+              className={active.rate === "4" ? styles.activePositive : null}
             >
               <i className="bi bi-emoji-laughing"></i>
             </label>
@@ -85,7 +85,7 @@ export const EditReview = ({ reviewId, editReview, tour }) => {
           <div className={styles.scores}>
             <label
               htmlFor="5"
-              className={active.rate == 5 ? styles.activePositive : null}
+              className={active.rate === "5" ? styles.activePositive : null}
             >
               <i className="bi bi-emoji-heart-eyes"></i>
             </label>
@@ -106,7 +106,7 @@ export const EditReview = ({ reviewId, editReview, tour }) => {
             required: "Please add your review!",
             maxLength: {
               value: 500,
-              message: "Max length is 20",
+              message: "Max length is 500",
             },
             minLength: {
               value: 4,

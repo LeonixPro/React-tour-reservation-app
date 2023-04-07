@@ -8,7 +8,7 @@ export const getReviews = async (id) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -30,7 +30,7 @@ export const submitReview = async (data, user_id) => {
     const res = await response.json();
     return res;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };
 
@@ -51,7 +51,9 @@ export const deleteRev = async (user_id, review_id) => {
     const response = await request;
     const res = await response.json();
     return res;
-  } catch (error) {}
+  } catch (error) {
+    console.log("There was an error!");
+  }
 };
 
 // Edit review
@@ -69,6 +71,6 @@ export const editRev = async (data, user_id) => {
     const res = await response.json();
     return res;
   } catch (error) {
-    return;
+    console.log("There was an error!");
   }
 };

@@ -1,5 +1,5 @@
 import styles from "./Explore.module.css";
-import Img from './explore.jpg'
+import Img from "./explore.jpg";
 export const Explore = () => {
   return (
     <section className={styles.explore}>
@@ -14,10 +14,7 @@ export const Explore = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.rightImg}>
-            <img
-              src={Img}
-              alt="Discover More"
-            />
+            <img src={Img} alt="Discover More" />
           </div>
         </div>
       </div>

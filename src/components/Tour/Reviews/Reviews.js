@@ -27,11 +27,7 @@ export const Reviews = ({
       {edit && (
         <EditReview tour={tour} reviewId={reviewId} editReview={editReview} />
       )}
-      {noReview && (
-        <div className={styles.noReviews}>
-          {noReview} 
-        </div>
-      )}
+      {noReview && <div className={styles.noReviews}>{noReview}</div>}
       {logged && !findArrayElementByEdit(reviewList) ? (
         <button className={styles.addReviews} onClick={addReview}>
           Add review

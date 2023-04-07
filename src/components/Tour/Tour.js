@@ -64,12 +64,12 @@ export const Tour = () => {
           })
           .then(setLoad(false))
           .catch((error) => {
-            return;
+            console.log("There was an error!");
           });
       }
     });
     window.scrollTo(0, 0);
-  }, [id]);
+  }, [id, navigate]);
 
   const onBookClick = () => {
     if (logged) {

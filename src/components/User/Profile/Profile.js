@@ -13,7 +13,7 @@ export const Profile = () => {
   const location = useLocation();
   useEffect(() => {
     bookingList(user.u_id).then((res) => setBooking(res));
-  }, []);
+  }, [user.u_id]);
   return (
     <>
       <header>
@@ -40,7 +40,11 @@ export const Profile = () => {
                 <li>
                   <Link
                     to=""
-                    className={location.pathname === "/profile" ? styles.activeLink : null}
+                    className={
+                      location.pathname === "/profile"
+                        ? styles.activeLink
+                        : null
+                    }
                   >
                     Profile
                   </Link>
@@ -48,7 +52,11 @@ export const Profile = () => {
                 <li>
                   <Link
                     to="edit"
-                    className={location.pathname === "/profile/edit" ? styles.activeLink : null}
+                    className={
+                      location.pathname === "/profile/edit"
+                        ? styles.activeLink
+                        : null
+                    }
                   >
                     Edit Profile
                   </Link>
@@ -57,7 +65,9 @@ export const Profile = () => {
                   <Link
                     to="my-bookings"
                     className={
-                      location.pathname === "/profile/my-bookings" ? styles.activeLink : null
+                      location.pathname === "/profile/my-bookings"
+                        ? styles.activeLink
+                        : null
                     }
                   >
                     My bookings

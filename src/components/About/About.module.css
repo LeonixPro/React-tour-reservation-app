@@ -7,9 +7,9 @@ section.about::after {
     background: rgba(0, 0, 0, .5);z-index: 1;
 }
 .headerWrapper {
-    width: 1320px;margin: 0 auto;height: 600px;display: flex;flex-direction: column;
+    width: 100%;margin: 0 auto;height: 600px;display: flex;flex-direction: column;
     justify-content: center;align-items: center;position: relative;z-index: 2;
-    color: var(--white);
+    color: var(--white);padding: 0 20px;
  }
 .headerWrapper h1 {
     font-size: 3rem;
@@ -55,9 +55,12 @@ section.about::after {
        width: 960px;
    }
 }
- @media only screen and (max-width: 425px) and (min-width: 320px)  {
+@media only screen and (max-width: 768px) and (min-width: 481px) {
    .headerWrapper, .wrapper {
       width: 100%;
+   }
+   .headerWrapper {
+      padding: 0 40px;
    }
    section.about {
       background-attachment: unset;
@@ -79,3 +82,19 @@ section.about::after {
       grid-row: 1;
    }
  }
+ @media only screen and (max-width: 1024px) and (min-width: 769px) {
+   .wrapper, .headerWrapper {
+      width: 100%;padding: 0 20px;
+   }
+ }
+ @media only screen and (max-width: 1200px) and (min-width: 1025px) {
+   .wrapper, .headerWrapper {
+      width: 100%;padding: 0 20px;
+   }
+ }
+ @media only screen and (min-width: 1400px) {
+   .wrapper, .headerWrapper {
+     width: 1320px;padding: 0;
+   }
+ }
+ /* Media */

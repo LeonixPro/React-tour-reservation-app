@@ -11,8 +11,8 @@
     margin: 0;
 }
 .close {
-    position: absolute;top: -16px;right: -16px;font-weight: bold;background: #cc0000;color: var(--white);
-    padding: 4px 10px;border-radius: 50%;cursor: pointer;
+    position: absolute;top: 0;right: 0;font-weight: bold;background: #cc0000;color: var(--white);
+    padding: 4px 10px;height: 65px;width: 65px;font-size: 1.5rem;
 }
 .description {
     padding: 20px;border-bottom: 1px solid var(--gray);
@@ -60,7 +60,7 @@ span.guestsTotal {
         width: 70%;
     }
 }
-@media only screen and (max-width: 425px) and (min-width: 320px) {
+@media only screen and (max-width: 480px) and (min-width: 320px) {
     .wrap {
        position: fixed;top: 0;left: 0;width: 100%;height: 100%;
        overflow-y: scroll;
@@ -89,4 +89,43 @@ span.guestsTotal {
         margin-top: 22px;margin-bottom: 5px;
     }
 }
+@media only screen and (max-width: 768px) and (min-width: 481px) {
+    .wrap {
+        position: fixed;top: 0;left: 0;width: 100%;height: 100%;
+        overflow-y: scroll;
+     }
+     .book button {
+         width: 100%;
+     }
+     .close {
+         top: 0;
+         right: 0;
+         border-radius: 0;
+         height: 64px;
+         width: 64px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background: #f53a3a;
+     }
+     .payment {
+         display: flex;justify-content: space-between;
+     }
+     button.actionButtons {
+         padding: 0 12px;
+     }
+     li.guestsTitle b {
+         margin-top: 22px;margin-bottom: 5px;
+     }
+}
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    .wrap {
+       width: 90%;
+    }
+  }
+  @media only screen and (max-width: 1200px) and (min-width: 1025px) {
+    .wrap {
+       width: 90%;
+    }
+  }
 /* Media */

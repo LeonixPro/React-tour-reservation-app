@@ -1,23 +1,26 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { setName } from "../../utils/utils";
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "../../UI/Logo";
 import styles from "./Top.module.css";
 export const Top = () => {
-  const { user } = useContext(AuthContext);
-  const { logged } = useContext(AuthContext);
+  const [activeMenu, setActiveMenu] = useState(false);
+  const { user, logged } = useContext(AuthContext);
   const activeLink = useLocation();
   const tourLink = activeLink.pathname.split("/");
   return (
     <div className={styles.top}>
       <div className={styles.Wrapper}>
-        <Link to="/">
+        <button onClick={() => setActiveMenu(!activeMenu)}>
+          <i className="bi bi-list"></i>
+        </button>
+        <Link to="/" className={styles.topLogoLink}>
           <Logo />
         </Link>
         <div className={styles.navigation}>
           <nav>
-            <ul>
+            <ul className={activeMenu === true ? styles.activeUl : null}>
               <li>
                 <Link
                   to="/about"
@@ -70,7 +73,7 @@ export const Top = () => {
                     {setName(user?.name, user?.lastname)}
                   </Link>
                   <span>
-                    {user?.name} {user?.lastname} <b>{user?.email}</b>
+                    {user?.name} {user?.lastname}
                   </span>
                 </li>
               ) : (

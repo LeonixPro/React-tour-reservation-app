@@ -3,8 +3,8 @@
     height: 200px;background: #eff0ff;
 }
 .headerWrapper {
-    width: 1320px;margin: 0 auto;display: grid;align-content: center;
-    height: 200px;grid-template-columns: 140px 1fr;gap: 1rem;
+    width: 100%;margin: 0 auto;display: grid;align-content: center;
+    height: 200px;grid-template-columns: 140px 1fr;gap: 1rem;padding: 0 20px;
 }
 .headerLeft {
     height: 140px;background: var(--white);border: 1px solid var(--light);
@@ -42,7 +42,7 @@
     background: var(--white);border-bottom: 1px solid var(--gray);
 }
 .navigation {
-    width: 1320px;margin: 0 auto;
+    width: 100%;margin: 0 auto;padding: 0 20px;
 }
 .navigation nav ul {
     display: flex;width: 100%;position: relative;
@@ -58,8 +58,8 @@
     min-height: 500px;
 }
 .wrapper {
-    width: 1320px;margin: 0 auto;background: var(--white);min-height: 500px;
-    padding: 0 16px;
+    width: 100%;margin: 0 auto;background: var(--white);min-height: 500px;
+    padding: 0 16px;padding: 0 20px;
 }
 .success {
     position: fixed;right: 30px;bottom: 30px;
@@ -200,7 +200,7 @@ ul.bookingResTop li strong {display: block;}
 table.bookingDetailsT tr th, table.bookingDetailsT tr td {
     font-size: 1rem;
 }
-.bookingTotal {display: flex;justify-content: end;}
+.bookingTotal {display: flex;justify-content: flex-end;}
 .bookingTotal ul li {font-size: 1.1rem;font-weight: bold;text-align: right;}
 .bookingTotal ul li strong {display: inline-block;min-width: 130px;}
 .bookingOtherInfo button.cancel {
@@ -212,7 +212,7 @@ table.bookingDetailsT tr th, table.bookingDetailsT tr td {
 }
 .bookingOtherInfo a {font-size: 1rem;font-weight: bold;display: inline-block;margin-right: 20px;}
 button.closeBooking {
-    position: absolute;top: -68px;right: -16px;background: #cc0000;color: var(--white);
+    position: absolute;top: -68px;right: 0;background: #cc0000;color: var(--white);
     height: 49px;width: 49px;
 }
 .errorMessage {
@@ -226,12 +226,7 @@ button.closeBooking {
     transition: var(--transition);
 }
 /* Booking */
-@media only screen and (max-width: 1140px) and (min-width: 1024px) {
-    .wrapper, .headerWrapper, .navigation {
-        width: 960px;
-    }
-}
-@media only screen and (max-width: 425px) and (min-width: 320px) {
+@media only screen and (max-width: 768px) and (min-width: 320px) {
     .header {
         display: grid;padding: 0 10px;
     }
@@ -263,6 +258,9 @@ button.closeBooking {
     }
     .leftBooking {
         padding: 0;border-right: none;
+    }
+    .rightBooking h5 {
+        display: none;
     }
     .main {
         position: relative;
@@ -328,3 +326,19 @@ button.closeBooking {
         z-index: 5;
     }
 }
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    .wrapper, .headerWrapper, .navigation {
+        width: 100%;padding: 0 20px;
+    }
+  }
+  @media only screen and (max-width: 1200px) and (min-width: 1025px) {
+    .wrapper, .headerWrapper, .navigation {
+        width: 100%;padding: 0 20px;
+    }
+  }
+  @media only screen and (min-width: 1400px) {
+    .wrapper, .headerWrapper, .navigation {
+      width: 1320px;padding: 0;
+    }
+  }
+/* Media */

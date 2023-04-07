@@ -1,22 +1,12 @@
 import { setTitle } from "../../utils/utils";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 export const Login = () => {
   setTitle("Login");
-  const navigate = useNavigate();
-  const { logged } = useContext(AuthContext);
-  const { login } = useContext(AuthContext);
-  const { loginError } = useContext(AuthContext);
-  useEffect(() => {
-    if (logged) {
-      return navigate("/profile");
-    }
-  }, [logged]);
+  const { login, loginError } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
