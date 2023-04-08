@@ -149,7 +149,10 @@
 }
 .leftEdit form button, .updatePassword form button {
     padding: 10px 16px;background: #249b28;color: var(--white);font-size: .9rem;
-    font-weight: bold;transition: var(--transition);
+    font-weight: bold;transition: var(--transition);display: inline-block;
+}
+.leftEdit form button {
+    margin-left: 10px;
 }
 .passwordInfo {
     margin-top: 30px;
@@ -219,7 +222,7 @@ table.bookingDetailsT tr th, table.bookingDetailsT tr td {
     margin: 20px 0;font-weight: bold;font-size: 1rem;transition: var(--transition);
 }
 .bookingOtherInfo button.cancel:hover, button.closeBooking:hover {
-    background: #d73838;
+    background: #f83232;
 }
 .bookingOtherInfo a {font-size: 1rem;font-weight: bold;display: inline-block;margin-right: 20px;}
 button.closeBooking {
@@ -235,6 +238,52 @@ button.closeBooking {
     padding: 16px;
     z-index: 10;
     transition: var(--transition);
+}
+.bookingCancelConfirm {
+    align-items: center;
+    background: rgba(0,0,0,.7);
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 50;
+}
+.bookingCancelBox {
+    width: 50%;padding: 30px;
+    background: var(--white);
+}
+.bookingCancelBox h5 {
+    font-size: 1.2rem;margin: 0;padding: 0 0 20px 0;
+    font-weight: bold;
+}
+.bookingCancelBox p {
+    font-size: 1.1rem;line-height: 1.5;
+    margin-bottom: 10px;
+}
+.bookingCancelBox p span {
+    display: block;margin-top: 10px;
+}
+.bookingCancelBox p span b {
+    font-size: 1.1rem;
+}
+.bookingCancelBox button.confirmCancel {
+    background: #cc0000;color: var(--white);display: inline-block;
+    font-size: .9rem;margin-top: 10px;padding: 12px 16px;margin-right: 20px;
+    font-weight: bold;transition: var(--transition);
+}
+.bookingCancelBox button.confirmCancel:hover {
+    background: #f83232;
+}
+.bookingCancelBox button.cancelClose {
+    background: #0042ab;color: var(--white);display: inline-block;
+    font-size: .9rem;margin-top: 10px;padding: 12px 16px;font-weight: bold;
+    transition: var(--transition);
+}
+.bookingCancelBox button.cancelClose:hover {
+    background: #0058e5;
 }
 /* Booking */
 @media only screen and (max-width: 768px) and (min-width: 320px) {
@@ -262,6 +311,9 @@ button.closeBooking {
     }
     .updatePassword form ul li label {
         font-size: .9rem;padding-left: 0;
+    }
+    .leftEdit form button {
+        margin-left: 0;
     }
     .headerMiddle button {
         display: inline-block;width: fit-content;background: var(--links);color: var(--white);
@@ -329,6 +381,10 @@ button.closeBooking {
     button.closeBooking {
         position: absolute;top: 0;right: 0;background: #cc0000;color: var(--white);
         height: 50px;width: 50px;
+    }
+    .bookingCancelBox {
+        width: 90%;padding: 30px;
+        background: var(--white);
     }
     .success {
         background: #e2fbe6;

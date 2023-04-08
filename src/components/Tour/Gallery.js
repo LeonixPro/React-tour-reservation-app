@@ -21,7 +21,6 @@ export const Gallery = ({ tour }) => {
     const index = images.findIndex((i) => i === img);
     setActiveGallery(true);
     setActiveImg(index);
-    return index;
   };
   const closeGallery = () => {
     setActiveGallery(false);
@@ -32,7 +31,6 @@ export const Gallery = ({ tour }) => {
       {activeGallery && (
         <ShowGallery
           images={images}
-          showImg={showImg}
           activeImg={activeImg}
           closeGallery={closeGallery}
         />

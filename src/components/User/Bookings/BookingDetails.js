@@ -1,7 +1,35 @@
+import { useState } from "react";
 import styles from "../Profile.module.css";
 export const BookingDetails = ({ current, close, cancelBooking }) => {
+  const [cancel, setCancel] = useState(false);
+  const onCancelClick = () => {
+    setCancel(!cancel);
+  };
   return (
     <div className={styles.bookingWrap}>
+      {cancel && (
+        <div className={styles.bookingCancelConfirm}>
+          <div className={styles.bookingCancelBox}>
+            <h5>Confirm cancellation</h5>
+            <p>
+              Are you sure you want to cancel the reservation? <br />
+              Reservation will be canceled, and you will not be able to restore it.
+              <span>
+                <b>Tour title: <br /></b> {current.title}
+              </span>
+              <span>
+                <b>Reservation Number:</b> {current.u_id} 
+              </span>
+            </p>
+            <button className={styles.confirmCancel} onClick={cancelBooking}>
+              Cancel reservation
+            </button>
+            <button className={styles.cancelClose} onClick={onCancelClick}>
+              No, go back
+            </button>
+          </div>
+        </div>
+      )}
       <button className={styles.closeBooking} onClick={close}>
         X
       </button>
@@ -137,7 +165,7 @@ export const BookingDetails = ({ current, close, cancelBooking }) => {
         </ul>
         {current.status === "Completed" ? (
           <>
-            <button className={styles.cancel} onClick={cancelBooking}>
+            <button className={styles.cancel} onClick={onCancelClick}>
               Cancel Reservation
             </button>
             <a href="/terms" target="_blank">

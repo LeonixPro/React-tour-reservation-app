@@ -35,7 +35,7 @@ export const Services = () => {
               <div className={styles.secondLeft}>
                 <h3>
                   SOME TEXT HERE FOR SERVICES! SOME MORE TEXT TO SHOW HERE JUST
-                  IN CASE. ABE OSHTE NESHTO TUKA
+                  IN CASE. 
                 </h3>
               </div>
               <div className={styles.secondRight}>
