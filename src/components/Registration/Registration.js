@@ -190,6 +190,7 @@ export const Registration = () => {
 
               <input
                 type="password"
+                className={errors?.password?.message && styles.errorInput}
                 {...register("password", {
                   required: "Password can not be empty!",
                   pattern: {
@@ -219,6 +220,9 @@ export const Registration = () => {
               <label htmlFor="confirm_password">Confirm password</label>
               <input
                 type="password"
+                className={
+                  errors?.confirm_password?.message && styles.errorInput
+                }
                 {...register("confirm_password", {
                   required: "Confirm password can not be empty!",
                   validate: (value) => value === getValues("password"),

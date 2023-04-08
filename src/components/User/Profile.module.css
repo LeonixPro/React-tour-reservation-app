@@ -72,7 +72,7 @@
     transition: var(--transition);
 }
 .title {
-    padding: 20px 0;font-weight: bold;
+    padding: 20px 10px;font-weight: bold;
 }
 .information {
     display: grid;grid-template-columns: 20% 20%;
@@ -89,16 +89,22 @@
     display: grid;grid-template-columns: 1fr 1fr;
 }
 .information ul li span {
-    padding: 6px 0;
+    padding: 6px  10px;
     display: block;
     border-bottom: 1px solid var(--light);
     margin-bottom: 40px;
+}
+.information ul li b {
+    padding-left: 10px;
 }
 .rightBooking {
     padding-right: 16px;
 }
 .leftEdit h5, .leftBooking h5, .rightEdit h5, .rightBooking h5 {
-    font-size: 1rem;font-weight: bold;padding: 20px 0;
+    font-size: 1rem;font-weight: bold;padding: 20px 10px;
+}
+.rightEdit h5, .rightBooking h5 {
+    padding-left: 0;
 }
 .leftEdit form, .updatePassword ul {
     display: grid;grid-template-columns: 1fr 1fr;
@@ -108,8 +114,11 @@
     border-bottom: 1px solid var(--gray);
 }
 .leftEdit form ul li label, .updatePassword form ul li label {
-    display: block;width: 100%;
+    display: block;width: 100%;padding-left: 10px;
     font-weight: bold;
+}
+.updatePassword form ul li label {
+    padding-left: 0;
 }
 .leftEdit form ul li b {
     display: block;
@@ -124,7 +133,7 @@
 }
 .leftEdit form ul li input, .updatePassword form ul li input {
     display: block;
-    padding: 6px 0;
+    padding: 6px 10px;
     width: 100%;
     border: none;
     outline: none;
@@ -252,7 +261,7 @@ button.closeBooking {
         padding-bottom: 50px;
     }
     .updatePassword form ul li label {
-        font-size: .9rem;
+        font-size: .9rem;padding-left: 0;
     }
     .headerMiddle button {
         display: inline-block;width: fit-content;background: var(--links);color: var(--white);

@@ -1,7 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { AuthContext } from "./contexts/AuthContext";
-import { onLogin } from "./services/authServices";
-import { onRegister } from "./services/authServices";
+import { onLogin, onRegister, editUser } from "./services/authServices";
 import { useState, useEffect } from "react";
 import "./assets/styles/main.css";
 import { Footer } from "./components/Footer/Footer";
@@ -9,7 +8,6 @@ import Main from "./components/Main/Main";
 import { Top } from "./components/Top/Top";
 import { Login } from "./components/Login/Login";
 import { Registration } from "./components/Registration/Registration";
-import { editUser } from "./services/authServices";
 import { About } from "./components/About/About";
 import { Services } from "./components/Service/Services";
 import { Tours } from "./components/Tours/Tours";

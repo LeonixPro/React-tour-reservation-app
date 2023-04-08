@@ -13,12 +13,14 @@ export const UpdatePassword = ({ user }) => {
           setTimeout(() => {
             setErrorMessage(null);
           }, 3000);
+          reset();
           return;
         }
         setSuccessMessage(res.message);
         setTimeout(() => {
           setSuccessMessage(null);
         }, 3000);
+        reset();
       }
     });
   };
@@ -26,6 +28,7 @@ export const UpdatePassword = ({ user }) => {
     register,
     handleSubmit,
     getValues,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {

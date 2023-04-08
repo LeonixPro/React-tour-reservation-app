@@ -35,6 +35,7 @@ export const Tours = () => {
           <div className={styles.tours}>
             {tours.map((tour) => (
               <div key={tour.u_id} className={styles.tour}>
+                {tour.promotion === '1' ? <span className={styles.promotion}>Promotion</span> : null}
                 <div className={styles.tourImg}>
                   <img src={tour.main_img} alt={tour.title} />
                 </div>

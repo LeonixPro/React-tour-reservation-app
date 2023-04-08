@@ -85,6 +85,14 @@ span[data-type="category"]::before {
     content: '\F7CC';font-family: 'bootstrap-icons';margin-right: 5px;
     position: relative;top: 2px;font-size: 1.2rem;
 }
+span[data-type="promotion"] {
+    background: #daffda;padding: 6px 14px;font-size: .9rem;
+    font-weight: bold;border-radius: 20px;color: #04a511;
+}
+span[data-type="promotion"]::before {
+    content: '\F5AF';font-family: 'bootstrap-icons';margin-right: 5px;
+    position: relative;top: 2px;font-size: .9rem;
+}
 .mainBox {
     display: grid;grid-template-columns: 70% 1fr;gap: 2rem;
 }
@@ -323,6 +331,9 @@ span.price b {
     }
     .right {
         height: 380px;overflow: hidden;
+    }
+    .title span {
+        margin-top: 10px;
     }
 /* Gallery */
     .gallery {

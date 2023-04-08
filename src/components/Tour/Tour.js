@@ -24,8 +24,7 @@ import {
 } from "../../services/reviewsServices";
 export const Tour = () => {
   const { id } = useParams();
-  const { user } = useContext(AuthContext);
-  const { logged } = useContext(AuthContext);
+  const { user, logged } = useContext(AuthContext);
   const [tour, setTour] = useState({});
   const [weather, setWeather] = useState({});
   const [reviewList, setReviewList] = useState([]);
@@ -195,6 +194,9 @@ export const Tour = () => {
               </span>
               <span data-type="duration">{tour.duration}</span>
               <span data-type="category">{tour.category}</span>
+              {tour.promotion === "1" ? (
+                <span data-type="promotion">Promotion</span>
+              ) : null}
             </div>
             <div className={styles.mainBox}>
               <div className={styles.left}>
