@@ -14,8 +14,9 @@ The backend used for the application is PHP / MYSQL.
   - Login
   - Registration
 - Tour reservation
+  - Make reservations
   - Display reservations
-  - Cancel reservation
+  - Cancel reservations
 - Review (**CRUD**)
   - Add review
   - Display review list
