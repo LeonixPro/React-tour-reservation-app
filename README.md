@@ -6,6 +6,8 @@ To run the application you need to have a backend server to handle API requests.
 
 The backend used for the application is PHP / MYSQL.
 
+[Link to the project](https://test-project.traveler.leonixpro.com/)
+
 ---
 
 ### Application works with REST API and has following functionality:
